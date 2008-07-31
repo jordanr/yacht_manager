@@ -1,0 +1,12 @@
+<h1>Editing multiple_listing_system</h1>
+
+<% form_for(@multiple_listing_system) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @multiple_listing_system %> |
+<%= link_to 'Back', multiple_listing_systems_path %>

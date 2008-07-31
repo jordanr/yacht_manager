@@ -1,0 +1,23 @@
+<p>
+  <b>Description:</b>
+  <%=h @picture.description %>
+</p>
+
+<p>
+  <b>Content type:</b>
+  <%=h @picture.content_type %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%=h @picture.filename %>
+</p>
+
+<p>
+  <b>Binary data:</b>
+  <%=image_tag("/pictures/code_image/#{@picture.id}", :alt=>"Image") %>
+</p>
+
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>

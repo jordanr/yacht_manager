@@ -1,0 +1,20 @@
+<h1>Editing accommodation</h1>
+
+<% form_for(@accommodation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @accommodation %> |
+<%= link_to 'Back', accommodations_path %>

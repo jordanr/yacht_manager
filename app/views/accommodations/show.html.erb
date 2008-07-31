@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @accommodation.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @accommodation.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_accommodation_path(@accommodation) %> |
+<%= link_to 'Back', accommodations_path %>

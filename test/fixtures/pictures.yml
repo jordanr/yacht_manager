@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  content_type: MyString
+  filename: MyString
+  binary_data: 
+
+two:
+  description: MyString
+  content_type: MyString
+  filename: MyString
+  binary_data: 
