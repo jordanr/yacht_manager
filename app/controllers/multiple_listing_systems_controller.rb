@@ -1,4 +1,4 @@
-class MultipleListingSystemsController < ApplicationController
+class MultipleListingSystemsController < YachtManagerController
   # GET /multiple_listing_systems
   # GET /multiple_listing_systems.xml
   def index

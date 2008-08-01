@@ -1,19 +1,11 @@
-quentin:
-  id: 1
-  login: quentin
-  email: quentin@example.com
-  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
-  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  created_at: <%= 5.days.ago.to_s :db %>
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
+one:
+  login: MyString
+  crypted_password: MyString
+  salt: MyString
 
-
-aaron:
-  id: 2
-  login: aaron
-  email: aaron@example.com
-  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
-  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  created_at: <%= 1.days.ago.to_s :db %>
-
-
+two:
+  login: MyString
+  crypted_password: MyString
+  salt: MyString

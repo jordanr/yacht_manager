@@ -1,4 +1,4 @@
-class FieldsController < ApplicationController
+class FieldsController < YachtManagerController
   # GET /fields
   # GET /fields.xml
   def index

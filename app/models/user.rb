@@ -1,6 +1,5 @@
-require 'crypto'
 require 'digest/sha1'
-class Account < ActiveRecord::Base
+class User < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -25,22 +24,12 @@ class Account < ActiveRecord::Base
 
   # Encrypts some data with the salt.
   def self.encrypt(password, salt)
-    Crypto.encrypt(password, salt)
+    Digest::SHA1.hexdigest("--#{salt}--#{password}--")
   end
 
   # Encrypts the password with the user salt
   def encrypt(password)
     self.class.encrypt(password, salt)
-  end
-
-  # Decrypts some data with the salt.
-  def self.decrypt(password, salt)
-    Crypto.decrypt(password, salt)
-  end
-
-  # Decrypts the password with the user salt
-  def decrypt(password)
-    self.class.decrypt(password, salt)
   end
 
   def authenticated?(password)
@@ -77,12 +66,6 @@ class Account < ActiveRecord::Base
     @activated
   end
 
-    def decrypt_password
-      return if crypted_password.blank?
-      decrypt(crypted_password)
-    end
-      
-
   protected
     # before filter 
     def encrypt_password
@@ -90,8 +73,10 @@ class Account < ActiveRecord::Base
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
       self.crypted_password = encrypt(password)
     end
-
+      
     def password_required?
       crypted_password.blank? || !password.blank?
     end
+    
+    
 end

@@ -1,4 +1,4 @@
-class AccommodationsController < ApplicationController
+class AccommodationsController < YachtManagerController
   # GET /accommodations
   # GET /accommodations.xml
   def index

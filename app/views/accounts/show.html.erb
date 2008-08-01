@@ -1,0 +1,12 @@
+<p>
+  <b>Login:</b>
+  <%=h @account.login %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @account.decrypt_password %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

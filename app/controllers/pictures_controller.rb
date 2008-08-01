@@ -1,4 +1,4 @@
-class PicturesController < ApplicationController
+class PicturesController < YachtManagerController
   # GET /pictures
   # GET /pictures.xml
   def index

@@ -1,4 +1,5 @@
-<h1>New account</h1>
+<h1>Editing account</h1>
+
 <% form_for(@account) do |f| %>
   <%= f.error_messages %>
 
@@ -15,8 +16,9 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Update" %>
   </p>
 <% end %>
 
+<%= link_to 'Show', @account %> |
 <%= link_to 'Back', accounts_path %>

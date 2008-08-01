@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080731192342) do
+ActiveRecord::Schema.define(:version => 20080731205920) do
 
   create_table "accommodations", :force => true do |t|
     t.string   "title"
@@ -20,13 +20,10 @@ ActiveRecord::Schema.define(:version => 20080731192342) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login"
-    t.string   "email"
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
+    t.string   "crypted_password"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
   end
 
   create_table "fields", :force => true do |t|
@@ -53,6 +50,17 @@ ActiveRecord::Schema.define(:version => 20080731192342) do
     t.binary   "binary_data"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "login"
+    t.string   "email"
+    t.string   "crypted_password",          :limit => 40
+    t.string   "salt",                      :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
   end
 
 end

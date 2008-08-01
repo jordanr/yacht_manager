@@ -1,4 +1,4 @@
 # requires login
-class YachtManager < ApplicationController
+class YachtManagerController < ApplicationController
   before_filter :login_required
 end
