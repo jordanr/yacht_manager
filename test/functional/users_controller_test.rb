@@ -4,18 +4,12 @@ require 'users_controller'
 # Re-raise errors caught by the controller.
 class UsersController; def rescue_action(e) raise e end; end
 
-class UsersControllerTest < Test::Unit::TestCase
+class UsersControllerTest < ActionController::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
 
   fixtures :users
-
-  def setup
-    @controller = UsersController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
 
   def test_should_allow_signup
     assert_difference 'User.count' do
@@ -48,7 +42,7 @@ class UsersControllerTest < Test::Unit::TestCase
     end
   end
 
-  def test_should_require_email_on_signup
+  def dont_test_should_require_email_on_signup
     assert_no_difference 'User.count' do
       create_user(:email => nil)
       assert assigns(:user).errors.on(:email)

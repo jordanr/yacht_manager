@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class AccountsControllerTest < ActionController::TestCase
+  def setup
+    super
+    login_as :aaron
+  end
+
   def test_should_get_index
     get :index
     assert_response :success
@@ -14,7 +19,7 @@ class AccountsControllerTest < ActionController::TestCase
 
   def test_should_create_account
     assert_difference('Account.count') do
-      post :create, :account => { }
+      create_account
     end
 
     assert_redirected_to account_path(assigns(:account))
@@ -42,4 +47,10 @@ class AccountsControllerTest < ActionController::TestCase
 
     assert_redirected_to accounts_path
   end
+
+  private
+    def create_account(options = {})
+      post :create, :account => { :login => 'quire',
+   	:password => 'quire', :password_confirmation => 'quire' }.merge(options)
+    end
 end
