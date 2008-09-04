@@ -9,13 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080731205920) do
+ActiveRecord::Schema.define(:version => 20080904015144) do
 
   create_table "accommodations", :force => true do |t|
     t.string   "title"
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "left"
+    t.string   "right"
   end
 
   create_table "accounts", :force => true do |t|
@@ -36,11 +38,53 @@ ActiveRecord::Schema.define(:version => 20080731205920) do
   create_table "listings", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_central"
+    t.integer  "status"
+    t.string   "yacht_name"
+    t.string   "yacht_manufacturer"
+    t.string   "yacht_model"
+    t.boolean  "is_new"
+    t.string   "yacht_description"
+    t.integer  "yacht_year"
+    t.integer  "yacht_type"
+    t.integer  "length"
+    t.integer  "lwl"
+    t.integer  "loa"
+    t.integer  "beam"
+    t.integer  "min_draft"
+    t.integer  "max_draft"
+    t.integer  "bridge_clearance"
+    t.integer  "displacement"
+    t.integer  "ballast"
+    t.integer  "cruise_speed"
+    t.integer  "max_speed"
+    t.integer  "length_units"
+    t.integer  "weight_units"
+    t.integer  "speed_units"
+    t.integer  "price"
+    t.integer  "currency"
+    t.string   "city"
+    t.integer  "state"
+    t.integer  "country"
+    t.integer  "hull_material"
+    t.string   "designer"
+    t.integer  "fuel_tank_capacity"
+    t.integer  "water_tank_capacity"
+    t.integer  "holding_tank_capacity"
+    t.integer  "volume_units"
+    t.string   "engine_manufacturer"
+    t.string   "engine_model"
+    t.integer  "engine_fuel"
+    t.integer  "engine_horsepower"
+    t.integer  "engine_year"
+    t.integer  "engine_hours"
+    t.integer  "number_of_engines"
   end
 
   create_table "multiple_listing_systems", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "pictures", :force => true do |t|
