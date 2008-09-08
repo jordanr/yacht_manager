@@ -1,7 +1,7 @@
 class AddLeftRightToAccommodation < ActiveRecord::Migration
   def self.up
-    add_column :accommodations, :left, :string
-    add_column :accommodations, :right, :string
+    add_column :accommodations, :left, :text
+    add_column :accommodations, :right, :text
   end
 
   def self.down

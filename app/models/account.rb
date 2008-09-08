@@ -1,6 +1,8 @@
 require 'crypto'
 require 'digest/sha1'
 class Account < ActiveRecord::Base
+  belongs_to :multiple_listing_system
+  has_many :uploads
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 

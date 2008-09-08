@@ -1,7 +1,7 @@
 class CreatePictures < ActiveRecord::Migration
   def self.up
     create_table :pictures do |t|
-      t.string :description
+      t.text :description
       t.string :content_type
       t.string :filename
       t.binary :binary_data

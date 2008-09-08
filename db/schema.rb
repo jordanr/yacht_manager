@@ -9,15 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080904015144) do
+ActiveRecord::Schema.define(:version => 20080908181608) do
 
   create_table "accommodations", :force => true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "left"
-    t.string   "right"
+    t.text     "left"
+    t.text     "right"
   end
 
   create_table "accounts", :force => true do |t|
@@ -26,59 +26,26 @@ ActiveRecord::Schema.define(:version => 20080904015144) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "fields", :force => true do |t|
-    t.string   "name"
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "multiple_listing_system_id"
+    t.integer  "user_id"
   end
 
   create_table "listings", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_central"
-    t.integer  "status"
-    t.string   "yacht_name"
-    t.string   "yacht_manufacturer"
-    t.string   "yacht_model"
-    t.boolean  "is_new"
-    t.string   "yacht_description"
-    t.integer  "yacht_year"
-    t.integer  "yacht_type"
-    t.integer  "length"
-    t.integer  "lwl"
-    t.integer  "loa"
-    t.integer  "beam"
-    t.integer  "min_draft"
-    t.integer  "max_draft"
-    t.integer  "bridge_clearance"
-    t.integer  "displacement"
-    t.integer  "ballast"
-    t.integer  "cruise_speed"
-    t.integer  "max_speed"
-    t.integer  "length_units"
-    t.integer  "weight_units"
-    t.integer  "speed_units"
-    t.integer  "price"
-    t.integer  "currency"
+    t.boolean  "central"
+    t.integer  "status_id"
+    t.integer  "price_id"
+    t.integer  "yacht_id"
+    t.integer  "user_id"
+  end
+
+  create_table "locations", :force => true do |t|
     t.string   "city"
-    t.integer  "state"
-    t.integer  "country"
-    t.integer  "hull_material"
-    t.string   "designer"
-    t.integer  "fuel_tank_capacity"
-    t.integer  "water_tank_capacity"
-    t.integer  "holding_tank_capacity"
-    t.integer  "volume_units"
-    t.string   "engine_manufacturer"
-    t.string   "engine_model"
-    t.integer  "engine_fuel"
-    t.integer  "engine_horsepower"
-    t.integer  "engine_year"
-    t.integer  "engine_hours"
-    t.integer  "number_of_engines"
+    t.integer  "state_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "multiple_listing_systems", :force => true do |t|
@@ -88,10 +55,72 @@ ActiveRecord::Schema.define(:version => 20080904015144) do
   end
 
   create_table "pictures", :force => true do |t|
-    t.string   "description"
+    t.text     "description"
     t.string   "content_type"
     t.string   "filename"
     t.binary   "binary_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prices", :force => true do |t|
+    t.integer  "currency_id"
+    t.decimal  "value"
+    t.integer  "listing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "specification_classes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "specifications", :force => true do |t|
+    t.integer  "picture_id"
+    t.integer  "specification_class_id"
+    t.string   "description"
+    t.string   "manufacturer"
+    t.string   "model"
+    t.integer  "year"
+    t.integer  "type_id"
+    t.decimal  "length"
+    t.decimal  "lwl"
+    t.decimal  "loa"
+    t.decimal  "beam"
+    t.decimal  "min_draft"
+    t.decimal  "max_draft"
+    t.decimal  "bridge_clearance"
+    t.decimal  "displacement"
+    t.decimal  "ballast"
+    t.decimal  "cruise_speed"
+    t.decimal  "max_speed"
+    t.integer  "length_units_id"
+    t.integer  "weight_units_id"
+    t.integer  "speed_units_id"
+    t.integer  "volume_units_id"
+    t.integer  "hull_material_id"
+    t.string   "designer"
+    t.decimal  "fuel_tank_capacity"
+    t.decimal  "water_tank_capacity"
+    t.decimal  "holding_tank_capacity"
+    t.string   "engine_manufacturer"
+    t.string   "engine_model"
+    t.integer  "engine_fuel_id"
+    t.decimal  "engine_horsepower"
+    t.integer  "engine_year"
+    t.integer  "engine_hours"
+    t.integer  "number_of_engines"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.string   "description"
+    t.integer  "listing_id"
+    t.integer  "account_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -105,6 +134,15 @@ ActiveRecord::Schema.define(:version => 20080904015144) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+  end
+
+  create_table "yachts", :force => true do |t|
+    t.integer  "specification_id"
+    t.string   "name"
+    t.boolean  "new"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

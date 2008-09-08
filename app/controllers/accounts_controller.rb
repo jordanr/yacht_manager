@@ -2,7 +2,7 @@ class AccountsController < YachtManagerController
   # GET /accounts
   # GET /accounts.xml
   def index
-    @accounts = Account.find(:all)
+    @accounts = current_user.accounts
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,0 +1,23 @@
+<p>
+  <b>Specification:</b>
+  <%=h @yacht.specification_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @yacht.name %>
+</p>
+
+<p>
+  <b>New:</b>
+  <%=h @yacht.new %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @yacht.location_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_yacht_path(@yacht) %> |
+<%= link_to 'Back', yachts_path %>

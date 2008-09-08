@@ -2,7 +2,40 @@
 
 <% form_for(@listing) do |f| %>
   <%= f.error_messages %>
-
+  <table>
+  <% check_boxes.sort.each_slice(8) do |columns| %>
+    <tr>
+    <% columns.each do |column| %>
+      <td>
+      <%= f.label column.to_sym %><br />
+      <%= f.check_box column.to_sym %><br />
+      </td>
+    <%end%>
+    </tr>
+  <% end %>
+  </table>
+  <table>
+  <% text_fields.sort.each_slice(4) do |columns| %>
+    <tr>
+    <% columns.each do |column| %>
+      <td>
+      <%= f.label column.to_sym %><br />
+      <%= f.text_field column.to_sym %><br />
+      </td>
+    <%end%>
+    </tr>
+  <% end %>
+  </table>
+  <table>
+  <% text_areas.sort.each do |column| %>
+    <tr>
+      <td>
+      <%= f.label column.to_sym %><br />
+      <%= f.text_area column.to_sym, :size=>"100x5" %><br />
+      </td>
+    </tr>
+  <% end %>
+  </table>
   <p>
     <%= f.submit "Create" %>
   </p>

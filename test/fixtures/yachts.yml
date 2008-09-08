@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  specification_id: 1
+  name: MyString
+  new: false
+  location_id: 1
+
+two:
+  specification_id: 1
+  name: MyString
+  new: false
+  location_id: 1

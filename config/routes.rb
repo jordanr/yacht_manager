@@ -1,19 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :listings, :has_many=>[:accommodations, :pictures]
+
+  map.resources :uploads
+
   map.resources :accounts
 
   map.resources :users
 
   map.resource :session
 
-  map.resources :multiple_listing_systems
-
-  map.resources :pictures
-
-  map.resources :fields
-
-  map.resources :accommodations
-
-  map.resources :listings
+#  map.resources :prices
+#  map.resources :specifications
+#  map.resources :locations
+#  map.resources :yachts
+#  map.resources :multiple_listing_systems
 
   # The priority is based upon order of creation: first created -> highest priority.
 

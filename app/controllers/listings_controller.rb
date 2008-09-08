@@ -1,4 +1,5 @@
 class ListingsController < YachtManagerController
+  include ListingsHelper
   # GET /listings
   # GET /listings.xml
   def index
