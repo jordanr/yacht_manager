@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(:version => 20080908181608) do
     t.datetime "updated_at"
     t.boolean  "central"
     t.integer  "status_id"
-    t.integer  "price_id"
     t.integer  "yacht_id"
     t.integer  "user_id"
   end
@@ -49,9 +48,9 @@ ActiveRecord::Schema.define(:version => 20080908181608) do
   end
 
   create_table "multiple_listing_systems", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
   end
 
   create_table "pictures", :force => true do |t|

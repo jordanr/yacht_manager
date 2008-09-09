@@ -1,9 +1,8 @@
 class ListingsController < YachtManagerController
-  include ListingsHelper
   # GET /listings
   # GET /listings.xml
   def index
-    @listings = Listing.find(:all)
+    @listings = current_user.listings.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +13,7 @@ class ListingsController < YachtManagerController
   # GET /listings/1
   # GET /listings/1.xml
   def show
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +24,7 @@ class ListingsController < YachtManagerController
   # GET /listings/new
   # GET /listings/new.xml
   def new
-    @listing = Listing.new
+    @listing = current_user.listings.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +34,13 @@ class ListingsController < YachtManagerController
 
   # GET /listings/1/edit
   def edit
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
   end
 
   # POST /listings
   # POST /listings.xml
   def create
-    @listing = Listing.new(params[:listing])
+    @listing = current_user.listings.new(params[:listing])
 
     respond_to do |format|
       if @listing.save
@@ -58,7 +57,7 @@ class ListingsController < YachtManagerController
   # PUT /listings/1
   # PUT /listings/1.xml
   def update
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
 
     respond_to do |format|
       if @listing.update_attributes(params[:listing])
@@ -75,7 +74,7 @@ class ListingsController < YachtManagerController
   # DELETE /listings/1
   # DELETE /listings/1.xml
   def destroy
-    @listing = Listing.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     @listing.destroy
 
     respond_to do |format|

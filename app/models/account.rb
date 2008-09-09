@@ -2,6 +2,7 @@ require 'crypto'
 require 'digest/sha1'
 class Account < ActiveRecord::Base
   belongs_to :multiple_listing_system
+  belongs_to :user
   has_many :uploads
   # Virtual attribute for the unencrypted password
   attr_accessor :password
@@ -18,6 +19,10 @@ class Account < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :password, :password_confirmation
+
+  def to_s
+    login+"@"+multiple_listing_system.name
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)

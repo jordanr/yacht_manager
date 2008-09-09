@@ -1,8 +1,8 @@
-class UploadsController < ApplicationController
+class UploadsController < YachtManagerController
   # GET /uploads
   # GET /uploads.xml
   def index
-    @uploads = Upload.find(:all)
+    @uploads = current_user.uploads.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class UploadsController < ApplicationController
   # GET /uploads/1
   # GET /uploads/1.xml
   def show
-    @upload = Upload.find(params[:id])
+    @upload = current_user.uploads.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class UploadsController < ApplicationController
   # GET /uploads/new
   # GET /uploads/new.xml
   def new
-    @upload = Upload.new
+    @upload = current_user.uploads.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +34,13 @@ class UploadsController < ApplicationController
 
   # GET /uploads/1/edit
   def edit
-    @upload = Upload.find(params[:id])
+    @upload = current_user.uploads.find(params[:id])
   end
 
   # POST /uploads
   # POST /uploads.xml
   def create
-    @upload = Upload.new(params[:upload])
+    @upload = current_user.uploads.new(params[:upload])
 
     respond_to do |format|
       if @upload.save
@@ -57,7 +57,7 @@ class UploadsController < ApplicationController
   # PUT /uploads/1
   # PUT /uploads/1.xml
   def update
-    @upload = Upload.find(params[:id])
+    @upload = current_user.uploads.find(params[:id])
 
     respond_to do |format|
       if @upload.update_attributes(params[:upload])
@@ -74,7 +74,7 @@ class UploadsController < ApplicationController
   # DELETE /uploads/1
   # DELETE /uploads/1.xml
   def destroy
-    @upload = Upload.find(params[:id])
+    @upload = current_user.uploads.find(params[:id])
     @upload.destroy
 
     respond_to do |format|

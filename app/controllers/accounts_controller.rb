@@ -13,7 +13,7 @@ class AccountsController < YachtManagerController
   # GET /accounts/1
   # GET /accounts/1.xml
   def show
-    @account = Account.find(params[:id])
+    @account = current_user.accounts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class AccountsController < YachtManagerController
   # GET /accounts/new
   # GET /accounts/new.xml
   def new
-    @account = Account.new
+    @account = current_user.accounts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +34,15 @@ class AccountsController < YachtManagerController
 
   # GET /accounts/1/edit
   def edit
-    @account = Account.find(params[:id])
+    @account = current_user.accounts.find(params[:id])
   end
 
   # POST /accounts
   # POST /accounts.xml
   def create
-    @account = Account.new(params[:account])
+    @mls = MultipleListingSystem.find(params[:account].delete(:multiple_listing_system_id))
+    @account = current_user.accounts.new(params[:account])
+    @mls.accounts << @account
 
     respond_to do |format|
       if @account.save
@@ -57,7 +59,7 @@ class AccountsController < YachtManagerController
   # PUT /accounts/1
   # PUT /accounts/1.xml
   def update
-    @account = Account.find(params[:id])
+    @account = current_user.accounts.find(params[:id])
 
     respond_to do |format|
       if @account.update_attributes(params[:account])
@@ -74,7 +76,7 @@ class AccountsController < YachtManagerController
   # DELETE /accounts/1
   # DELETE /accounts/1.xml
   def destroy
-    @account = Account.find(params[:id])
+    @account = current_user.accounts.find(params[:id])
     @account.destroy
 
     respond_to do |format|

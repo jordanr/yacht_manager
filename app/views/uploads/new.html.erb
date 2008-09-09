@@ -7,14 +7,17 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </p>
+
   <p>
-    <%= f.label :listing_id %><br />
-    <%= f.text_field :listing_id %>
+    <%= f.label :listing %><br />
+    <%= collection_select(:upload, :listing_id, current_user.listings.find(:all), :id, :id) %>
   </p>
+
   <p>
-    <%= f.label :account_id %><br />
-    <%= f.text_field :account_id %>
+    <%= f.label :account %><br />
+    <%= collection_select(:upload, :account_id, current_user.accounts.find(:all), :id, :to_s) %>
   </p>
+
   <p>
     <%= f.submit "Create" %>
   </p>

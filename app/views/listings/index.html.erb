@@ -9,18 +9,12 @@
 
 <% for listing in @listings %>
   <tr>
-    <td><%=h listing.length %></td>
-    <td><%=h listing.yacht_manufacturer %></td>
-    <td><%=h listing.yacht_name %></td>
+    <td><%=h listing.yacht.specification.length %></td>
+    <td><%=h listing.yacht.specification.manufacturer %></td>
+    <td><%=h listing.yacht.name %></td>
     <td><%= link_to 'Show', listing %></td>
-    <td><b> Edit: </b></td>
-    <td><%= link_to 'Information', edit_listing_path(listing) %></td>
-    <td><%= link_to 'Accommodations', edit_listing_path(listing) %></td>
-    <td><%= link_to 'Pictures', edit_listing_path(listing) %></td>
+    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
     <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><b> Upload: </b></td>
-    <td><%= link_to 'to YW', listing, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'to YC', listing, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
