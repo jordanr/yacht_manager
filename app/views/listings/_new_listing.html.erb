@@ -1,0 +1,13 @@
+<h1>New listing</h1>
+
+<% fields_for(@listing) do |f| %> 
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :central %><br />
+    <%= f.check_box :central %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= status_select %>
+  </p>
+<% end %>

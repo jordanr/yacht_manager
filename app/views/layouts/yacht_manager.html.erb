@@ -10,14 +10,18 @@
 <body>
 
 <p align="right">
-<%= link_to_if logged_in?, 'Home', root_path %>
+<%= link_to_if logged_in?, 'Home', root_path do
+    end %>
 <%= link_to_if logged_in?, 'Logout >>', logout_path, :method => :delete do
     end %>
 </p>
 <span style="background-color: pink">
-<%= link_to_if logged_in?, 'Accounts', accounts_path %>
-<%= link_to_if logged_in?, 'Listings', listings_path %>
-<%= link_to_if logged_in?, 'Uploads', uploads_path %>
+<%= link_to_if logged_in?, 'Accounts', accounts_path do 
+    end %>
+<%= link_to_if logged_in?, 'Listings', listings_path do 
+    end %>
+<%= link_to_if logged_in?, 'Uploads', uploads_path do
+    end %>
 </span>
 
 <p style="color: green"><%= flash[:notice] %></p>

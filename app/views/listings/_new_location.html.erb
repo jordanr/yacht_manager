@@ -1,0 +1,18 @@
+<h1>New location</h1>
+
+<% fields_for(@location) do |f| %>
+  <%= f.error_messages %> 
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= state_select %>
+  </p>
+  <p>
+    <%= f.label :country %><br />
+    <%= country_select %>
+  </p>
+<% end %>
+

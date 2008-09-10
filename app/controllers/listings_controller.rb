@@ -25,6 +25,10 @@ class ListingsController < YachtManagerController
   # GET /listings/new.xml
   def new
     @listing = current_user.listings.new
+    @price = @listing.prices.new
+    @yacht = Yacht.new
+    @location = Location.new
+    @specification = Specification.new
 
     respond_to do |format|
       format.html # new.html.erb

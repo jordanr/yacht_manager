@@ -1,40 +1,17 @@
-<h1>New listing</h1>
-
-<% form_for(@listing) do |lf| %>
-  <%= lf.error_messages %>
-  
-  <p>
-    <%= lf.label :central %><br />
-    <%= lf.check_box :central %>
-  </p>
-
-  <h1>New yacht</h1>
-
-  <% fields_for(@yacht) do |yf| %>
-    <%= yf.error_messages %>
-
+<% form_tag(listings_path, {:method=>:post, :multipart=>true, :class => "new_post", :id => "new_post"}) do %>
+    <span style="float: right">
+      <p>
+        <%= label :yacht, :specification %><br />
+        <%= collection_select(:yacht, :specification_id, Specification.find(:all), :id, :id) %>
+      </p>
+      <span id="specification"><%= render_partial 'new_specification' %></span>
+    </span>
+    <span id="listing"><%= render_partial 'new_listing' %></span>
+    <span id="price"><%= render_partial 'new_price' %></span>
+    <span id="yacht"><%= render_partial 'new_yacht' %></span>
+    <span id="location"><%= render_partial 'new_location' %></span>
     <p>
-      <%= yf.label :name %><br />
-      <%= yf.text_field :name %>
+      <%= submit_tag "Create" %>
     </p>
-    <p>
-      <%= yf.label :new %><br />
-      <%= yf.check_box :new %>
-    </p>
-    <p>
-      <%= yf.label :location_id %><br />
-      <%= yf.text_field :location_id %>
-    </p>
-
-    <p>
-      <%= yf.label :specification %><br />
-      <%= collection_select(:yacht, :specification_id, Specification.find(:all), :id, :id) %>
-    </p>
-  <% end %>
-
-  <p>
-    <%= lf.submit "Create" %>
-  </p>
 <% end %>
-
 <%= link_to 'Back', listings_path %>
