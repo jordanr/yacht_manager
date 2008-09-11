@@ -1,5 +1,6 @@
 require 'crypto'
 require 'digest/sha1'
+require 'base'
 class Account < ActiveRecord::Base
   belongs_to :multiple_listing_system
   belongs_to :user

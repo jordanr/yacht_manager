@@ -2,10 +2,10 @@
 
 one:
   city: MyString
-  state: 1
-  country: 1
+  state_id: 1
+  country_id: 1
 
 two:
   city: MyString
-  state: 1
-  country: 1
+  state_id: 1
+  country_id: 1

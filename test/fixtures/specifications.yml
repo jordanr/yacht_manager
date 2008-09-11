@@ -6,7 +6,7 @@ one:
   specification_class_id: 1
   description: MyString
   year: 1
-  type: 1
+  type_id: 1
   length: 9.99
   lwl: 9.99
   loa: 9.99
@@ -41,7 +41,7 @@ two:
   specification_class_id: 1
   description: MyString
   year: 1
-  type: 1
+  type_id: 1
   length: 9.99
   lwl: 9.99
   loa: 9.99

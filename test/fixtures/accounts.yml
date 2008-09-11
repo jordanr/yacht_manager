@@ -2,10 +2,15 @@
 
 one:
   login: yw_user
-  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 1ead847d1da1e0b66180ccd9ccb82027
+  salt: 78987200943745069819b3d564e4c0f7f674c3bd
+  user_id: 2
+  multiple_listing_system_id: 1
 
 two:
   login: yc_user
-  crypted_password: 00742970dc9e6319f8019fd54864d3ea740f04b1 # test
-  salt: 7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password: 1ead847d1da1e0b66180ccd9ccb82027
+  salt: 78987200943745069819b3d564e4c0f7f674c3bd
+  user_id: 2
+  multiple_listing_system_id: 1
+

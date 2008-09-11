@@ -40,12 +40,10 @@ class AccountsController < YachtManagerController
   # POST /accounts
   # POST /accounts.xml
   def create
-    @mls = MultipleListingSystem.find(params[:account].delete(:multiple_listing_system_id))
+#    associated_attributes = Account.extract_associated_attributes!(params[:account])
     @account = current_user.accounts.new(params[:account])
-    @mls.accounts << @account
-
     respond_to do |format|
-      if @account.save
+      if @account.save #and @account.associate(associated_attributes)
         flash[:notice] = 'Account was successfully created.'
         format.html { redirect_to(@account) }
         format.xml  { render :xml => @account, :status => :created, :location => @account }
@@ -60,7 +58,7 @@ class AccountsController < YachtManagerController
   # PUT /accounts/1.xml
   def update
     @account = current_user.accounts.find(params[:id])
-
+    
     respond_to do |format|
       if @account.update_attributes(params[:account])
         flash[:notice] = 'Account was successfully updated.'

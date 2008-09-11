@@ -1,7 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
  one:
-   yacht_name: wepenny
-
+   central: true
+   user_id: 2
  two:
-   yacht_name: bobato
+   central: false
+   user_id: 2
