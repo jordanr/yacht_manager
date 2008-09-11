@@ -1,8 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
  one:
+   id: 1
    central: true
    user_id: 2
+   yacht_id: 1
+
  two:
+   id: 2
    central: false
    user_id: 2
+   yacht_id: 1

@@ -40,10 +40,9 @@ class AccountsController < YachtManagerController
   # POST /accounts
   # POST /accounts.xml
   def create
-#    associated_attributes = Account.extract_associated_attributes!(params[:account])
     @account = current_user.accounts.new(params[:account])
     respond_to do |format|
-      if @account.save #and @account.associate(associated_attributes)
+      if @account.save 
         flash[:notice] = 'Account was successfully created.'
         format.html { redirect_to(@account) }
         format.xml  { render :xml => @account, :status => :created, :location => @account }

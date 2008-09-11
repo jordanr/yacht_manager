@@ -10,38 +10,29 @@ require 'user'
 require 'yacht'
 class ActiveRecord::Base
 
-
-  def self.create_with_yacht_manager(attributes)
-    associated_attributes = extract_associated_attributes!(attributes)
-    new_model = create_without_yacht_manager(attributes)
-    new_model.associate(associated_attributes)
-    new_model
-  end    
-
-  class << self  
-    alias_method_chain :create, :yacht_manager
-  end
-
-  def update_attributes_with_yacht_manager(attributes)
-    associated_attributes = self.class.extract_associated_attributes!(attributes)
-    update_attributes_without_yacht_manager(attributes)
-    associate(associated_attributes)
+  def update_attributes_with_yacht_manager(*args)
+    @associated_attributes = self.class.extract_associated_attributes!(*args) unless args.nil? || args.empty?
+    update_attributes_without_yacht_manager(*args)
   end    
   alias_method_chain :update_attributes, :yacht_manager
 
   def initialize_with_yacht_manager(*args)
-    @associated_attributes = self.class.extract_associated_attributes!(args) if args
+    @associated_attributes = self.class.extract_associated_attributes!(*args) unless args.nil? || args.empty?
     initialize_without_yacht_manager(*args)
   end    
   alias_method_chain :initialize, :yacht_manager
 
   def save_with_yacht_manager(*args)
     save_without_yacht_manager(*args)
-    associate(@associated_attributes) if @associated_attributes
+    if @associated_attributes
+      temp = @associated_attributes
+      @associated_attributes = nil # stop infinite loop
+      associate(temp) 
+    end
   end    
   alias_method_chain :save, :yacht_manager
 
-#  private
+  private
     def associate(attributes)
       attributes.each_pair do |k, v|
         old_v = self.send(k)

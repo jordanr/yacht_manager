@@ -19,7 +19,7 @@ class ListingsControllerTest < ActionController::TestCase
 
   def test_should_create_listing
     assert_difference('Listing.count') do
-      post :create, :listing => { }
+      create_listing
     end
 
     assert_redirected_to listing_path(assigns(:listing))
@@ -47,4 +47,10 @@ class ListingsControllerTest < ActionController::TestCase
 
     assert_redirected_to listings_path
   end
+
+  private
+    def create_listing
+      post :create, {:listing => {:central=>true }, :yacht=>{:name=>"test"}, :price=>{:currency_id=>1, :value=>123},
+			:location=>{:city=>"Miami"}, :specification=>{:length=>33.2, :manufacturer=>"tester"}}
+    end
 end

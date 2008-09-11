@@ -1,6 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   manufacturer: MyString
   model: MyString
   specification_class_id: 1
@@ -36,6 +37,7 @@ one:
   number_of_engines: 1
 
 two:
+  id: 2
   manufacturer: MyString
   model: MyString
   specification_class_id: 1

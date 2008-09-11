@@ -44,10 +44,16 @@ class ListingsController < YachtManagerController
   # POST /listings
   # POST /listings.xml
   def create
+    @specification = Specification.new(params[:specification])
+    @location = Location.new(params[:location])
+    @yacht = Yacht.new(params[:yacht])
     @listing = current_user.listings.new(params[:listing])
+    @price = @listing.prices.new(params[:price])
 
     respond_to do |format|
-      if @listing.save
+      if @listing.save and @location.save and @yacht.save and @specification.save and @price.save
+	@yacht.update_attributes({:location_id=>@location.id, :specification_id=>@specification.id})
+	@listing.update_attributes({:yacht_id=>@yacht.id})
         flash[:notice] = 'Listing was successfully created.'
         format.html { redirect_to(@listing) }
         format.xml  { render :xml => @listing, :status => :created, :location => @listing }

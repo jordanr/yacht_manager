@@ -35,7 +35,7 @@ class BaseTest < ActiveSupport::TestCase
 
   private
     def create_account(mls_id)     
-      Account.create({ :login => 'quire', :multiple_listing_system_id => mls_id,
+      users(:aaron).accounts.create({ :login => 'quire', :multiple_listing_system_id => mls_id,
         :password => 'quire', :password_confirmation => 'quire' })
     end
     def update_account(a, mls_id)     
