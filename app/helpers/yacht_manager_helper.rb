@@ -1,5 +1,10 @@
 require 'yacht_transfer'
 module YachtManagerHelper
+  def self.included(model)
+    model.extend(ClassMethods)
+  end
+
+
   # Specification field groupings
   def MAIN()
     [:manufacturer, :model, :designer, :hull_material, :type, :year, :description]
@@ -17,9 +22,6 @@ module YachtManagerHelper
 
   STATES = YachtTransfer::Models::State.names
   COUNTRIES = YachtTransfer::Models::Country.names
-  def state_select; select(:location, :state_id, options_with_ids(STATES), {:include_blank => true }); end
-  def country_select; select(:location, :country_id, options_with_ids(COUNTRIES), {:include_blank => true }); end
-
   STATUSES = YachtTransfer::Standards::STATUS_TRANSFORM.keys
   CURRENCIES = YachtTransfer::Standards::PRICE_UNITS_TRANSFORM.keys
   YACHT_TYPES = YachtTransfer::Standards::YACHT_TYPE_TRANSFORM.keys
@@ -30,6 +32,9 @@ module YachtManagerHelper
   SPEED_UNITS = [:mph, :knots] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys
   FUELS = YachtTransfer::Standards::FUEL_TRANSFORM.keys
 
+#view helpers
+  def state_select; select(:location, :state_id, options_with_ids(STATES), {:include_blank => true }); end
+  def country_select; select(:location, :country_id, options_with_ids(COUNTRIES), {:include_blank => true }); end
   def status_select; select(:listing, :status_id, options_with_ids(STATUSES), {:include_blank => true }); end
   def currency_select; select(:price, :currency_id, options_with_ids(CURRENCIES), {:include_blank => true }); end
   def yacht_type_select; select(:specification, :type_id, options_with_ids(YACHT_TYPES), {:include_blank=>true}); end
@@ -40,11 +45,21 @@ module YachtManagerHelper
   def speed_units_select;  select(:specification, :speed_units_id, options_with_ids(SPEED_UNITS), {:include_blank=>true}); end
   def fuel_select;  select(:specification, :engine_fuel_id, options_with_ids(FUELS), {:include_blank=>true}); end
 
+## model helpers
+
+  def status; STATUSES[status_id-1]; end
+  def state; STATES[state_id-1]; end
+  def country; COUNTRIES[country_id-1]; end
+  module ClassMethods
+    def validates_state; validates_inclusion_of :state_id, :in => 1..STATES.length; end
+    def validates_status; validates_inclusion_of :status_id, :in => 1..STATUSES.length; end
+    def validates_country; validates_inclusion_of :country_id, :in => 1..COUNTRIES.length; end
+  end
+
   private
     def options_with_ids(array)
       options = {}
       array.sort { |a, b| a.to_s <=> b.to_s }.each_with_index { |name,n|  options.merge!(name=>n+1) }
       options
     end
-
 end

@@ -1,0 +1,15 @@
+<h1>Edit yacht</h1>
+<% fields_for(@yacht) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :new %><br />
+    <%= f.check_box :new %>
+  </p>
+<% end %>
+

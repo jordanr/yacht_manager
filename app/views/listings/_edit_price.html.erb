@@ -1,0 +1,14 @@
+<h1>Edit price</h1>
+
+<% fields_for(@price) do |f| %>
+  <%= f.error_messages %> 
+  <p>
+    <%= f.label :currency %><br />
+    <%= currency_select %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+<% end %>
+
