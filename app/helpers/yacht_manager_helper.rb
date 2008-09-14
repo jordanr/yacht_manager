@@ -4,7 +4,6 @@ module YachtManagerHelper
     model.extend(ClassMethods)
   end
 
-
   # Specification field groupings
   def MAIN()
     [:manufacturer, :model, :designer, :hull_material, :type, :year, :description]
@@ -12,9 +11,17 @@ module YachtManagerHelper
   def UNITS()
     [:length_units_id, :weight_units_id, :volume_units_id, :speed_units_id]
   end
-  def MEASUREMENTS()
-    [:length, :lwl, :loa, :beam, :min_draft, :max_draft, :bridge_clearance, :displacement, :ballast, :cruise_speed, :max_speed] +
+  def LENGTH_MEASUREMENTS()
+    [:length, :lwl, :loa, :beam, :min_draft, :max_draft, :bridge_clearance]
+  end
+  def WEIGHT_MEASUREMENTS()
+    [:displacement, :ballast]
+  end
+  def VOLUME_MEASUREMENTS()
     [:fuel_tank_capacity, :water_tank_capacity, :holding_tank_capacity]
+  end
+  def SPEED_MEASUREMENTS()
+    [:cruise_speed, :max_speed]
   end
   def ENGINES()
     [:engine_manufacturer, :engine_model, :engine_fuel, :engine_horsepower, :engine_year, :engine_hours, :number_of_engines]
@@ -47,13 +54,30 @@ module YachtManagerHelper
 
 ## model helpers
 
-  def status; STATUSES[status_id-1]; end
   def state; STATES[state_id-1]; end
   def country; COUNTRIES[country_id-1]; end
+  def status; STATUSES[status_id-1]; end
+  def currency; CURRENCIES[currency_id-1]; end
+  def type; YACHT_TYPES[type_id-1]; end
+  def hull_material; HULL_MATERIALS[hull_material_id-1]; end
+  def length_units; LENGTH_UNITS[length_units_id-1]; end
+  def weight_units; WEIGHT_UNITS[weight_units_id-1]; end
+  def volume_units; VOLUME_UNITS[volume_units_id-1]; end
+  def speed_units; SPEED_UNITS[speed_units_id-1]; end
+  def fuel; FUELS[engine_fuel_id-1]; end
+
   module ClassMethods
     def validates_state; validates_inclusion_of :state_id, :in => 1..STATES.length; end
-    def validates_status; validates_inclusion_of :status_id, :in => 1..STATUSES.length; end
     def validates_country; validates_inclusion_of :country_id, :in => 1..COUNTRIES.length; end
+    def validates_status; validates_inclusion_of :status_id, :in => 1..STATUSES.length; end
+    def validates_currency; validates_inclusion_of :currency_id, :in => 1..CURRENCIES.length; end
+    def validates_yacht_type; validates_inclusion_of :type_id, :in => 1..YACHT_TYPES.length; end
+    def validates_hull_material; validates_inclusion_of :hull_material_id, :in => 1..HULL_MATERIALS.length; end
+    def validates_length_units; validates_inclusion_of :length_units_id, :in => 1..LENGTH_UNITS.length; end
+    def validates_weight_units; validates_inclusion_of :weight_units_id, :in => 1..WEIGHT_UNITS.length; end
+    def validates_volume_units; validates_inclusion_of :volume_units_id, :in => 1..VOLUME_UNITS.length; end
+    def validates_speed_units; validates_inclusion_of :speed_units_id, :in => 1..SPEED_UNITS.length; end
+    def validates_fuel; validates_inclusion_of :engine_fuel_id, :in => 1..FUELS.length; end
   end
 
   private

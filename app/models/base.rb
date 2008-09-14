@@ -9,7 +9,6 @@ require 'upload'
 require 'user'
 require 'yacht'
 class ActiveRecord::Base
-
   def update_attributes_with_yacht_manager(*args)
     @associated_attributes = self.class.extract_associated_attributes!(*args) unless args.nil? || args.empty?
     update_attributes_without_yacht_manager(*args)

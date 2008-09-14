@@ -7,7 +7,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
 
 
-  validate_status
+  validates_status
 
   def current_price
     prices.first # wrong (use created/updated at)
