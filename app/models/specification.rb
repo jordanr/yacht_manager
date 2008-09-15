@@ -12,4 +12,9 @@ class Specification < ActiveRecord::Base
   validates_speed_units
   validates_fuel
 
+  validates_numericality_of :length, :lwl, :loa, :beam, :min_draft, :max_draft, :bridge_clearance, :displacement, :ballast, :cruise_speed, :max_speed, :fuel_tank_capacity, :water_tank_capacity, :holding_tank_capacity, :engine_horsepower, :allow_nil=>true
+  validates_numericality_of :number_of_engines, :only_integer => true
+  validates_numericality_of :engine_hours, :only_integer => true, :allow_nil=>true
+  validates_inclusion_of :year, :in=> 1000..(Time.now.year+1)
+  validates_inclusion_of :engine_year, :in=> 1000..(Time.now.year+1), :allow_nil=>true
 end

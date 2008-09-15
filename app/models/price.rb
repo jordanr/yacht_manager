@@ -3,7 +3,7 @@ class Price < ActiveRecord::Base
   belongs_to :listing
 
   validates_currency
-
+  validates_numericality_of :value
   def to_s
     value # + currency
   end
