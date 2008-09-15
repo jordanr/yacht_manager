@@ -5,28 +5,33 @@ module YachtManagerHelper
   end
 
   # Specification field groupings
-  def MAIN()
-    [:manufacturer, :model, :designer, :hull_material, :type, :year, :description]
+  def MAIN_TEXT_FIELDS()
+    [:manufacturer, :model, :designer, :year, :description]
+  end
+  def MAIN_SELECTS()
+    [:hull_material_id, :type_id]
   end
   def UNITS()
     [:length_units_id, :weight_units_id, :volume_units_id, :speed_units_id]
   end
-  def LENGTH_MEASUREMENTS()
+  def LENGTHS()
     [:length, :lwl, :loa, :beam, :min_draft, :max_draft, :bridge_clearance]
   end
-  def WEIGHT_MEASUREMENTS()
+  def WEIGHTS()
     [:displacement, :ballast]
   end
-  def VOLUME_MEASUREMENTS()
+  def VOLUMES()
     [:fuel_tank_capacity, :water_tank_capacity, :holding_tank_capacity]
   end
-  def SPEED_MEASUREMENTS()
+  def SPEEDS()
     [:cruise_speed, :max_speed]
   end
   def ENGINES()
-    [:engine_manufacturer, :engine_model, :engine_fuel, :engine_horsepower, :engine_year, :engine_hours, :number_of_engines]
+    [:engine_manufacturer, :engine_model, :engine_horsepower, :engine_year, :engine_hours, :number_of_engines]
   end
-
+  def ENGINE_SELECTS()
+    [:engine_fuel_id]
+  end
   STATES = YachtTransfer::Models::State.names
   COUNTRIES = YachtTransfer::Models::Country.names
   STATUSES = YachtTransfer::Standards::STATUS_TRANSFORM.keys
