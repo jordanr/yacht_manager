@@ -45,17 +45,17 @@ module YachtManagerHelper
   FUELS = YachtTransfer::Standards::FUEL_TRANSFORM.keys
 
 #view helpers
-  def state_select; select(:location, :state_id, options_with_ids(STATES), {:include_blank => true }); end
-  def country_select; select(:location, :country_id, options_with_ids(COUNTRIES), {:include_blank => true }); end
-  def status_select; select(:listing, :status_id, options_with_ids(STATUSES), {:include_blank => true }); end
-  def currency_select; select(:price, :currency_id, options_with_ids(CURRENCIES), {:include_blank => true }); end
-  def yacht_type_select; select(:specification, :type_id, options_with_ids(YACHT_TYPES), {:include_blank=>true}); end
-  def hull_material_select;  select(:specification, :hull_material_id, options_with_ids(HULL_MATERIALS), {:include_blank=>true}); end
-  def length_units_select;  select(:specification, :length_units_id, options_with_ids(LENGTH_UNITS), {:include_blank=>true}); end
-  def weight_units_select;  select(:specification, :weight_units_id, options_with_ids(WEIGHT_UNITS), {:include_blank=>true}); end
-  def volume_units_select;  select(:specification, :volume_units_id, options_with_ids(VOLUME_UNITS), {:include_blank=>true}); end
-  def speed_units_select;  select(:specification, :speed_units_id, options_with_ids(SPEED_UNITS), {:include_blank=>true}); end
-  def fuel_select;  select(:specification, :engine_fuel_id, options_with_ids(FUELS), {:include_blank=>true}); end
+  def state_select; select(:location, :state_id, options_with_ids(STATES)); end
+  def country_select; select(:location, :country_id, options_with_ids(COUNTRIES)); end
+  def status_select; select(:listing, :status_id, options_with_ids(STATUSES)); end
+  def currency_select; select(:price, :currency_id, options_with_ids(CURRENCIES)); end
+  def yacht_type_select; select(:specification, :type_id, options_with_ids(YACHT_TYPES)); end
+  def hull_material_select;  select(:specification, :hull_material_id, options_with_ids(HULL_MATERIALS)); end
+  def length_units_select;  select(:specification, :length_units_id, options_with_ids(LENGTH_UNITS)); end
+  def weight_units_select;  select(:specification, :weight_units_id, options_with_ids(WEIGHT_UNITS)); end
+  def volume_units_select;  select(:specification, :volume_units_id, options_with_ids(VOLUME_UNITS)); end
+  def speed_units_select;  select(:specification, :speed_units_id, options_with_ids(SPEED_UNITS)); end
+  def fuel_select;  select(:specification, :engine_fuel_id, options_with_ids(FUELS)); end
 
 ## model helpers
 

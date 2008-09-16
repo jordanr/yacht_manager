@@ -1,8 +1,6 @@
 class Specification < ActiveRecord::Base
   include YachtManagerHelper
   has_many :yachts
-  belongs_to :specification_class
-  belongs_to :picture
 
   validates_yacht_type
   validates_hull_material
@@ -17,4 +15,5 @@ class Specification < ActiveRecord::Base
   validates_numericality_of :engine_hours, :only_integer => true, :allow_nil=>true
   validates_inclusion_of :year, :in=> 1000..(Time.now.year+1)
   validates_inclusion_of :engine_year, :in=> 1000..(Time.now.year+1), :allow_nil=>true
+  validates_presence_of :manufacturer, :length
 end

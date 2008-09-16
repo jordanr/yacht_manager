@@ -22,20 +22,21 @@ class ActiveRecord::Base
   alias_method_chain :initialize, :yacht_manager
 
   def save_with_yacht_manager(*args)
-    save_without_yacht_manager(*args)
-    if @associated_attributes
+    ans = save_without_yacht_manager(*args)
+    if @associated_attributes and ans
       temp = @associated_attributes
       @associated_attributes = nil # stop infinite loop
       associate(temp) 
     end
+    ans
   end    
   alias_method_chain :save, :yacht_manager
 
   private
     def associate(attributes)
       attributes.each_pair do |k, v|
-        old_v = self.send(k)
-        if(v != old_v)
+        old_v = self.send("#{k}_id")
+        if(v.to_i != old_v.to_i)
           klass = Object.const_get("#{k.camelize}")
           if old_v
             old_attribute_model = klass.send("find", old_v)
@@ -55,6 +56,7 @@ class ActiveRecord::Base
     end
 
     def self.extract_associated_attributes!(attributes)
+      return nil if attributes.nil?      
       id_regex = /^(.*)_id$/
       id_attributes = attributes.find_all { |k,v| k.to_s.match(id_regex) }
       id_attributes.collect! { |k,v| k.to_s.match(id_regex)[1] }

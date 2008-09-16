@@ -1,9 +1,9 @@
 class Listing < ActiveRecord::Base
   include YachtManagerHelper
-  has_many :uploads
-  has_many :prices
+  has_many :uploads, :dependent=>:destroy
+  has_many :prices, :dependent=>:destroy
 
-  belongs_to :yacht
+  belongs_to :yacht, :dependent=>:destroy
   belongs_to :user
 
 

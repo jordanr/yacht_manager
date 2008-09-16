@@ -1,10 +1,8 @@
-<span style="float: right">
-  Specification:<span id="specification"><%= render_partial 'show_specification' %></span>
-</span>
 Listing:<span id="listing"><%= render_partial 'show_listing' %></span>
 Price:<span id="price"><%= render_partial 'show_price' %></span>
 Yacht:<span id="yacht"><%= render_partial 'show_yacht' %></span>
 Location:<span id="location"><%= render_partial 'show_location' %></span>
+Specification:<span id="specification"><%= render_partial 'show_specification' %></span>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>

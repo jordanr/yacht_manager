@@ -1,15 +1,13 @@
 <% form_tag(@listing, {:method=>:put, :multipart=>true, :class => "edit_post", :id => "edit_post"}) do %>
-    <span style="float: right">
-      <p>
-        <%= label :yacht, :specification %><br />
-        <%= collection_select(:yacht, :specification_id, Specification.find(:all), :id, :id) %>
-      </p>
-      <span id="specification"><%= render_partial 'edit_specification' %></span>
-    </span>
     <span id="listing"><%= render_partial 'edit_listing' %></span>
     <span id="price"><%= render_partial 'edit_price' %></span>
     <span id="yacht"><%= render_partial 'edit_yacht' %></span>
     <span id="location"><%= render_partial 'edit_location' %></span>
+    <p>
+      <%= label :yacht, :specification %><br />
+      <%= collection_select(:yacht, :specification_id, Specification.find(:all), :id, :id) %>
+    </p>
+    <span id="specification"><%= render_partial 'edit_specification' %></span>
     <p>
       <%= submit_tag "Update" %>
     </p>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080908181608) do
+ActiveRecord::Schema.define(:version => 20080915193709) do
 
   create_table "accommodations", :force => true do |t|
     t.string   "title"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20080908181608) do
     t.datetime "updated_at"
     t.text     "left"
     t.text     "right"
+    t.integer  "yacht_id"
   end
 
   create_table "accounts", :force => true do |t|
@@ -60,18 +61,13 @@ ActiveRecord::Schema.define(:version => 20080908181608) do
     t.binary   "binary_data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "yacht_id"
   end
 
   create_table "prices", :force => true do |t|
     t.integer  "currency_id"
     t.decimal  "value"
     t.integer  "listing_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "specification_classes", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

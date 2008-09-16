@@ -19,7 +19,7 @@ class UploadsControllerTest < ActionController::TestCase
 
   def test_should_create_upload
     assert_difference('Upload.count') do
-      post :create, :upload => { }
+      post :create, :upload=>valid_options
     end
 
     assert_redirected_to upload_path(assigns(:upload))
@@ -47,4 +47,9 @@ class UploadsControllerTest < ActionController::TestCase
 
     assert_redirected_to uploads_path
   end
+
+  private
+    def valid_options
+      {:account_id=>accounts(:one).id, :listing_id=>listings(:one).id}
+    end
 end

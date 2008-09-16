@@ -5,9 +5,11 @@
    central: true
    user_id: 2
    yacht_id: 1
+   status_id: 1
 
  two:
    id: 2
    central: false
    user_id: 2
    yacht_id: 1
+   status_id: 1

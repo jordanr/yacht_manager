@@ -4,7 +4,7 @@ require 'base'
 class Account < ActiveRecord::Base
   belongs_to :multiple_listing_system
   belongs_to :user
-  has_many :uploads
+  has_many :uploads, :dependent=>:destroy
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 

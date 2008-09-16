@@ -1,4 +1,6 @@
 class ListingsController < YachtManagerController
+  ASSOCIATED_MODELS = [:listing, :price, :yacht, :location, :specification, :accommodation, :picture]
+
   # GET /listings
   # GET /listings.xml
   def index
@@ -57,15 +59,26 @@ class ListingsController < YachtManagerController
     @yacht = Yacht.new(params[:yacht])
     @listing = current_user.listings.new(params[:listing])
     @price = Price.new(params[:price])
+#    @accommodation = Accommodation.new
+ #   @picture = Picture.new
 
     respond_to do |format|
-      if @listing.save and @location.save and @yacht.save and @specification.save and @price.save and
+      if @listing.save and @price.save and @yacht.save and @location.save and @specification.save and
+ #        @accommodation.save and @picture.save and
 	 @yacht.update_attributes({:location_id=>@location.id, :specification_id=>@specification.id}) and
-	 @listing.update_attributes({:yacht_id=>@yacht.id}) and @price.update_attributes({:listing_id=>@listing.id})
+	 @listing.update_attributes({:yacht_id=>@yacht.id}) and 
+	 @price.update_attributes({:listing_id=>@listing.id})
+#	 @accommodation.update_attributes({:yacht_id=>@yacht.id}) and @picture.update_attributes({:yacht_id=>@yacht.id})
         flash[:notice] = 'Listing was successfully created.'
         format.html { redirect_to(@listing) }
         format.xml  { render :xml => @listing, :status => :created, :location => @listing }
       else
+        @listing.destroy
+        @price.destroy
+        @specification.destroy
+	@location.destroy
+        @yacht.destroy
+	
         format.html { render :action => "new" }
         format.xml  { render :xml => @listing.errors, :status => :unprocessable_entity }
       end
@@ -82,7 +95,8 @@ class ListingsController < YachtManagerController
     @specification = @yacht.specification
     respond_to do |format|
       if @listing.update_attributes(params[:listing]) and @location.update_attributes(params[:location]) and 
-         @yacht.update_attributes(params[:yacht]) and @specification.update_attributes(params[:specification]) and 
+         @yacht.update_attributes(params[:yacht]) and 
+	 @specification.update_attributes(params[:specification]) and 
 	 @price.update_attributes(params[:price])
         flash[:notice] = 'Listing was successfully updated.'
         format.html { redirect_to(@listing) }

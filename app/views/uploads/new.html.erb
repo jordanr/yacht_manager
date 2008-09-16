@@ -10,7 +10,7 @@
 
   <p>
     <%= f.label :listing %><br />
-    <%= collection_select(:upload, :listing_id, current_user.listings.find(:all), :id, :id) %>
+    <%= collection_select(:upload, :listing_id, current_user.listings.find(:all), :id, :to_s) %>
   </p>
 
   <p>

@@ -36,7 +36,7 @@ class ListingsControllerTest < ActionController::TestCase
   end
 
   def test_should_update_listing
-    put :update, :id => listings(:one).id, :listing => { }
+    put :update, valid_options.merge!({:id => listings(:one).id})
     assert_redirected_to listing_path(assigns(:listing))
   end
 
@@ -50,7 +50,14 @@ class ListingsControllerTest < ActionController::TestCase
 
   private
     def create_listing
-      post :create, {:listing => {:central=>true }, :yacht=>{:name=>"test"}, :price=>{:currency_id=>1, :value=>123},
-			:location=>{:city=>"Miami"}, :specification=>{:length=>33.2, :manufacturer=>"tester"}}
+      post :create, valid_options
+    end
+    def valid_options
+      {:listing => {:status_id=>1}, :yacht=>{:name=>"test"}, :price=>{:currency_id=>1, :value=>123},
+       :location=>{:city=>"Miami", :state_id=>1, :country_id=>1}, 
+       :specification=>{:hull_material_id=>1,:type_id=>1, :length_units_id=>1, :weight_units_id=>1,
+	 :volume_units_id=>1, :speed_units_id=>1, :engine_fuel_id=>1, :number_of_engines=>1, :year=>1111,
+	 :manufacturer=>"test", :length=>1, :engine_year=>1111}
+      }
     end
 end

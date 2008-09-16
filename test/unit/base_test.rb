@@ -17,6 +17,7 @@ class BaseTest < ActiveSupport::TestCase
         update_account(a, mls2.id)
     end
   end
+
   def test_update_attributes_adds
     mls1 = multiple_listing_systems(:one)
     mls2 = multiple_listing_systems(:two)
@@ -27,8 +28,17 @@ class BaseTest < ActiveSupport::TestCase
     end
   end
 
+  def test_update_attributes_stays_same
+    mls1 = multiple_listing_systems(:one)
+    a = accounts(:one)
+    mls1.accounts << a
+    assert_difference('mls1.accounts.count', 0) do
+        update_account(a, mls1.id)
+    end
+  end
+
   def test_with_non_ids
-    assert_difference('Specification.count') do
+    assert_difference('Specification.count', 0) do
       create_specification
     end
   end
