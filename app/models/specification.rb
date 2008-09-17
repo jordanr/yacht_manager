@@ -16,4 +16,8 @@ class Specification < ActiveRecord::Base
   validates_inclusion_of :year, :in=> 1000..(Time.now.year+1)
   validates_inclusion_of :engine_year, :in=> 1000..(Time.now.year+1), :allow_nil=>true
   validates_presence_of :manufacturer, :length
+
+  def to_s
+    "#{length.to_i} #{length_units} #{manufacturer}"
+  end
 end

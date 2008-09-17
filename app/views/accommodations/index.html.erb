@@ -10,13 +10,13 @@
   <tr>
     <td><%=h accommodation.title %></td>
     <td><%=h accommodation.content %></td>
-    <td><%= link_to 'Show', accommodation %></td>
-    <td><%= link_to 'Edit', edit_accommodation_path(accommodation) %></td>
-    <td><%= link_to 'Destroy', accommodation, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', yacht_accommodation_path(accommodation.yacht.id, accommodation.id) %></td>
+    <td><%= link_to 'Edit', edit_yacht_accommodation_path(accommodation.yacht.id, accommodation.id) %></td>
+    <td><%= link_to 'Destroy', yacht_accommodation_path(accommodation.yacht.id, accommodation.id), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New accommodation', new_accommodation_path %>
+<%= link_to 'New accommodation', new_yacht_accommodation_path %>

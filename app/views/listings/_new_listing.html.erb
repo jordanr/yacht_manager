@@ -2,12 +2,12 @@
 
 <% fields_for(@listing) do |f| %> 
   <%= f.error_messages %>
-  <p>
+  <table><tr><td>
     <%= f.label :central %><br />
     <%= f.check_box :central %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :status %><br />
     <%= status_select %>
-  </p>
+  </td></tr></table>
 <% end %>

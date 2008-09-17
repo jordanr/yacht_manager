@@ -2,7 +2,7 @@ class PicturesController < YachtManagerController
   # GET /pictures
   # GET /pictures.xml
   def index
-    @pictures = Picture.find(:all)
+    @pictures = Yacht.find(params[:yacht_id]).pictures
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,9 +43,9 @@ class PicturesController < YachtManagerController
     @picture = Picture.new(params[:picture])
 
     respond_to do |format|
-      if @picture.save
+      if @picture.save and @picture.update_attributes({:yacht_id=>params[:yacht_id]})
         flash[:notice] = 'Picture was successfully created.'
-        format.html { redirect_to(@picture) }
+        format.html { redirect_to yacht_picture_path(@picture.yacht.id, @picture.id) }
         format.xml  { render :xml => @picture, :status => :created, :location => @picture }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class PicturesController < YachtManagerController
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
         flash[:notice] = 'Picture was successfully updated.'
-        format.html { redirect_to(@picture) }
+        format.html { redirect_to yacht_picture_path(@picture.yacht.id, @picture.id) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class PicturesController < YachtManagerController
     @picture.destroy
 
     respond_to do |format|
-      format.html { redirect_to(pictures_url) }
+      format.html { redirect_to(yacht_pictures_url) }
       format.xml  { head :ok }
     end
   end

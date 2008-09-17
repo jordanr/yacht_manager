@@ -1,6 +1,7 @@
 require 'account'
 require 'accommodation'
 require 'location'
+require 'listing'
 require 'multiple_listing_system'
 require 'picture'
 require 'price'
@@ -39,10 +40,10 @@ class ActiveRecord::Base
         if(v.to_i != old_v.to_i)
           klass = Object.const_get("#{k.camelize}")
           if old_v
-            old_attribute_model = klass.send("find", old_v)
+            old_attribute_model = klass.send("find", old_v.to_i)
             old_attribute_model.send(self.class.to_s.downcase.pluralize).delete(self)
   	  end	
-          attribute_model = klass.send("find", v)
+          attribute_model = klass.send("find", v.to_i)
           attribute_model.send(self.class.to_s.downcase.pluralize) << self
         end
       end
@@ -62,7 +63,8 @@ class ActiveRecord::Base
       id_attributes.collect! { |k,v| k.to_s.match(id_regex)[1] }
       id_attributes.delete_if { |attribute| !has_many_relationship?(attribute) }
       associated_attributes = {}
-      id_attributes.each { |attribute| associated_attributes.merge!({attribute =>attributes.delete("#{attribute}_id".to_sym)}) }
+      id_attributes.each { |attribute| associated_attributes.merge!({attribute => attributes.delete("#{attribute}_id".to_sym) || 
+										  attributes.delete("#{attribute}_id")})}
       associated_attributes
     end
 end

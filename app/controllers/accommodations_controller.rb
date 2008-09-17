@@ -2,7 +2,7 @@ class AccommodationsController < YachtManagerController
   # GET /accommodations
   # GET /accommodations.xml
   def index
-    @accommodations = Accommodation.find(:all)
+    @accommodations = Yacht.find(params[:yacht_id]).accommodations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,9 +43,9 @@ class AccommodationsController < YachtManagerController
     @accommodation = Accommodation.new(params[:accommodation])
 
     respond_to do |format|
-      if @accommodation.save
+      if @accommodation.save and @accommodation.update_attributes({:yacht_id=>params[:yacht_id]})
         flash[:notice] = 'Accommodation was successfully created.'
-        format.html { redirect_to(@accommodation) }
+        format.html { redirect_to yacht_accommodation_path(@accommodation.yacht.id, @accommodation.id) }
         format.xml  { render :xml => @accommodation, :status => :created, :location => @accommodation }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class AccommodationsController < YachtManagerController
     respond_to do |format|
       if @accommodation.update_attributes(params[:accommodation])
         flash[:notice] = 'Accommodation was successfully updated.'
-        format.html { redirect_to(@accommodation) }
+        format.html { redirect_to yacht_accommodation_path(@accommodation.yacht.id, @accommodation.id) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class AccommodationsController < YachtManagerController
     @accommodation.destroy
 
     respond_to do |format|
-      format.html { redirect_to(accommodations_url) }
+      format.html { redirect_to(yacht_accommodations_url) }
       format.xml  { head :ok }
     end
   end

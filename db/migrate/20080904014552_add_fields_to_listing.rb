@@ -1,7 +1,7 @@
 class AddFieldsToListing < ActiveRecord::Migration
   def self.up
     add_column :listings, :central, :boolean
-    add_column :listings, :status_id, :integer
+    add_column :listings, :status_id, :integer, :default=>2
     add_column :listings, :yacht_id, :integer
     add_column :listings, :user_id, :integer
   end

@@ -6,6 +6,6 @@ class Yacht < ActiveRecord::Base
   belongs_to :location, :dependent=>:destroy
 
   def to_s
-    "#{specification.length} #{specification.manufacturer}"
+    specification.to_s
   end
 end

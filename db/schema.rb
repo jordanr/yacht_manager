@@ -35,15 +35,15 @@ ActiveRecord::Schema.define(:version => 20080915193709) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "central"
-    t.integer  "status_id"
+    t.integer  "status_id",  :default => 2
     t.integer  "yacht_id"
     t.integer  "user_id"
   end
 
   create_table "locations", :force => true do |t|
     t.string   "city"
-    t.integer  "state_id"
-    t.integer  "country_id"
+    t.integer  "state_id",   :default => 10
+    t.integer  "country_id", :default => 232
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20080915193709) do
   end
 
   create_table "prices", :force => true do |t|
-    t.integer  "currency_id"
+    t.integer  "currency_id", :default => 1
     t.decimal  "value"
     t.integer  "listing_id"
     t.datetime "created_at"
@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(:version => 20080915193709) do
 
   create_table "specifications", :force => true do |t|
     t.integer  "picture_id"
-    t.integer  "specification_class_id"
+    t.integer  "specification_class_id", :default => 2
     t.string   "description"
-    t.string   "manufacturer"
+    t.string   "manufacturer",           :default => "Custom"
     t.string   "model"
     t.integer  "year"
-    t.integer  "type_id"
+    t.integer  "type_id",                :default => 3
     t.decimal  "length"
     t.decimal  "lwl"
     t.decimal  "loa"
@@ -91,22 +91,22 @@ ActiveRecord::Schema.define(:version => 20080915193709) do
     t.decimal  "ballast"
     t.decimal  "cruise_speed"
     t.decimal  "max_speed"
-    t.integer  "length_units_id"
-    t.integer  "weight_units_id"
-    t.integer  "speed_units_id"
-    t.integer  "volume_units_id"
-    t.integer  "hull_material_id"
+    t.integer  "length_units_id",        :default => 1
+    t.integer  "weight_units_id",        :default => 3
+    t.integer  "speed_units_id",         :default => 1
+    t.integer  "volume_units_id",        :default => 1
+    t.integer  "hull_material_id",       :default => 3
     t.string   "designer"
     t.decimal  "fuel_tank_capacity"
     t.decimal  "water_tank_capacity"
     t.decimal  "holding_tank_capacity"
     t.string   "engine_manufacturer"
     t.string   "engine_model"
-    t.integer  "engine_fuel_id"
+    t.integer  "engine_fuel_id",         :default => 1
     t.decimal  "engine_horsepower"
     t.integer  "engine_year"
     t.integer  "engine_hours"
-    t.integer  "number_of_engines"
+    t.integer  "number_of_engines",      :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20080915193709) do
     t.integer  "listing_id"
     t.integer  "account_id"
     t.integer  "user_id"
+    t.integer  "remote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -133,7 +134,7 @@ ActiveRecord::Schema.define(:version => 20080915193709) do
 
   create_table "yachts", :force => true do |t|
     t.integer  "specification_id"
-    t.string   "name"
+    t.string   "name",             :default => "No name"
     t.boolean  "new"
     t.integer  "location_id"
     t.datetime "created_at"

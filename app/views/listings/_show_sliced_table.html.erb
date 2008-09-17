@@ -1,13 +1,11 @@
 <!-- Parameters: elements (an array of input field names), slice_size (# of inputs per table row), specification -->
-  <table>
   <% elements.each_slice(slice_size) do |slice| %>
-    <tr>
     <% slice.each do |i| %>
-      <td>
+    <% if specification.send(i) %>
+      <p>
         <b><%= i.to_s %>:</b>
         <%= h specification.send(i) %>
-      </td>
+      </p>
     <% end %>
-    </tr>
+    <% end %>
   <% end %>
-  </table>

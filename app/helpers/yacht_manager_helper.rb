@@ -6,7 +6,7 @@ module YachtManagerHelper
 
   # Specification field groupings
   def MAIN_TEXT_FIELDS()
-    [:manufacturer, :model, :designer, :year, :description]
+    [:manufacturer, :model, :designer, :year]
   end
   def MAIN_SELECTS()
     [:hull_material_id, :type_id]
@@ -32,17 +32,18 @@ module YachtManagerHelper
   def ENGINE_SELECTS()
     [:engine_fuel_id]
   end
-  STATES = YachtTransfer::Models::State.names
-  COUNTRIES = YachtTransfer::Models::Country.names
-  STATUSES = YachtTransfer::Standards::STATUS_TRANSFORM.keys
-  CURRENCIES = YachtTransfer::Standards::PRICE_UNITS_TRANSFORM.keys
-  YACHT_TYPES = YachtTransfer::Standards::YACHT_TYPE_TRANSFORM.keys
-  HULL_MATERIALS = YachtTransfer::Standards::MATERIAL_TRANSFORM.keys
-  LENGTH_UNITS = YachtTransfer::Standards::DISTANCE_UNITS_TRANSFORM.keys
-  WEIGHT_UNITS = [:pounds, :tons, :kilograms] #YachtTransfer::Standards::_TRANSFORM.keys
-  VOLUME_UNITS= [:liters, :gallons] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys
-  SPEED_UNITS = [:mph, :knots] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys
-  FUELS = YachtTransfer::Standards::FUEL_TRANSFORM.keys
+
+  STATES = YachtTransfer::Models::State.names.sort { |a,b| a.to_s <=> b.to_s }
+  COUNTRIES = YachtTransfer::Models::Country.names.sort { |a,b| a.to_s <=> b.to_s }
+  STATUSES = YachtTransfer::Standards::STATUS_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  CURRENCIES = YachtTransfer::Standards::PRICE_UNITS_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  YACHT_TYPES = YachtTransfer::Standards::YACHT_TYPE_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  HULL_MATERIALS = YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  LENGTH_UNITS = YachtTransfer::Standards::DISTANCE_UNITS_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  WEIGHT_UNITS = [:pounds, :tons, :kilograms] #YachtTransfer::Standards::_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  VOLUME_UNITS= [:liters, :gallons] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  SPEED_UNITS = [:mph, :knots] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  FUELS = YachtTransfer::Standards::FUEL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
 
 #view helpers
   def state_select; select(:location, :state_id, options_with_ids(STATES)); end
@@ -87,8 +88,8 @@ module YachtManagerHelper
 
   private
     def options_with_ids(array)
-      options = {}
-      array.sort { |a, b| a.to_s <=> b.to_s }.each_with_index { |name,n|  options.merge!(name=>n+1) }
+      options = []
+      array.each_with_index { |name,n|  options << [name,n+1] }
       options
     end
 end

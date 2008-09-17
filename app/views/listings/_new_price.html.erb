@@ -2,13 +2,13 @@
 
 <% fields_for(@price) do |f| %>
   <%= f.error_messages %> 
-  <p>
+  <table><tr><td>
     <%= f.label :currency %><br />
     <%= currency_select %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :value %><br />
     <%= f.text_field :value %>
-  </p>
+  </td></tr></table>
 <% end %>
 

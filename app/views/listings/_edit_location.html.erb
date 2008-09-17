@@ -1,18 +1,17 @@
 <h1>Edit location</h1>
 
 <% fields_for(@location) do |f| %>
-  <%= f.error_messages %> 
-  <p>
+  <%= f.error_messages %>
+  <table><tr><td>
     <%= f.label :city %><br />
     <%= f.text_field :city %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :state %><br />
     <%= state_select %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :country %><br />
     <%= country_select %>
-  </p>
+  </td></tr></table>
 <% end %>
-

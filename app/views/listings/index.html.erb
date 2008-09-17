@@ -2,12 +2,16 @@
 
 <table>
   <tr>
+    <th></th>
+    <th></th>
     <th>Price</th>
     <th>Yacht</th>
   </tr>
 
 <% for listing in @listings %>
   <tr>
+    <td><%= link_to 'Accommodations', yacht_accommodations_path(listing.yacht) %></td>
+    <td><%= link_to 'Pictures', yacht_pictures_path(listing.yacht) %></td>
     <td><%=h listing.current_price.to_s %></td>
     <td><%=h listing.yacht.to_s %></td>
     <td><%= link_to 'Show', listing %></td>

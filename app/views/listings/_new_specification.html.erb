@@ -2,8 +2,11 @@
 
 <% fields_for(@specification) do |f| %>
   <%= f.error_messages %> 
-  <%= render :partial => 'new_sliced_table', :locals => {:elements => MAIN_TEXT_FIELDS(), :slice_size =>3, :f =>f}  %>
-
+  <%= render :partial => 'new_sliced_table', :locals => {:elements => MAIN_TEXT_FIELDS(), :slice_size =>4, :f =>f}  %>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :size=>"100x5" %>
+  </p>
   <table><tr>
   <td>
     <%= f.label :hull_material %><br />
@@ -33,11 +36,11 @@
     <%= volume_units_select %>
   </td>
   </tr></table>
-  <%= render :partial => 'new_sliced_table', :locals => {:elements => LENGTHS(), :slice_size =>3, :f =>f}  %>
-  <%= render :partial => 'new_sliced_table', :locals => {:elements => WEIGHTS(), :slice_size =>3, :f =>f}  %>
-  <%= render :partial => 'new_sliced_table', :locals => {:elements => VOLUMES(), :slice_size =>3, :f =>f}  %>
-  <%= render :partial => 'new_sliced_table', :locals => {:elements => SPEEDS(), :slice_size =>3, :f =>f}  %>
-  <%= render :partial => 'new_sliced_table', :locals => {:elements => ENGINES(), :slice_size =>3, :f =>f}  %>
+  <%= render :partial => 'new_sliced_table', :locals => {:elements => LENGTHS(), :slice_size =>4, :f =>f}  %>
+  <%= render :partial => 'new_sliced_table', :locals => {:elements => WEIGHTS(), :slice_size =>4, :f =>f}  %>
+  <%= render :partial => 'new_sliced_table', :locals => {:elements => VOLUMES(), :slice_size =>4, :f =>f}  %>
+  <%= render :partial => 'new_sliced_table', :locals => {:elements => SPEEDS(), :slice_size =>4, :f =>f}  %>
+  <%= render :partial => 'new_sliced_table', :locals => {:elements => ENGINES(), :slice_size =>4, :f =>f}  %>
   <p>
     <%= f.label :engine_fuel %><br />
     <%= fuel_select %>

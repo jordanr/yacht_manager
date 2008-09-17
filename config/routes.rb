@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :listings, :has_many=>[:accommodations, :pictures]
+  map.resources :listings
 
   map.resources :uploads
 
@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
 #  map.resources :prices
 #  map.resources :specifications
 #  map.resources :locations
-#  map.resources :yachts
+   map.resources :yachts, :has_many=>[:accommodations, :pictures]
 #  map.resources :multiple_listing_systems
 
   # The priority is based upon order of creation: first created -> highest priority.

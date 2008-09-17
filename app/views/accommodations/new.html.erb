@@ -1,6 +1,6 @@
 <h1>New accommodation</h1>
 
-<% form_for(@accommodation) do |f| %>
+<% form_for(:accommodation, @accommodation, :url=> yacht_accommodations_path, :html =>{ :class => "new_accommmodation", :id => "new_accommodation" } ) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,4 +16,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', accommodations_path %>
+<%= link_to 'Back', yacht_accommodations_path %>

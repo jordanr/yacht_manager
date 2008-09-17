@@ -5,7 +5,6 @@
     <th>Description</th>
     <th>Content type</th>
     <th>Filename</th>
-<!--    <th>Binary data</th>-->
   </tr>
 
 <% for picture in @pictures %>
@@ -13,14 +12,13 @@
     <td><%=h picture.description %></td>
     <td><%=h picture.content_type %></td>
     <td><%=h picture.filename %></td>
-<!--    <td><%=h picture.binary_data %></td> -->
-    <td><%= link_to 'Show', picture %></td>
-    <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-    <td><%= link_to 'Destroy', picture, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', yacht_picture_path(picture.yacht.id, picture.id) %></td>
+    <td><%= link_to 'Edit', edit_yacht_picture_path(picture.yacht.id, picture.id) %></td>
+    <td><%= link_to 'Destroy', yacht_picture_path(picture.yacht.id, picture.id) , :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New picture', new_picture_path %>
+<%= link_to 'New picture', new_yacht_picture_path %>

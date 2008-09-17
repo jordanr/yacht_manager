@@ -1,6 +1,6 @@
 <h1>New picture</h1>
 
-<% form_for(@picture, :html=> {:multipart=>true}) do |f| %>
+<% form_for(:picture, @picture, :url=> yacht_pictures_path, :html =>{ :class => "new_picture", :id => "new_picture",:multipart=>true } ) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,4 +16,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', pictures_path %>
+<%= link_to 'Back', yacht_pictures_path %>

@@ -5,7 +5,7 @@ class Price < ActiveRecord::Base
   validates_currency
   validates_numericality_of :value
   def to_s
-    value # + currency
+    "#{value.to_i} #{currency}"
   end
 
 end

@@ -2,7 +2,7 @@ class CreateYachts < ActiveRecord::Migration
   def self.up
     create_table :yachts do |t|
       t.integer :specification_id
-      t.string :name
+      t.string :name, :default=>"No name"
       t.boolean :new
       t.integer :location_id
 
