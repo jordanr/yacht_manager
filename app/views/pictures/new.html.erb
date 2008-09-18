@@ -1,19 +1,17 @@
-<h1>New picture</h1>
-
-<% form_for(:picture, @picture, :url=> yacht_pictures_path, :html =>{ :class => "new_picture", :id => "new_picture",:multipart=>true } ) do |f| %>
+<%= javascript_include_tag "multifile" %>
+<% form_for :picture, :url => yacht_pictures_path, :html =>{ :class => "new_picture", :id => "new_picture",:multipart=>true } do |f| %>
   <%= f.error_messages %>
-
   <p>
     <%= f.label :image_file %><br />
     <%= f.file_field :image_file %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
     <%= f.submit "Create" %>
   </p>
-<% end %>
+  <div id="files_list">Files(maximum 10):	<b>Description</b></div>
+  <script>
+    var multi_selector = new MultiSelector( document.getElementById( "files_list" ), 10 );
+    multi_selector.addElement( document.getElementById( "picture_image_file" ) );
+  </script>
+<% end -%>
 
-<%= link_to 'Back', yacht_pictures_path %>

@@ -40,12 +40,19 @@ class PicturesController < YachtManagerController
   # POST /pictures
   # POST /pictures.xml
   def create
-    @picture = Picture.new(params[:picture])
+    i = 0
+    pictures = []
+    files = params.find_all { |k,v| v!="" and k.to_s.match(/file_[0-9]+/) }
+    files.each do |f|
+      p = Picture.new({:image_file => f.pop })
+      pictures.push(p)
+      i+=1
+    end
 
     respond_to do |format|
-      if @picture.save and @picture.update_attributes({:yacht_id=>params[:yacht_id]})
-        flash[:notice] = 'Picture was successfully created.'
-        format.html { redirect_to yacht_picture_path(@picture.yacht.id, @picture.id) }
+      if pictures.all? { |picture| picture.save and picture.update_attributes({:yacht_id=>params[:yacht_id]}) }
+        flash[:notice] = 'Pictures were successfully created.'
+        format.html { redirect_to yacht_pictures_url }
         format.xml  { render :xml => @picture, :status => :created, :location => @picture }
       else
         format.html { render :action => "new" }
@@ -58,7 +65,9 @@ class PicturesController < YachtManagerController
   # PUT /pictures/1.xml
   def update
     @picture = Picture.find(params[:id])
-
+    
+#    puts params[:picture].[:image_file].to_s
+    params[:picture].delete(:image_file) if params[:picture][:image_file]==""
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
         flash[:notice] = 'Picture was successfully updated.'

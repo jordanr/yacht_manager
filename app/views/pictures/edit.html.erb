@@ -1,6 +1,6 @@
 <h1>Editing picture</h1>
 
-<% form_for(:picture, @picture, :url=> yacht_picture_path(@picture.yacht.id, @picture.id), :html =>{:method=>:put, :class => "edit_picture",:id=>"edit_picture_#{picture.id, :multipart=>true}) do |f| %>"
+<% form_for(:picture, @picture, :url=> yacht_picture_path(@picture.yacht.id, @picture.id), :html =>{:method=>:put, :class => "edit_picture",:id=>"edit_picture_#{@picture.id}", :multipart=>true}) do |f| %>
   <%= f.error_messages %>
 
   <p>
