@@ -40,6 +40,11 @@ class AccommodationsController < YachtManagerController
   # POST /accommodations
   # POST /accommodations.xml
   def create
+    if request.xhr?
+      yacht = Yacht.find(params[:yacht_id])
+      @accommodation = yacht.accommodations.create
+      render :partial =>"edit", :locals=>{:edit=>@accommodation} and return
+    end
     @accommodation = Accommodation.new(params[:accommodation])
 
     respond_to do |format|
@@ -57,16 +62,34 @@ class AccommodationsController < YachtManagerController
   # PUT /accommodations/1
   # PUT /accommodations/1.xml
   def update
-    @accommodation = Accommodation.find(params[:id])
+    if(params[:id]=="0")
+      accommodations=[]
+      params[:accommodation].each_pair do |k,v|
+	puts k.inspect, v.inspect
+        accommodations.push(Accommodation.find(k))
+      end
+      respond_to do |format|
+        if accommodations.all? { |a| a.update_attributes(params[:accommodation][a.id]) }
+          flash[:notice] = 'Accommodations were successfully updated.'
+          format.html { redirect_to yacht_accommodations_path } 
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @accommodation.errors, :status => :unprocessable_entity }
+        end
+      end
+    else	
+      @accommodation = Accommodation.find(params[:id])
 
-    respond_to do |format|
-      if @accommodation.update_attributes(params[:accommodation])
-        flash[:notice] = 'Accommodation was successfully updated.'
-        format.html { redirect_to yacht_accommodation_path(@accommodation.yacht.id, @accommodation.id) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @accommodation.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @accommodation.update_attributes(params[:accommodation])
+          flash[:notice] = 'Accommodation was successfully updated.'
+          format.html { redirect_to yacht_accommodation_path(@accommodation.yacht.id, @accommodation.id) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @accommodation.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

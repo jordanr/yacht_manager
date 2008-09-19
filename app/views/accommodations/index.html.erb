@@ -1,22 +1,11 @@
 <h1>Listing accommodations</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-  </tr>
+<% form_tag yacht_accommodation_path(params[:yacht_id], 0), :method=> :put do -%>
+  <div id="new_accommodation">
+    <%= render :partial=> "edit", :collection=>@accommodations %>
+  </div>
+  <%= submit_tag "Update" %>
+<% end  -%>
+<%= link_to_remote 'New accommodation', :update=>"new_accommodation", :position=>:bottom, :url=> yacht_accommodations_path, :method=>:post %>
 
-<% for accommodation in @accommodations %>
-  <tr>
-    <td><%=h accommodation.title %></td>
-    <td><%=h accommodation.content %></td>
-    <td><%= link_to 'Show', yacht_accommodation_path(accommodation.yacht.id, accommodation.id) %></td>
-    <td><%= link_to 'Edit', edit_yacht_accommodation_path(accommodation.yacht.id, accommodation.id) %></td>
-    <td><%= link_to 'Destroy', yacht_accommodation_path(accommodation.yacht.id, accommodation.id), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
-
-<%= link_to 'New accommodation', new_yacht_accommodation_path %>

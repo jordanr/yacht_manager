@@ -40,22 +40,21 @@ class PicturesController < YachtManagerController
   # POST /pictures
   # POST /pictures.xml
   def create
-    i = 0
     pictures = []
-    files = params.find_all { |k,v| v!="" and k.to_s.match(/file_[0-9]+/) }
-    files.each do |f|
-      p = Picture.new({:image_file => f.pop })
-      pictures.push(p)
-      i+=1
+    params[:files].each_pair do |k,v|
+      unless v[:image_file] == ""
+        p = Picture.new(v) 
+        pictures.push(p)
+      end
     end
-
     respond_to do |format|
       if pictures.all? { |picture| picture.save and picture.update_attributes({:yacht_id=>params[:yacht_id]}) }
         flash[:notice] = 'Pictures were successfully created.'
         format.html { redirect_to yacht_pictures_url }
         format.xml  { render :xml => @picture, :status => :created, :location => @picture }
       else
-        format.html { render :action => "new" }
+        flash[:error] = 'One or more pictures failed to upload.  All pictures must be smaller than 1 megabyte.'
+        format.html { redirect_to yacht_pictures_url }  #render :action => "index" }
         format.xml  { render :xml => @picture.errors, :status => :unprocessable_entity }
       end
     end
@@ -66,7 +65,6 @@ class PicturesController < YachtManagerController
   def update
     @picture = Picture.find(params[:id])
     
-#    puts params[:picture].[:image_file].to_s
     params[:picture].delete(:image_file) if params[:picture][:image_file]==""
     respond_to do |format|
       if @picture.update_attributes(params[:picture])

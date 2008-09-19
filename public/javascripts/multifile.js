@@ -62,7 +62,7 @@ function MultiSelector( list_target, max ){
 		if( element.tagName == 'INPUT' && element.type == 'file' ){
 
 			// Element name -- what number am I?
-			element.name = 'file_' + this.id++;
+			element.name = 'files['+this.id++ +'][image_file]';
 
 			// Add reference to this object
 			element.multi_selector = this;
@@ -117,10 +117,11 @@ function MultiSelector( list_target, max ){
 		var new_row_button = document.createElement( 'input' );
 		new_row_button.type = 'button';
 		new_row_button.value = 'Delete';
+
 		// text field
 		var new_row_text = document.createElement( 'input' );
 		new_row_text.type = 'text';
-		new_row_text.name = 'description';
+		new_row_text.name = 'files['+(this.id-2)+'][description]';
 
 		// References
 		new_row.element = element;
@@ -147,11 +148,11 @@ function MultiSelector( list_target, max ){
 		};
 
 		// Set row value
-		new_row.innerHTML = element.value;
+		new_row.innerHTML = element.value + '\t';
 
+		new_row.appendChild( new_row_text );
 		// Add button
 		new_row.appendChild( new_row_button );
-		new_row.appendChild( new_row_text );
 
 		// Add it to the list
 		this.list_target.appendChild( new_row );

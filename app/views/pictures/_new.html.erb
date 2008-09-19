@@ -1,0 +1,17 @@
+<%= javascript_include_tag "multifile" %>
+<% form_for :picture, :url => yacht_pictures_path, :html =>{ :class => "new_picture", :id => "new_picture",:multipart=>true } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :new_pictures %><br />
+    <%= f.file_field :image_file %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+  <div id="files_list"><b>Picture</b> <b>Description</b></div>
+  <script>
+    var multi_selector = new MultiSelector( document.getElementById( "files_list" ), 10 );
+    multi_selector.addElement( document.getElementById( "picture_image_file" ) );
+  </script>
+<% end -%>
+

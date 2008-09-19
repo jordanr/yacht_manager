@@ -6,6 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Yacht Manager</title>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag 'prototype' %>
 </head>
 <body>
 
@@ -25,6 +26,7 @@
 </span>
 
 <p style="color: green"><%= flash[:notice] %></p>
+<p style="color: red"><%= flash[:error] %></p>
 
 <%= yield  %>
 
