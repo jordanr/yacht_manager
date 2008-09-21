@@ -4,14 +4,12 @@
   <tr>
     <th>MLS</th>
     <th>Login</th>
-    <th>Password</th>
   </tr>
 
 <% for account in @accounts %>
   <tr>
     <td><%=h account.multiple_listing_system.name %></td>
     <td><%=h account.login %></td>
-    <td><%=h account.decrypt(account.crypted_password) %></td>
     <td><%= link_to 'Show', account %></td>
     <td><%= link_to 'Edit', edit_account_path(account) %></td>
     <td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>

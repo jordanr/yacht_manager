@@ -40,9 +40,9 @@ module YachtManagerHelper
   YACHT_TYPES = YachtTransfer::Standards::YACHT_TYPE_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
   HULL_MATERIALS = YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
   LENGTH_UNITS = YachtTransfer::Standards::DISTANCE_UNITS_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
-  WEIGHT_UNITS = [:pounds, :tons, :kilograms] #YachtTransfer::Standards::_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
-  VOLUME_UNITS= [:liters, :gallons] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
-  SPEED_UNITS = [:mph, :knots] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  WEIGHT_UNITS = [:kilograms, :pounds, :tons] #YachtTransfer::Standards::_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  VOLUME_UNITS= [:gallons, :liters] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
+  SPEED_UNITS = [:knots, :mph] #YachtTransfer::Standards::MATERIAL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
   FUELS = YachtTransfer::Standards::FUEL_TRANSFORM.keys.sort { |a,b| a.to_s <=> b.to_s }
 
 #view helpers

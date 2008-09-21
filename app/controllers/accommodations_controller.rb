@@ -2,7 +2,7 @@ class AccommodationsController < YachtManagerController
   # GET /accommodations
   # GET /accommodations.xml
   def index
-    @accommodations = Yacht.find(params[:yacht_id]).accommodations
+    @accommodations = Yacht.find(params[:yacht_id]).accommodations.sort
 
     respond_to do |format|
       format.html # index.html.erb
@@ -65,11 +65,10 @@ class AccommodationsController < YachtManagerController
     if(params[:id]=="0")
       accommodations=[]
       params[:accommodation].each_pair do |k,v|
-	puts k.inspect, v.inspect
         accommodations.push(Accommodation.find(k))
       end
       respond_to do |format|
-        if accommodations.all? { |a| a.update_attributes(params[:accommodation][a.id]) }
+        if accommodations.all? { |a| a.update_attributes(params[:accommodation][a.id.to_s]) }
           flash[:notice] = 'Accommodations were successfully updated.'
           format.html { redirect_to yacht_accommodations_path } 
           format.xml  { head :ok }

@@ -119,9 +119,15 @@ function MultiSelector( list_target, max ){
 		new_row_button.value = 'Delete';
 
 		// text field
-		var new_row_text = document.createElement( 'input' );
-		new_row_text.type = 'text';
-		new_row_text.name = 'files['+(this.id-2)+'][description]';
+		var new_row_description = document.createElement( 'input' );
+		new_row_description.type = 'text';
+		new_row_description.name = 'files['+(this.id-2)+'][description]';
+		// text field
+		var new_row_order = document.createElement( 'input' );
+		new_row_order.type = 'text';
+		new_row_order.size = '1';
+		new_row_order.name = 'files['+(this.id-2)+'][order]';
+		new_row_order.value = (this.id-2);
 
 		// References
 		new_row.element = element;
@@ -148,8 +154,11 @@ function MultiSelector( list_target, max ){
 		};
 
 		// Set row value
-		new_row.innerHTML = element.value + '\t';
+	        new_row_text = document.createElement( 'span');
+		new_row_text.innerHTML = element.value + '\t';
 
+		new_row.appendChild( new_row_order );
+		new_row.appendChild( new_row_description );
 		new_row.appendChild( new_row_text );
 		// Add button
 		new_row.appendChild( new_row_button );
