@@ -1,17 +1,67 @@
-<%= javascript_include_tag "multifile" %>
+<h1>New picture</h1>
+
 <% form_for :picture, :url => yacht_pictures_path, :html =>{ :class => "new_picture", :id => "new_picture",:multipart=>true } do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :image_file %><br />
-    <%= f.file_field :image_file %>
+    <%= f.label :picture %><br />
+    <%= f.file_field :uploaded_data %>
   </p>
   <p>
     <%= f.submit "Create" %>
   </p>
-  <div id="files_list">Files(maximum 10):	<b>Description</b></div>
-  <script>
-    var multi_selector = new MultiSelector( document.getElementById( "files_list" ), 10 );
-    multi_selector.addElement( document.getElementById( "picture_image_file" ) );
-  </script>
 <% end -%>
+
+<p><%= link_to 'Back', yacht_pictures_path %></p>
+
+<br />
+<hr />
+
+<p>SWFUpload button allows uploading more than one image at a time. This section adapted from index.php in the swfupload application demo. In a final application the 
+Graceful Degradation plugin would show or hide the traditional or swfupload divisions based on whether the swfupload program successfully initialized.</p>
+
+<script type='text/javascript'>
+  var swfu;
+
+  window.onload = function () {
+    swfu = new SWFUpload({
+      // Create the custom swfupload_photos_path in the routes.rb file
+      upload_url : '<%= yacht_pictures_path -%>?_yacht_manager_session=<%= u session.session_id %>',
+      flash_url : '/assets/swfupload_f9.swf',
+
+      file_size_limit : '3072',
+      file_types : '*.jpg',
+      file_types_description : 'JPG Images',
+      file_upload_limit : '0',
+
+      file_queue_error_handler : fileQueueError,
+      file_dialog_complete_handler : fileDialogComplete,
+      upload_progress_handler : uploadProgress,
+      upload_error_handler : uploadError,
+      upload_success_handler : uploadSuccess,
+      upload_complete_handler : uploadComplete,
+
+      post_params : {
+        authenticity_token : '<%= u form_authenticity_token -%>',
+      },
+
+      custom_settings : { 
+        upload_target : 'divFileProgressContainer'
+      },
+
+      debug: false
+
+    });
+  };
+</script>
+
+<div style="margin: 0px 10px;">
+        <div>
+                <form>
+                        <button id="btnBrowse" type="button" style="padding: 5px;" onclick="swfu.selectFiles(); this.blur();"><img src="/images/page_white_add.png" 
+style="padding-right: 3px; vertical-align: bottom;">Select Images <span style="font-size: 7pt;">(2 MB Max)</span></button>
+                </form>
+        </div>
+        <div id="divFileProgressContainer" style="height: 75px;"></div>
+        <div id="thumbnails"></div>
+</div>
 

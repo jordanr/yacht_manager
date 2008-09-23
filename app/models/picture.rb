@@ -1,13 +1,20 @@
+require 'mime/types'
 class Picture < ActiveRecord::Base
   belongs_to :yacht
 
-  MEGABYTE = 1048576
+  has_attachment :content_type => :image, 
+                 :storage => :file_system,
+		 :size=> 1..10.megabyte
 
-  validates_length_of :binary_data, :maximum=>MEGABYTE/2
+  validates_as_attachment
 
-  def image_file=(input_data) 
-    self.filename = input_data.original_filename 
-    self.content_type = input_data.content_type.chomp 
-    self.binary_data = input_data.read 
-  end 
+  #????  named_scope :masters, :conditions => {:parent_id => nil}
+  
+  # Map file extensions to mime types.
+  # Thanks to bug in Flash 8 the content type is always set to application/octet-stream.
+  # From: http://blog.airbladesoftware.com/2007/8/8/uploading-files-with-swfupload
+  def swf_uploaded_data=(data)
+    data.content_type = MIME::Types.type_for(data.original_filename)
+    self.uploaded_data = data
+  end
 end

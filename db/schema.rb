@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080919211536) do
+ActiveRecord::Schema.define(:version => 20080921022601) do
 
   create_table "accommodations", :force => true do |t|
     t.string   "title"
@@ -59,11 +59,15 @@ ActiveRecord::Schema.define(:version => 20080919211536) do
     t.text     "description"
     t.string   "content_type"
     t.string   "filename"
-    t.binary   "binary_data"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "yacht_id"
     t.integer  "order",        :default => 0
+    t.integer  "parent_id"
+    t.string   "thumbnail"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
   end
 
   create_table "prices", :force => true do |t|

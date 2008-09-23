@@ -1,4 +1,6 @@
 class PicturesController < YachtManagerController
+  session :cookie_only => false, :only => :create
+
   # GET /pictures
   # GET /pictures.xml
   def index
@@ -40,22 +42,28 @@ class PicturesController < YachtManagerController
   # POST /pictures
   # POST /pictures.xml
   def create
-    pictures = []
-    params[:files].each_pair do |k,v|
-      unless v[:image_file] == ""
-        p = Picture.new(v) 
-        pictures.push(p)
-      end
-    end
+    @picture = Picture.new(params[:picture])
     respond_to do |format|
-      if pictures.all? { |picture| picture.save and picture.update_attributes({:yacht_id=>params[:yacht_id]}) }
-        flash[:notice] = 'Pictures were successfully created.'
-        format.html { redirect_to yacht_pictures_url }
-        format.xml  { render :xml => @picture, :status => :created, :location => @picture }
+	puts format.html.inspect
+      if params[:Filedata]
+        @picture = Picture.new(:swf_uploaded_data=>params[:Filedata])
+        if @picture.save and @picture.update_attributes({:yacht_id=>params[:yacht_id]})
+#          format.html { 
+ 	   render :text => @picture.public_filename(:thumb) and return # } 
+#          format.xml { render :nothing => true }	
+	else
+	  format.html { render :action => "new" }
+          format.xml { render :xml => @asset.errors, :status => :unprocessable_entity }
+	end
       else
-        flash[:error] = 'One or more pictures failed to upload.  All pictures must be smaller than 1 megabyte.'
-        format.html { redirect_to yacht_pictures_url }  #render :action => "index" }
-        format.xml  { render :xml => @picture.errors, :status => :unprocessable_entity }
+        if @picture.save and @picture.update_attributes({:yacht_id=>params[:yacht_id]})
+          flash[:notice] = 'Pictures were successfully created.'
+          format.html { redirect_to yacht_pictures_url }
+          format.xml  { render :xml => @picture, :status => :created, :location => @picture }
+        else
+          format.html { render :action => :new }
+          format.xml  { render :xml => @picture.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
