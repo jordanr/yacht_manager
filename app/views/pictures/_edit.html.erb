@@ -1,0 +1,15 @@
+<div id="edit_picture_<%= edit.id %>">
+<% fields_for(edit, :index=> edit.id ) do |f| %>
+  <%= f.error_messages %>
+  <table><tr>
+    <td>
+	<%= f.label :order %><br />
+	<%= f.text_field :order %><br />
+        <%= f.label :description %><br />
+	<%= f.text_field :description %><br />
+    </td>
+    <td><%= content_tag(:a, image_tag(edit.public_filename(:thumb)), :href=>yacht_picture_path(edit.yacht.id, edit.id)) %></td>
+    <td><%= link_to_remote "Destroy", :url=>yacht_picture_path(edit.yacht.id, edit.id), :method=>:delete, :confirm=>"Are you sure?", :href=>yacht_picture_path(edit.yacht.id, edit.id), :success=>"$('picture_list').removeChild($('edit_picture_#{edit.id}'))" %></td>
+  </tr></table>
+<% end %>
+</div>
