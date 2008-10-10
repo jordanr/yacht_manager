@@ -1,24 +1,3 @@
-<h1>New picture</h1>
-
-<% form_for :picture, :url => yacht_pictures_path, :html =>{ :class => "new_picture", :id => "new_picture",:multipart=>true } do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :picture %><br />
-    <%= f.file_field :uploaded_data %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end -%>
-
-<p><%= link_to 'Back', yacht_pictures_path %></p>
-
-<br />
-<hr />
-
-<p>SWFUpload button allows uploading more than one image at a time. This section adapted from index.php in the swfupload application demo. In a final application the 
-Graceful Degradation plugin would show or hide the traditional or swfupload divisions based on whether the swfupload program successfully initialized.</p>
-
 <script type='text/javascript'>
   var swfu;
 

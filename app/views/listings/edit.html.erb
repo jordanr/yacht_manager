@@ -5,7 +5,7 @@
     <span id="location"><%= render_partial 'edit_location' %></span>
     <p>
       <%= label :yacht, :specification %><br />
-      <%= collection_select(:yacht, :specification_id, Specification.find(:all), :id, :id) %>
+      <%= collection_select(:yacht, :specification_id, Specification.standards, :id, :id) %>
     </p>
     <span id="specification"><%= render_partial 'edit_specification' %></span>
     <p>

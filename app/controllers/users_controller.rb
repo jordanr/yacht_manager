@@ -19,6 +19,10 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
+
+  def edit
+    @user = User.find(params[:id])    
+  end
   
   # PUT /users/1
   # PUT /users/1.xml
@@ -48,4 +52,9 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def show
+    redirect_to(root_url)	
+  end
+
 end

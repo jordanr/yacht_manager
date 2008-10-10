@@ -78,7 +78,8 @@ function uploadProgress(fileObj, bytesLoaded) {
 
 function uploadSuccess(fileObj, server_data) {
 	try {
-		AddImage(server_data);
+		AddPartial(server_data);
+		// AddImage(server_data);
 
 		var progress = new FileProgress(fileObj,  this.customSettings.upload_target);
 
@@ -213,6 +214,13 @@ FileProgress.prototype.ToggleCancel = function(show, upload_obj, file_id) {
 	if (upload_obj) {
 		this.fileProgressElement.childNodes[0].onclick = function() { upload_obj.cancelUpload(); return false; };
 	}
+}
+function AddPartial(partial) {
+	partial_and_src = partial.split("<!--~-->", 2);
+	partial = partial_and_src[0];
+	src = partial_and_src[1];
+	document.getElementById("picture_list").innerHTML += partial;
+	AddImage(src);
 }
 
 function AddImage(src) {

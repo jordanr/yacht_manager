@@ -1,4 +1,4 @@
-<h1>New specification</h1>
+<h2>Specification</h2>
 
 <% fields_for(@specification) do |f| %>
   <%= f.error_messages %> 
@@ -18,6 +18,7 @@
   </td>
   </tr></table>
 
+  <h3>Units</h3>
   <table><tr>
   <td>
     <%= f.label :length_units %><br />
@@ -36,10 +37,14 @@
     <%= volume_units_select %>
   </td>
   </tr></table>
+  <h3>Dimensions</h3>
   <%= render :partial => 'new_sliced_table', :locals => {:elements => LENGTHS(), :slice_size =>4, :f =>f}  %>
   <%= render :partial => 'new_sliced_table', :locals => {:elements => WEIGHTS(), :slice_size =>4, :f =>f}  %>
+  <h3>Tanks</h3>
   <%= render :partial => 'new_sliced_table', :locals => {:elements => VOLUMES(), :slice_size =>4, :f =>f}  %>
+  <h3>Speeds</h3>
   <%= render :partial => 'new_sliced_table', :locals => {:elements => SPEEDS(), :slice_size =>4, :f =>f}  %>
+  <h3>Engines</h3>
   <%= render :partial => 'new_sliced_table', :locals => {:elements => ENGINES(), :slice_size =>4, :f =>f}  %>
   <p>
     <%= f.label :engine_fuel %><br />

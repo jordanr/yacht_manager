@@ -2,6 +2,8 @@ class Specification < ActiveRecord::Base
   include YachtManagerHelper
   has_many :yachts
 
+  STANDARD = 1
+
   validates_yacht_type
   validates_hull_material
   validates_length_units
@@ -19,5 +21,9 @@ class Specification < ActiveRecord::Base
 
   def to_s
     "#{length.to_i} #{length_units} #{manufacturer}"
+  end
+
+  def self.standards
+    find_by_specification_class_id(STANDARD) || []
   end
 end

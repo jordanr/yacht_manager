@@ -16,6 +16,8 @@
 <p align="right">
 <%= link_to_if logged_in?, 'Home', root_path do
     end %>
+<%= link_to_if logged_in?, 'Settings', edit_user_path(current_user) do
+    end %>
 <%= link_to_if logged_in?, 'Logout >>', logout_path, :method => :delete do
     end %>
 </p>

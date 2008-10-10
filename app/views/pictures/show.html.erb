@@ -18,9 +18,7 @@
 </p>
 
 <p>
-  <%=image_tag("/pictures/code_image/#{@picture.id}", :alt=>"Image") %>
+  <%=image_tag(@picture.public_filename)%>
 </p>
 
-
-<%= link_to 'Edit', edit_yacht_picture_path(@picture.yacht.id, @picture.id) %> |
 <%= link_to 'Back', yacht_pictures_path %>
