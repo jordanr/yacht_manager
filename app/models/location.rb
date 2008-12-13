@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  include YachtManagerHelper
+#  include YachtTransfer::Rails::Model
   has_many :yachts
   
   validates_state

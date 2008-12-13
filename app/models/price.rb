@@ -1,5 +1,5 @@
 class Price < ActiveRecord::Base
-  include YachtManagerHelper
+#  include YachtTransfer::Rails::Model
   belongs_to :listing
 
   validates_currency

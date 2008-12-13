@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  include YachtManagerHelper
+#  include YachtTransfer::Rails::Model
   has_many :uploads, :dependent=>:destroy
   has_many :prices, :dependent=>:destroy
 
