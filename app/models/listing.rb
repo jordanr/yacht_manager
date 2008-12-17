@@ -1,5 +1,4 @@
 class Listing < ActiveRecord::Base
-#  include YachtTransfer::Rails::Model
   has_many :uploads, :dependent=>:destroy
   has_many :prices, :dependent=>:destroy
 
@@ -16,5 +15,13 @@ class Listing < ActiveRecord::Base
   def to_s
     yacht.to_s 
   end
+
+  def to_yt
+    YachtTransfer::Models::Listing.new({:yacht=>yacht.to_yt, :price=>current_price.to_yt, :broker=>"Dad",
+                                        :type=>(central?) ? "central" : "open", :status=>status, :co_op=>true,
+                                        :contact_info=>"sample_contact_info"})
+  end
+
+
 
 end

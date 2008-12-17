@@ -6,7 +6,7 @@ one:
   model: MyString
   specification_class_id: 1
   description: MyString
-  year: 1
+  year: 2000
   type_id: 1
   length: 9.99
   lwl: 9.99
@@ -32,7 +32,7 @@ one:
   engine_model: MyString
   engine_fuel_id: 1
   engine_horsepower: 9.99
-  engine_year: 1
+  engine_year: 2000
   engine_hours: 1
   number_of_engines: 1
 

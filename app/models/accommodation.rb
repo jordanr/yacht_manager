@@ -4,4 +4,8 @@ class Accommodation < ActiveRecord::Base
   def <=>(o)
     order <=> o.order
   end
+
+  def to_yt
+    {:title=>title,:content=>content, :left=>left, :right=>right}
+  end
 end

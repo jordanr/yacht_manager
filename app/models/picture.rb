@@ -24,4 +24,12 @@ class Picture < ActiveRecord::Base
   def <=>(o)
     order <=> o.order
   end
+
+  def to_yt
+    {:label=>description, :src=>open_full_picture}
+  end
+
+  def open_full_picture
+    ::File.open(full_filename, "rb") { |f| f.read }
+  end
 end

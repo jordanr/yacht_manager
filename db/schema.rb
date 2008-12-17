@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080921022601) do
+ActiveRecord::Schema.define(:version => 20081214233006) do
 
   create_table "accommodations", :force => true do |t|
     t.string   "title"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20080921022601) do
     t.integer  "remote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "dirty",       :default => true
   end
 
   create_table "users", :force => true do |t|

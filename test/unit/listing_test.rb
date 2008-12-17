@@ -5,4 +5,8 @@ class ListingTest < ActiveSupport::TestCase
   def test_truth
     assert true
   end
+
+  def test_to_yt
+    puts listings(:one).to_yt.inspect
+  end
 end
