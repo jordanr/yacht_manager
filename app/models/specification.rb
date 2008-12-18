@@ -2,8 +2,6 @@ class Specification < ActiveRecord::Base
 #  include YachtTransfer::Rails::Model
   has_many :yachts
 
-  STANDARD_SPECIFICATION = 1
-
   validates_yacht_type
   validates_hull_material
   validates_length_units
@@ -24,7 +22,6 @@ class Specification < ActiveRecord::Base
   end
 
   def self.standards
-    a = find_by_specification_class_id(STANDARD_SPECIFICATION) || []
-    [a].flatten
+    []
   end
 end

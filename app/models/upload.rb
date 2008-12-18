@@ -11,9 +11,9 @@ class Upload < ActiveRecord::Base
   def transfer(session)
     print "#{id}..."
     if(remote_id)
-#      session.update(listing.to_yt, remote_id)
+      session.update(listing.to_yt, remote_id)
     else
-#     update_attribute(remote_id, session.create(listing.to_yt))
+      update_attribute(remote_id, session.create(listing.to_yt))
     end
     id
   end

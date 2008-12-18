@@ -8,6 +8,6 @@ class Location < ActiveRecord::Base
   def to_yt
     {:city=>city, :zip=>33315, :country=>country,
      :state=>state, :region=>"sample region"
-    }
+    }.delete_bad_values   
   end
 end

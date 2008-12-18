@@ -8,7 +8,7 @@ class Price < ActiveRecord::Base
   end
 
   def to_yt
-    {:value=>value.to_i, :units=>currency}
+    {:value=>value.to_i, :units=>currency}.delete_bad_values   
   end
 
 end

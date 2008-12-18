@@ -26,7 +26,7 @@ class Picture < ActiveRecord::Base
   end
 
   def to_yt
-    {:label=>description, :src=>open_full_picture}
+    {:label=>description, :src=>open_full_picture}.delete_bad_values   
   end
 
   def open_full_picture

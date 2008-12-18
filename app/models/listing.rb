@@ -17,11 +17,18 @@ class Listing < ActiveRecord::Base
   end
 
   def to_yt
-    YachtTransfer::Models::Listing.new({:yacht=>yacht.to_yt, :price=>current_price.to_yt, :broker=>"Dad",
-                                        :type=>(central?) ? "central" : "open", :status=>status, :co_op=>true,
-                                        :contact_info=>"sample_contact_info"})
+    h = {:yacht=>yacht.to_yt, :price=>current_price.to_yt, :broker=>"Dad",
+                 :type=>(central?) ? "central" : "open", :status=>status, :co_op=>true,
+                 :contact_info=>"sample_contact_info"}.delete_bad_values
+    YachtTransfer::Models::Listing.new(h)
   end
 
+end
 
+class Hash
+
+  def delete_bad_values
+    delete_if{ |k, v| v.nil? || (v.respond_to?(:empty) and v.empty?) }
+  end
 
 end

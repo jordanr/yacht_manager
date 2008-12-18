@@ -6,6 +6,6 @@ class Accommodation < ActiveRecord::Base
   end
 
   def to_yt
-    {:title=>title,:content=>content, :left=>left, :right=>right}
+    {:title=>title,:content=>content, :left=>left, :right=>right}.delete_bad_values   
   end
 end
