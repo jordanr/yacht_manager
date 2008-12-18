@@ -1,6 +1,8 @@
 require 'crypto'
 require 'digest/sha1'
 require 'base'
+require 'yacht_transfer/transferers/yacht_world_transferer'
+require 'yacht_transfer/transferers/yacht_council_transferer'
 class Account < ActiveRecord::Base
   belongs_to :multiple_listing_system
   belongs_to :user
@@ -20,6 +22,22 @@ class Account < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :password, :password_confirmation
+
+  def transfer
+    print "Checking account #{to_s}..."
+    session = case (multiple_listing_system.name)
+    when "Yacht World": YachtTransfer::Transferers::YachtWorldTransferer.new(login, decrypt_password)
+    when "Yacht Council": YachtTransfer::Transferers::YachtCouncilTransferer.new(login, decrypt_password)
+    else nil
+    end
+    ids = uploads.transfer_all(session)
+    puts "done"
+    ids
+  end
+
+  def self.transfer_all
+    all.collect { |a| { a.id => a.transfer } }
+  end
 
   def to_s
     login+"@"+multiple_listing_system.name
