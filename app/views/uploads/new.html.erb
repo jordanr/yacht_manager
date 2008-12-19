@@ -17,7 +17,7 @@
     <%= f.label :account %><br />
     <%= collection_select(:upload, :account_id, current_user.accounts.find(:all), :id, :to_s) %>
   </p>
-
+  
   <p>
     <%= f.submit "Create" %>
   </p>

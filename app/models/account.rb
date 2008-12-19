@@ -9,7 +9,6 @@ class Account < ActiveRecord::Base
   has_many :uploads, :dependent=>:destroy
   # Virtual attribute for the unencrypted password
   attr_accessor :password
-
   validates_presence_of     :login
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
@@ -18,18 +17,22 @@ class Account < ActiveRecord::Base
   validates_length_of       :login,    :within => 3..40
 #  validates_uniqueness_of   :login, :case_sensitive => false
   before_save :encrypt_password
+#  after_save :will_logon?
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :password, :password_confirmation
 
+  def session(site = multiple_listing_system.name, username = login, password = decrypt_password)
+    case (site)
+      when "Yacht World": YachtTransfer::Transferers::YachtWorldTransferer.new(username, password)
+      when "Yacht Council": YachtTransfer::Transferers::YachtCouncilTransferer.new(username, password)
+      else nil
+    end
+  end
+
   def transfer
     print "Checking account #{to_s}..."
-    session = case (multiple_listing_system.name)
-    when "Yacht World": YachtTransfer::Transferers::YachtWorldTransferer.new(login, decrypt_password)
-    when "Yacht Council": YachtTransfer::Transferers::YachtCouncilTransferer.new(login, decrypt_password)
-    else nil
-    end
     ids = uploads.transfer_all(session)
     puts "done"
     ids
@@ -108,8 +111,18 @@ class Account < ActiveRecord::Base
       decrypt(crypted_password)
     end
       
+    def will_logon?
+      begin
+        session.login
+      rescue
+        errors.add_to_base("Bad login and/or password.")
+        raise ActiveRecord::Rollback, "Call tech support!"
+	false
+      end
+    end
 
   protected
+
     # before filter 
     def encrypt_password
       return if password.blank?
@@ -120,4 +133,5 @@ class Account < ActiveRecord::Base
     def password_required?
       crypted_password.blank? || !password.blank?
     end
+
 end

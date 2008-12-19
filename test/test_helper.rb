@@ -38,3 +38,11 @@ class Test::Unit::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class Account
+  def will_logon?; true; end
+end
+
+class Upload
+  def remote_destroy; true; end
+end

@@ -21,6 +21,12 @@ class AccountsController < YachtManagerController
     end
   end
 
+  def decrypt
+    @account = current_user.accounts.find(params[:id])
+    render :text => @account.decrypt_password and return if(request.xhr?)
+    render :nothing and return
+  end
+
   # GET /accounts/new
   # GET /accounts/new.xml
   def new
@@ -42,7 +48,7 @@ class AccountsController < YachtManagerController
   def create
     @account = current_user.accounts.new(params[:account])
     respond_to do |format|
-      if @account.save 
+      if (Account.transaction { @account.save and @account.will_logon? })
         flash[:notice] = 'Account was successfully created.'
         format.html { redirect_to(@account) }
         format.xml  { render :xml => @account, :status => :created, :location => @account }
@@ -59,7 +65,7 @@ class AccountsController < YachtManagerController
     @account = current_user.accounts.find(params[:id])
     
     respond_to do |format|
-      if @account.update_attributes(params[:account])
+      if (Account.transaction { @account.update_attributes(params[:account]) and @account.will_logon? })
         flash[:notice] = 'Account was successfully updated.'
         format.html { redirect_to(@account) }
         format.xml  { head :ok }

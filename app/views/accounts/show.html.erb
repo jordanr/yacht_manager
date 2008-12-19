@@ -6,6 +6,11 @@
   <b>Login:</b>
   <%=h @account.login %>
 </p>
+<p>
+  <b>Password:</b>
+  <span id="password"><%= h(@account.crypted_password) %>
+  <%= link_to_remote "(decrypt)", :update=>"password", :url=>decrypt_url(:id=>@account.id) %></span>
+</p>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>

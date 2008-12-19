@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
+  map.decrypt 'accounts/:id/decrypt', :controller => 'accounts', :action => 'decrypt'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products

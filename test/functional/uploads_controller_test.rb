@@ -41,10 +41,11 @@ class UploadsControllerTest < ActionController::TestCase
   end
 
   def test_should_destroy_upload
+    l_id = uploads(:one).listing.id
     assert_difference('Upload.count', -1) do
       delete :destroy, :id => uploads(:one).id
     end
-
+    assert Listing.exists?(l_id)
     assert_redirected_to uploads_path
   end
 

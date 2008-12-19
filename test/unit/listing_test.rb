@@ -7,6 +7,6 @@ class ListingTest < ActiveSupport::TestCase
   end
 
   def test_to_yt
-    puts listings(:one).to_yt.inspect
+    assert listings(:one).to_yt
   end
 end
