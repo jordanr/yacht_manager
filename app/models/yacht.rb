@@ -15,7 +15,7 @@ class Yacht < ActiveRecord::Base
      :description=>specification.description,
      :rig=>"smaple_rig", :cockpit=>"sample_cockpit", 
      :flag=>"sample_flag",:number_of_staterooms=>4,
-     :new=>new?, :type=>specification.type, :year=>specification.year,
+     :new=>new?, :type=>specification.yacht_type, :year=>specification.year,
 
      :length=>measurement_to_yt(specification.length, specification.length_units),
      :lwl=>measurement_to_yt(specification.lwl, specification.length_units), 
