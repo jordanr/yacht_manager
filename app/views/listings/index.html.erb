@@ -2,23 +2,23 @@
 
 <table>
   <tr>
-    <th>Details</th>
-    <th>Photos</th>
+    <th></th>
+    <th></th>
     <th>Price</th>
-    <th>Yacht name</th>
-    <th>Yacht new</th>
-    <th>Yacht location</th>
-    <th>Yacht specification length</th>
-    <th>Yacht specification manufacturer</th>
-    <th>Yacht specification model</th>
-    <th>Yacht specification year</th>
-    <th>Yacht specification designer</th>
+    <th>Name</th>
+    <th>New?</th>
+    <th>Location</th>
+    <th>Length</th>
+    <th>Manufacturer</th>
+    <th>Model</th>
+    <th>Year</th>
+    <th>Designer</th>
   </tr>
 
 <% for listing in @listings %>
   <tr>
-    <td><%=h listing_details_path(listing) %></td>
-    <td><%=h listing_photos_path(listing) %></td>
+    <td><%= link_to 'Details', listing_details_path(listing) %></td>
+    <td><%= link_to 'Photos', listing_photos_path(listing) %></td>
     <td><%=h listing.price %></td>
     <td><%=h listing.yacht_name %></td>
     <td><%=h listing.yacht_new %></td>

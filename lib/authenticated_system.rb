@@ -3,7 +3,15 @@ module AuthenticatedSystem
     # Returns true or false if the user is logged in.
     # Preloads @current_user with the user model if they're logged in.
     def logged_in?
-      !!current_user
+      !!current_user 
+    end
+
+    def logged_in_and_active?
+      logged_in? && current_user.active? 
+    end
+
+    def active_login_required
+      logged_in_and_active? || access_denied
     end
 
     # Accesses the current user from the session. 

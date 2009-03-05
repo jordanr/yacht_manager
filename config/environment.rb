@@ -69,7 +69,7 @@ Rails::Initializer.run do |config|
 
 
   # First, specify the Host that we will be using later for user_notifier.rb
-  HOST = 'http://db240296.fb.joyent.us'
+  HOST = 'http://db240296.fb.joyent.us:3000'
  
   config.active_record.observers = :user_observer
 

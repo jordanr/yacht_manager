@@ -16,7 +16,7 @@ class PhotosController < YachtManagerController
     @photo = @listing.photos.new(params[:photo])
     respond_to do |format|
       if params[:Filedata]
-        @photo = @listing.photo.new(:swf_uploaded_data=>params[:Filedata])
+        @photo = @listing.photos.new(:swf_uploaded_data=>params[:Filedata])
         if @photo.save
 #          format.html { 
            render :partial =>"flash_response" and return

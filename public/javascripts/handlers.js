@@ -219,7 +219,7 @@ function AddPartial(partial) {
 	partial_and_src = partial.split("<!--~-->", 2);
 	partial = partial_and_src[0];
 	src = partial_and_src[1];
-	document.getElementById("picture_list").innerHTML += partial;
+	document.getElementById("photo_list").innerHTML += partial;
 	AddImage(src);
 }
 

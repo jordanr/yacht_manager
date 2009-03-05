@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+  before_filter :active_login_required, :only => [ :edit ]
 
   # render new.rhtml
   def new
   end
 
   def edit
-    @user = 
+    @user = current_user
+  end
 
   def create
     cookies.delete :auth_token
@@ -16,9 +18,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.save
     if @user.errors.empty?
-      self.current_user = @user
-      redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!"
+#      self.current_user = @user
+      redirect_to login_path
+      flash[:notice] = "Thanks for signing up!  Check your email to activate your account."
     else
       render :action => 'new'
     end

@@ -14,15 +14,15 @@
 <body>
 
 <p align="right">
-<%= link_to_if logged_in?, 'Home', root_path do
+<%= link_to_if logged_in? && current_user.active?, 'Home', root_path do
     end %>
-<%= link_to_if logged_in?, 'Settings', edit_user_path(current_user) do
+<%= link_to_if logged_in? && current_user.active?, 'Settings', edit_user_path(current_user) do
     end %>
-<%= link_to_if logged_in?, 'Logout >>', logout_path, :method => :delete do
+<%= link_to_if logged_in? && current_user.active?, 'Logout >>', logout_path, :method => :delete do
     end %>
 </p>
 <span style="background-color: pink">
-<%= link_to_if logged_in?, 'Listings', listings_path do 
+<%= link_to_if logged_in? && current_user.active?, 'Listings', listings_path do 
     end %>
 </span>
 

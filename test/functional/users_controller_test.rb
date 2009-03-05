@@ -56,8 +56,6 @@ class UsersControllerTest < Test::Unit::TestCase
     end
   end
   
-
-  
   def test_should_sign_up_user_with_activation_code
     create_user
     assigns(:user).reload
@@ -65,11 +63,10 @@ class UsersControllerTest < Test::Unit::TestCase
   end
 
   def test_should_activate_user
-    assert_nil User.authenticate('aaron', 'test')
-    get :activate, :activation_code => users(:aaron).activation_code
-    assert_redirected_to '/'
+    assert_nil User.authenticate('richard', 'test')
+    get :activate, :activation_code => users(:richard).activation_code
     assert_not_nil flash[:notice]
-    assert_equal users(:aaron), User.authenticate('aaron', 'test')
+    assert_equal users(:richard), User.authenticate('richard', 'test')
   end
   
   def test_should_not_activate_user_without_key
@@ -84,6 +81,11 @@ class UsersControllerTest < Test::Unit::TestCase
     assert_nil flash[:notice]
   rescue ActionController::RoutingError
     # well played, sir
+  end
+
+  def test_should_not_get_edit
+    get :edit, :id => 1
+    assert_response :redirect
   end
 
   protected
