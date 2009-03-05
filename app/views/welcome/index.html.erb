@@ -1,5 +1,14 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Welcome</h1>
 
-<p><%= current_user.login %></p>
+<% if logged_in? %>
+  <p><strong>You are logged in as <%=h current_user.login %></strong></p>
+  <p><%= link_to 'Logout', logout_path %></p>
+<% else %>
+  <p><strong>You are currently not logged in.</strong></p>
+  <p>
+    <%= link_to 'Login', login_path %> or
+    <%= link_to 'Sign Up', signup_path %>
+  </p>
+<% end %>
+
 

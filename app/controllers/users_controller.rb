@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def new
   end
 
+  def edit
+    @user = 
+
   def create
     cookies.delete :auth_token
     # protects against session fixation attacks, wreaks havoc with 
