@@ -5,8 +5,4 @@ class ListingTest < ActiveSupport::TestCase
   def test_truth
     assert true
   end
-
-  def test_to_yt
-    assert listings(:one).to_yt
-  end
 end
