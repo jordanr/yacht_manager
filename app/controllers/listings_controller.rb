@@ -1,9 +1,14 @@
 class ListingsController < YachtManagerController
+  before_filter :active_login_required, :only => [ :new, :create, :edit, :update, :destroy ]
 
   # GET /listings
   # GET /listings.xml
   def index
-    @listings = current_user.listings.find(:all)
+    if current_user
+      @listings = Listing.find_by_sql(["SELECT * FROM listings WHERE user_id = ?", current_user.id])
+    else
+      @listings = Listing.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +19,7 @@ class ListingsController < YachtManagerController
   # GET /listings/1
   # GET /listings/1.xml
   def show
-    @listing = current_user.listings.find(params[:id])
+    @listing = Listing.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
