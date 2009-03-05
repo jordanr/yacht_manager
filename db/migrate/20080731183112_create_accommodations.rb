@@ -1,14 +1,15 @@
-class CreateAccommodations < ActiveRecord::Migration
+class CreateDetails < ActiveRecord::Migration
   def self.up
-    create_table :accommodations do |t|
+    create_table :details do |t|
       t.string :title
       t.text :content
+      t.integer :listing_id
 
       t.timestamps
     end
   end
 
   def self.down
-    drop_table :accommodations
+    drop_table :details
   end
 end

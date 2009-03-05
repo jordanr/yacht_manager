@@ -1,0 +1,14 @@
+<div id="edit_detail_<%= edit.id %>">
+<% fields_for(edit, :index=> edit.id ) do |f| %>
+  <%= f.error_messages %>
+  <%= link_to_remote "Destroy", :url=>listing_detail_path(edit.listing, edit), :method=>:delete, :confirm=>"Are you sure?", :href=>listing_detail_path(edit.listing, edit), :success=>"$('detail_list').removeChild($('edit_detail_#{edit.id}'))" %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content, :size=>"80x5" %>
+  </p>
+<% end %>
+</div>

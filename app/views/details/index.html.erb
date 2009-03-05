@@ -1,0 +1,11 @@
+<h1>Listing details</h1>
+
+<% form_tag listing_detail_path(@listing, 0), :method=> :put do -%>
+  <div id="detail_list">
+    <%= render :partial=> "edit", :collection=>@details %>
+  </div>
+  <%= submit_tag "Update" %>
+<% end  -%>
+<%= link_to_remote 'New detail', :update=>"detail_list", :position=>:bottom, :url=> listing_details_path, :method=>:post %>
+
+

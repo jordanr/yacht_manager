@@ -1,0 +1,12 @@
+<h1>Listing photos</h1>
+
+<% form_tag listing_photo_path(@listing, 0), :method=> :put do -%>
+    <div id="picture_list">
+      <%= render :partial=> "edit", :collection=>@photos %>
+    </div>
+    <%= submit_tag "Update" %>
+<% end  -%>
+
+<div id="uploader" style="background-color:lavender">
+<%= render_partial 'new' %>
+</div>

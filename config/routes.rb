@@ -1,19 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :listings
-
-  map.resources :uploads
-
-  map.resources :accounts
-
-  map.resources :users
-
-  map.resource :session
-
-#  map.resources :prices
-#  map.resources :specifications
-#  map.resources :locations
-   map.resources :yachts, :has_many=>[:accommodations, :pictures]
-#  map.resources :multiple_listing_systems
+   map.resources :listings, :has_many=>[:details, :photos]
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -24,7 +10,6 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
-  map.decrypt 'accounts/:id/decrypt', :controller => 'accounts', :action => 'decrypt'
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   map.resources :products
