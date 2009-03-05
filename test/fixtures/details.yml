@@ -3,7 +3,10 @@
 one:
   title: MyString
   content: MyString
+  listing_id: 1
 
 two:
   title: MyString
   content: MyString
+  listing_id: 2
+

@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
   # Be sure to include AuthenticationSystem in Application Controller instead
+  include AuthenticatedSystem
+
   helper :all # include all helpers, all the time
   layout 'yacht_manager'
 

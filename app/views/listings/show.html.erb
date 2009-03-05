@@ -1,0 +1,48 @@
+<p>
+  <b>Price:</b>
+  <%=h @listing.price %>
+</p>
+
+<p>
+  <b>Yacht name:</b>
+  <%=h @listing.yacht_name %>
+</p>
+
+<p>
+  <b>Yacht new:</b>
+  <%=h @listing.yacht_new %>
+</p>
+
+<p>
+  <b>Yacht location:</b>
+  <%=h @listing.yacht_location %>
+</p>
+
+<p>
+  <b>Yacht specification length:</b>
+  <%=h @listing.yacht_specification_length %>
+</p>
+
+<p>
+  <b>Yacht specification manufacturer:</b>
+  <%=h @listing.yacht_specification_manufacturer %>
+</p>
+
+<p>
+  <b>Yacht specification model:</b>
+  <%=h @listing.yacht_specification_model %>
+</p>
+
+<p>
+  <b>Yacht specification year:</b>
+  <%=h @listing.yacht_specification_year %>
+</p>
+
+<p>
+  <b>Yacht specification designer:</b>
+  <%=h @listing.yacht_specification_designer %>
+</p>
+
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>

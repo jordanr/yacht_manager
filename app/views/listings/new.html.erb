@@ -1,0 +1,47 @@
+<h1>New listing</h1>
+
+<% form_for(@listing) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :yacht_name %><br />
+    <%= f.text_field :yacht_name %>
+  </p>
+  <p>
+    <%= f.label :yacht_new %><br />
+    <%= f.check_box :yacht_new %>
+  </p>
+  <p>
+    <%= f.label :yacht_location %><br />
+    <%= f.text_field :yacht_location %>
+  </p>
+  <p>
+    <%= f.label :yacht_specification_length %><br />
+    <%= f.text_field :yacht_specification_length %>
+  </p>
+  <p>
+    <%= f.label :yacht_specification_manufacturer %><br />
+    <%= f.text_field :yacht_specification_manufacturer %>
+  </p>
+  <p>
+    <%= f.label :yacht_specification_model %><br />
+    <%= f.text_field :yacht_specification_model %>
+  </p>
+  <p>
+    <%= f.label :yacht_specification_year %><br />
+    <%= f.text_field :yacht_specification_year %>
+  </p>
+  <p>
+    <%= f.label :yacht_specification_designer %><br />
+    <%= f.text_field :yacht_specification_designer %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', listings_path %>

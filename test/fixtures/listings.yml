@@ -2,14 +2,27 @@
 
  one:
    id: 1
-   central: true
    user_id: 2
-   yacht_id: 1
-   status_id: 1
+   price: 1
+   yacht_name: Hione
+   yacht_new: true
+   yacht_location: one
+   yacht_specification_length: 1
+   yacht_specification_manufacturer: Hylas
+   yacht_specification_model: One
+   yacht_specification_year: 2001
+   yacht_specification_designer: meone
 
  two:
    id: 2
-   central: false
    user_id: 2
-   yacht_id: 1
-   status_id: 1
+   price: 2
+   yacht_name: Hitwo
+   yacht_new: false
+   yacht_location: two
+   yacht_specification_length: 2
+   yacht_specification_manufacturer: Hunter
+   yacht_specification_model: Two
+   yacht_specification_year: 2002
+   yacht_specification_designer: metoo
+

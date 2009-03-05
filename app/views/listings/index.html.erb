@@ -1,0 +1,40 @@
+<h1>Listing listings</h1>
+
+<table>
+  <tr>
+    <th>Details</th>
+    <th>Photos</th>
+    <th>Price</th>
+    <th>Yacht name</th>
+    <th>Yacht new</th>
+    <th>Yacht location</th>
+    <th>Yacht specification length</th>
+    <th>Yacht specification manufacturer</th>
+    <th>Yacht specification model</th>
+    <th>Yacht specification year</th>
+    <th>Yacht specification designer</th>
+  </tr>
+
+<% for listing in @listings %>
+  <tr>
+    <td><%=h listing_details_path(listing) %></td>
+    <td><%=h listing_photos_path(listing) %></td>
+    <td><%=h listing.price %></td>
+    <td><%=h listing.yacht_name %></td>
+    <td><%=h listing.yacht_new %></td>
+    <td><%=h listing.yacht_location %></td>
+    <td><%=h listing.yacht_specification_length %></td>
+    <td><%=h listing.yacht_specification_manufacturer %></td>
+    <td><%=h listing.yacht_specification_model %></td>
+    <td><%=h listing.yacht_specification_year %></td>
+    <td><%=h listing.yacht_specification_designer %></td>
+    <td><%= link_to 'Show', listing %></td>
+    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+    <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New listing', new_listing_path %>
