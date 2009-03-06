@@ -1,0 +1,13 @@
+<% @photos.each do |p| %>
+  <span> <%= link_to image_tag(p.small_url), p.url %> </span>
+<% end %>  
+
+<% @details.each do |d|%>
+  <p>
+    <b><%= h d.title %>:</b><br/>
+    <%=h d.content %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Back', classifieds_path %>

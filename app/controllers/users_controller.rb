@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < YachtManagerController
   before_filter :active_login_required, :only => [ :edit ]
 
   # render new.rhtml

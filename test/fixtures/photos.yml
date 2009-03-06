@@ -1,6 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  small_url: 23dsd
+  url: h32
   listing_id: 1
   content_type: MyString
   filename: MyString
@@ -11,6 +13,8 @@ one:
   height: 1
 
 two:
+  small_url: 23dsd
+  url: h32
   listing_id: 2
   content_type: MyString
   filename: MyString

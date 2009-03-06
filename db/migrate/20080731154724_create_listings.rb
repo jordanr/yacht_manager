@@ -2,6 +2,7 @@ class CreateListings < ActiveRecord::Migration
   def self.up
     create_table :listings do |t|
       t.integer :user_id
+      t.string :contact
       t.integer :price
       t.string :yacht_name
       t.boolean :yacht_new

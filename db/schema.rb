@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20090305162818) do
 
   create_table "listings", :force => true do |t|
     t.integer  "user_id"
+    t.string   "contact"
     t.integer  "price"
     t.string   "yacht_name"
     t.boolean  "yacht_new"
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20090305162818) do
 
   create_table "photos", :force => true do |t|
     t.integer  "listing_id"
+    t.string   "url"
+    t.string   "small_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "content_type"

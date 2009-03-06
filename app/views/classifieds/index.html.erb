@@ -1,8 +1,7 @@
-<h1>Listing listings</h1>
+<h1>Listing classifieds</h1>
 
 <table>
   <tr>
-    <th></th>
     <th></th>
     <th>Contact</th>
     <th>Price</th>
@@ -16,10 +15,9 @@
     <th>Designer</th>
   </tr>
 
-<% for listing in @listings %>
+<% for listing in @classifieds %>
   <tr>
-    <td><%= link_to 'Details', listing_details_path(listing) %></td>
-    <td><%= link_to 'Photos', listing_photos_path(listing) %></td>
+    <td><%= link_to 'More Information', classified_path(listing) %></td>
     <td><%=h listing.contact %></td>
     <td><%=h listing.price %></td>
     <td><%=h listing.yacht_name %></td>
@@ -30,13 +28,6 @@
     <td><%=h listing.yacht_specification_model %></td>
     <td><%=h listing.yacht_specification_year %></td>
     <td><%=h listing.yacht_specification_designer %></td>
-    <td><%= link_to 'Show', listing %></td>
-    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-    <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New listing', new_listing_path %>

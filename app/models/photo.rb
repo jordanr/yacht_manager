@@ -2,6 +2,8 @@ require 'mime/types'
 class Photo < ActiveRecord::Base
   belongs_to :listing
 
+  after_create :add_urls
+
   has_attachment :content_type => :image, 
                  :storage => :file_system,
 		 :size=> 1..10.megabyte,
@@ -20,4 +22,9 @@ class Photo < ActiveRecord::Base
     data.content_type = MIME::Types.type_for(data.original_filename)
     self.uploaded_data = data
   end
+
+  def add_urls
+    self.update_attributes({:url=>"#{HOST}#{public_filename}", :small_url => "#{HOST}#{public_filename(:thumb)}"})
+  end
+ 
 end
