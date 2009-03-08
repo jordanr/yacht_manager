@@ -1,3 +1,13 @@
+<div id="left_content">
+  <%= image_tag "jordan_logo.jpg" %>
+<p>
+  Jordan Yacht and Ship's Manager helps you advertise your yacht for free.
+  Enter information and add photos to post your listing in our
+  classifieds section.  Sign up now for free advertising!
+</p>
+</div>
+
+<div id="right_content">
 <% form_tag session_path do -%>
 <p><label for="login">Login</label><br/>
 <%= text_field_tag 'login' %></p>
@@ -13,4 +23,5 @@
 <p><%= submit_tag 'Log in' %></p>
 <% end -%>
 <p><%= link_to 'Signup >>', signup_path %></p>
+</div>
 

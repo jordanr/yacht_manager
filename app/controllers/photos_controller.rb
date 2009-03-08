@@ -1,7 +1,7 @@
 class PhotosController < YachtManagerController
   session :cookie_only => false, :only => :create
 
-  before_filter :active_login_required, :only => [ :create, :update, :destroy ]
+  before_filter :active_login_required
   before_filter :get_listing
 
   def index

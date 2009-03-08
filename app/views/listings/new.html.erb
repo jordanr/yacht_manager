@@ -1,18 +1,19 @@
+<div style="text-align: left">
 <h1>New listing</h1>
-
+</div>
 <% form_for(@listing) do |f| %>
   <%= f.error_messages %>
-
+  <div id="left_content">
   <p>
-    <%= f.label :contact %><br />
+    <%= f.label :contact, "Contact Information (name, phone number, email)" %><br />
     <%= f.text_field :contact %>
   </p>
   <p>
-    <%= f.label :price %><br />
+    <%= f.label :price, "Price (dollars)" %><br />
     <%= f.text_field :price %>
   </p>
   <p>
-    <%= f.label :yacht_name, 'Name' %><br />
+    <%= f.label :yacht_name, 'Yacht Name' %><br />
     <%= f.text_field :yacht_name %>
   </p>
   <p>
@@ -23,6 +24,9 @@
     <%= f.label :yacht_location, 'Location (city, state, country)' %><br />
     <%= f.text_field :yacht_location %>
   </p>
+  </div>
+
+  <div id="right_content">
   <p>
     <%= f.label :yacht_specification_length, 'Length (feet)' %><br />
     <%= f.text_field :yacht_specification_length %>
@@ -43,10 +47,16 @@
     <%= f.label :yacht_specification_designer, 'Designer' %><br />
     <%= f.text_field :yacht_specification_designer %>
   </p>
-
+  </div>
+ 
+  <div style="text-align: left; clear: both;">
   <p>
     <%= f.submit "Create" %>
   </p>
+  </div>
 <% end %>
 
+<div style="text-align: left; clear: both;">
 <%= link_to 'Back', listings_path %>
+</div>
+

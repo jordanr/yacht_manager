@@ -1,0 +1,192 @@
+/***********
+ * GLOBALS
+ ***********/
+
+body {
+	margin: 0 auto;
+	text-align: center;
+	width: 1100px;
+	padding:10px;
+}
+
+/************
+ * HEAD PICTURE
+ ************/
+
+#head {
+	text-align: left;
+	margin: 0 auto;
+	height: 200px;
+	width: 1100px;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+#imposedtext {
+    margin-left: 10px;
+    text-align: left;
+    position: absolute;
+    bottom: 40px;
+    font-size: 24pt;
+    font-weight: bold;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+}
+
+/************
+ * HEAD NAV
+ ************/
+
+#nav {
+    width: 1100px;
+    position: absolute;
+    bottom: 0px;
+    background-color: #000040; 
+}
+
+#tabmenu {
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+#tabmenu li {
+	display: inline;
+	overflow: hidden;
+	list-style-type: none; 
+}
+
+#tabmenu a {
+	padding-left: 10px;
+	padding-right: 10px;
+        font-size: 14pt;
+        color: white;
+        font-family: Georgia, "Times New Roman", Times, serif;
+	text-decoration: none; 
+}
+
+#tabmenu a#active {
+	color: white;
+	background-color: #000160;
+}
+
+#tabmenu a:hover {
+	color: white;
+	background-color: #000160
+}
+
+#tabmenu a:visited {
+	color: white;
+}
+
+#tabmenu a#active:hover {
+	color: white;
+}
+
+#tabmenu li {
+	float:left;
+}
+
+#tabmenu li.rightmost {
+	float: right;
+}
+
+/************
+ * CONTENT
+ ************/
+
+#content {
+        font-family: Georgia, "Times New Roman", Times, serif;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 1100px;
+	height: auto;
+	overflow: hidden;
+}
+
+#content div {
+
+}
+
+#image_content A IMG {
+    clear: both;
+    border: 0;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+A IMG {
+    border: 0;
+}
+
+#left_content {
+    float: left;
+    
+    padding-left: 10px;
+    padding-right: 0px;
+ 
+    width: 520px;
+    text-align: left;
+    padding-top: 10px;
+}
+
+#right_content {
+    float: right;
+    
+    width: 520px;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 1px solid rgb(153, 153, 153);
+    
+}
+
+#main_content {
+    width: 1100px;
+    text-align: left;
+    padding-top: 10px;
+    
+
+}
+
+/*********
+ * AJAX
+ *********/
+
+IMG.spinner {
+    margin: 0 auto;
+    text-align: center;
+}
+
+DIV#ajax_success {
+    color: black;
+}
+DIV#ajax_error {
+    color: red;
+}
+
+/************
+ * FOOT
+ ************/
+DIV#foot {
+	width: 1100px;
+   	z-index: 1;
+	clear: both;
+	text-align: center;
+	width: 1100px;
+	padding-top:5px;
+	margin-bottom: 10px;
+	height: 41px;
+	font-size: 18px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: black;
+}
+
+DIV#timestamp {
+	text-align: right; 
+	font-size: 8pt;
+}

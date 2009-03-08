@@ -1,7 +1,7 @@
 class DetailsController < YachtManagerController
 
   before_filter :get_listing
-  before_filter :active_login_required, :only => [ :create, :update, :destroy ]
+  before_filter :active_login_required
 
   def index
     @details = @listing.details

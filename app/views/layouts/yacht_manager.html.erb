@@ -7,12 +7,12 @@
   <title>Yacht Manager</title>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'swfupload' %>
+  <%= stylesheet_link_tag 'mystyle' %>
   <%= javascript_include_tag 'prototype' %>
   <%= javascript_include_tag 'swfupload' %>
   <%= javascript_include_tag 'handlers' %>
 </head>
 <body>
-
 <p align="right">
 <%= link_to_if logged_in? && current_user.active?, 'Home', root_path do
     end %>
@@ -21,7 +21,7 @@
 <%= link_to_if logged_in? && current_user.active?, 'Logout >>', logout_path, :method => :delete do
     end %>
 </p>
-<span style="background-color: pink">
+<span style="float: left; background-color: pink">
 <%= link_to_if logged_in? && current_user.active?, 'Listings', listings_path do 
     end %>
 </span>
@@ -29,7 +29,7 @@
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
 
-<%= yield  %>
+<div style="clear: both;"><%= yield  %></div>
 
 </body>
 </html>
