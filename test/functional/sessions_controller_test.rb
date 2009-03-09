@@ -74,6 +74,12 @@ class SessionsControllerTest < Test::Unit::TestCase
     assert !@controller.send(:logged_in?)
   end
 
+  def test_should_not_get_signin_when_logged_in
+    login_as :aaron
+    get :new, :id => users(:aaron).id
+    assert_response :redirect
+  end  
+
   protected
     def auth_token(token)
       CGI::Cookie.new('name' => 'auth_token', 'value' => token)

@@ -13,6 +13,10 @@ class PhotosController < YachtManagerController
     end
   end
 
+  def show
+    @photo = @listing.photos.find(params[:id])
+  end
+
   def create
     @photo = @listing.photos.new(params[:photo])
     respond_to do |format|

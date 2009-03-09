@@ -1,13 +1,28 @@
+<div id="main_content">
 <% @photos.each do |p| %>
   <span> <%= link_to image_tag(p.small_url), p.url %> </span>
 <% end %>  
 
-<% @details.each do |d|%>
+<div id="left_content">
+<% @details.each_with_index do |d, i| %>
+  <% if (i % 2).zero? %>
   <p>
     <b><%= h d.title %>:</b><br/>
     <%=h d.content %>
   </p>
+  <% end %>
 <% end %>
-
+</div>
+<div id="right_content">
+<% @details.each_with_index do |d, i| %>
+  <% if not (i % 2).zero? %>
+  <p>
+    <b><%= h d.title %>:</b><br/>
+    <%=h d.content %>
+  </p>
+  <% end %>
+<% end %>
+</div>
 
 <%= link_to 'Back', classifieds_path %>
+</div>

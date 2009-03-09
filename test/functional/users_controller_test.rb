@@ -88,6 +88,12 @@ class UsersControllerTest < Test::Unit::TestCase
     assert_response :redirect
   end
 
+  def test_should_not_get_signup_when_logged_in
+    login_as :aaron
+    get :new, :id => users(:aaron).id
+    assert_response :redirect
+  end
+
   protected
     def create_user(options = {})
       post :create, :user => { :login => 'quire', :email => 'quire@example.com',

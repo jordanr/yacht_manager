@@ -1,9 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  listing_id: 1
   small_url: 23dsd
   url: h32
-  listing_id: 1
   content_type: MyString
   filename: MyString
   parent_id: 1
