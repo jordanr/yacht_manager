@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
 #    photo.errors.add_to_base("too many photos: a listing can only have #{max}") if photo.listing_id and photo.listing.photos.size >= max
 #  end
 
-  after_create :add_urls
+  before_create :add_urls
 
   has_attachment :content_type => :image, 
                  :storage => :file_system,
@@ -29,7 +29,8 @@ class Photo < ActiveRecord::Base
   end
 
   def add_urls
-    self.update_attributes({:url=>"#{HOST}#{public_filename}", :small_url => "#{HOST}#{public_filename(:thumb)}"})
+    self.url= "#{HOST}#{public_filename}"
+    self.small_url = "#{HOST}#{public_filename(:thumb)}"
   end
  
 end
