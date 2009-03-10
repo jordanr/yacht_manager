@@ -5,7 +5,7 @@ class ClassifiedsControllerTest < ActionController::TestCase
   def test_gets_all
     get :index
     assert_response :success
-    assert assigns(:classifieds)
+    assert assigns(:classifieds).size == 1
   end
 
   def test_gets_show

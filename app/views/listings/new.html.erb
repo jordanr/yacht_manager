@@ -5,6 +5,9 @@
   <%= f.error_messages %>
   <div id="left_content">
   <p>
+    <%= f.label :active, 'Publish?' %><%= f.check_box :active %>
+  </p>
+  <p>
     <%= f.label :contact, "Contact Information (name, phone number, email)" %><br />
     <%= f.text_field :contact %>
   </p>
@@ -15,10 +18,6 @@
   <p>
     <%= f.label :yacht_name, 'Yacht Name' %><br />
     <%= f.text_field :yacht_name %>
-  </p>
-  <p>
-    <%= f.label :yacht_new, 'New?' %><br />
-    <%= f.check_box :yacht_new %>
   </p>
   <p>
     <%= f.label :yacht_location, 'Location (city, state, country)' %><br />
@@ -42,10 +41,6 @@
   <p>
     <%= f.label :yacht_specification_year, 'Year' %><br />
     <%= f.text_field :yacht_specification_year %>
-  </p>
-  <p>
-    <%= f.label :yacht_specification_designer, 'Designer' %><br />
-    <%= f.text_field :yacht_specification_designer %>
   </p>
   </div>
  
