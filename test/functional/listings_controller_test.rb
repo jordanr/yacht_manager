@@ -48,11 +48,22 @@ class ListingsControllerTest < ActionController::TestCase
     assert_redirected_to listings_path
   end
 
+  def test_should_create_listing
+    assert_difference('Listing.count') do
+      create_listing_blank
+    end
+
+    assert_redirected_to listing_path(assigns(:listing))
+  end
+
   private
     def create_listing
       post :create, valid_options
     end
+    def create_listing_blank
+      post :create
+    end
     def valid_options
-      {}
+      {:listing=>{:price=>4444, :yacht_specification_year=>2000, :yacht_specification_length=>33}}
     end
 end
