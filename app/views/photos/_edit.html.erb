@@ -1,7 +1,10 @@
 <div id="edit_photo_<%= edit.id %>">
 <% fields_for(edit, :index=> edit.id ) do |f| %>
+  <div style="float: left">
   <%= f.error_messages %>
-  <span style="float:left">
+  </div>
+
+  <span style="float: left">
   <table><tr>
     <td><%= content_tag(:a, image_tag(edit.public_filename(:thumb)), :href=>listing_photo_path(edit.listing.id, edit.id)) %></td>
     <td><%= link_to_remote "Destroy", :url=>listing_photo_path(edit.listing.id, edit.id), :method=>:delete, :confirm=>"Are you sure?", :href=>listing_photo_path(edit.listing.id, edit.id), :success=>"$('photo_list').removeChild($('edit_photo_#{edit.id}'))" %></td>

@@ -1,12 +1,12 @@
 class ClassifiedsController < ApplicationController
 
   def index
-    @classifieds = Listing.all
+    @classifieds = Classified.paginate :page => params[:page]
   end
 
   def show
     @classified = Listing.find(params[:id])
-    @details = @classified.details || []
+    @details = Detail.paginate_by_listing_id(@classified.id, :page=>params[:page], :per_page=>4) || []
     @photos = @classified.photos || []
   end
 

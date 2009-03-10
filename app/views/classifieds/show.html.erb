@@ -2,6 +2,7 @@
 <% @photos.each do |p| %>
   <span> <%= link_to image_tag(p.small_url), p.url %> </span>
 <% end %>  
+</div>
 
 <div id="left_content">
 <% @details.each_with_index do |d, i| %>
@@ -24,5 +25,8 @@
 <% end %>
 </div>
 
+<div style="text-align: left; clear: both">
+<%= will_paginate @details %>
+<br/>
 <%= link_to 'Back', classifieds_path %>
 </div>
