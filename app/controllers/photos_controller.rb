@@ -4,8 +4,16 @@ class PhotosController < YachtManagerController
   before_filter :active_login_required
   before_filter :get_listing
 
+  # ajax callback by scriptaculous sorter
+  def order
+    params[:photo_list].each_with_index { |id, order|
+      Photo.find(id).update_attribute(:order, order)
+    }
+    render :text => :nothing
+  end
+
   def index
-    @photos = @listing.photos
+    @photos = Photo.find_by_sql(["SELECT * FROM photos WHERE listing_id = ? ORDER BY photos.order ASC", @listing.id])
 
     respond_to do |format|
       format.html # index.html.erb

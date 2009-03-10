@@ -8,6 +8,7 @@ class Photo < ActiveRecord::Base
 #  end
 
   before_create :add_urls
+  after_create :add_order
 
   has_attachment :content_type => :image, 
                  :storage => :file_system,
@@ -28,9 +29,13 @@ class Photo < ActiveRecord::Base
     self.uploaded_data = data
   end
 
-  def add_urls
-    self.url= "#{HOST}#{public_filename}"
-    self.small_url = "#{HOST}#{public_filename(:thumb)}"
-  end
- 
+  private
+    def add_urls
+      self.url= "#{HOST}#{public_filename}"
+      self.small_url = "#{HOST}#{public_filename(:thumb)}"
+    end
+  
+    def add_order
+      update_attribute(:order, id)
+    end
 end

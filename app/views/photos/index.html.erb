@@ -2,12 +2,15 @@
 <h1>Listing photos</h1>
 
 <% form_tag listing_photo_path(@listing, 0), :method=> :put do -%>
-    <div id="photo_list">
+    <ul id="photo_list">
       <%= render :partial=> "edit", :collection=>@photos %>
-    </div>
+    </ul>
 <% end  -%>
+</div>
 
 <div id="uploader" style="clear: both; background-color:lavender">
 <%= render_partial 'new' %>
 </div>
-</div>
+
+<%= sortable_element :photo_list, :url => { :action => 'order', :listing_id=>@listing.id } %>
+

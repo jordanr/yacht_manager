@@ -56,3 +56,10 @@ a:hover { color: #fff; background-color:#000; }
 .spacer {
   padding: 10px;
 }
+
+#detail_list li:hover {
+  background-color: #FFEFD5;
+}
+#photo_list li:hover {
+  background-color: #FFEFD5;
+}

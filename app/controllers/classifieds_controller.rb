@@ -6,8 +6,9 @@ class ClassifiedsController < ApplicationController
 
   def show
     @classified = Listing.find(params[:id])
-    @details = Detail.paginate_by_listing_id(@classified.id, :page=>params[:page], :per_page=>4) || []
-    @photos = @classified.photos || []
+
+    @details = Detail.paginate_by_listing_id(@classified.id, :page=>params[:page], :per_page=>4, :order=>'details.order ASC') || []
+    @photos = Photo.find_by_sql(["SELECT * FROM photos WHERE listing_id = ? ORDER BY photos.order ASC", @classified.id]) || []
   end
 
 end
