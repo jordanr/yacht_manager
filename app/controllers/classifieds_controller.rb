@@ -1,7 +1,7 @@
 class ClassifiedsController < ApplicationController
 
   def index
-    @classifieds = Classified.paginate_by_active(true, :page => params[:page])
+    @classifieds = Classified.paginate_by_active(true, :page => params[:page], :order=>'yacht_specification_length DESC')
   end
 
   def show

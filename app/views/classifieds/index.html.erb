@@ -3,6 +3,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th></th>
     <th>Length</th>
@@ -18,6 +19,7 @@
 
 <% for listing in @classifieds %>
   <tr>
+    <td><%= image_tag listing.main_photo %></td>
     <td><%= link_to "<i>#{listing.yacht_name}</i>", classified_path(listing) %></td>
     <td class="spacer"></td>
     <td><%=h listing.yacht_specification_length %>'</td>
