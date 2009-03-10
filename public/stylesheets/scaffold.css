@@ -23,6 +23,7 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #errorExplanation {
+  text-align: left;
   width: 400px;
   border: 2px solid red;
   padding: 7px;
