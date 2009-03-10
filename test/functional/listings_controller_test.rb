@@ -53,6 +53,6 @@ class ListingsControllerTest < ActionController::TestCase
       post :create, valid_options
     end
     def valid_options
-      {}
+      {:listing=>{:price=>4444, :yacht_specification_year=>2000, :yacht_specification_length=>33}}
     end
 end
