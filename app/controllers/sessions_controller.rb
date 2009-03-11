@@ -16,6 +16,7 @@ class SessionsController < YachtManagerController
       flash[:notice] = "Logged in successfully"
     else
       render :action => 'new'
+      flash[:error] = "Login failed"
     end
   end
 

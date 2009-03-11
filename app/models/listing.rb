@@ -1,4 +1,8 @@
+require 'action_view/helpers/number_helper'
+
 class Listing < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
+
   has_many :details
   has_many :photos
 
@@ -8,7 +12,7 @@ class Listing < ActiveRecord::Base
   after_save :add_defaults
 
   def formated_price
-    price.nil? ? "-" : "$#{price}"
+    price.nil? ? "-" : "$#{number_with_delimiter(price)}"
   end
 
   def formated_length

@@ -13,21 +13,20 @@
   <%= javascript_include_tag 'handlers' %>
 </head>
 <body>
+<div id="head" style="background-image: url('/images/menubar.gif');">
+<div id="imposedtext">yacht manager</div>
+</div>
 <p align="right">
-<%= link_to_if logged_in? && current_user.active?, 'Home', root_path do
-    end %>
-<%= link_to_if logged_in? && current_user.active?, 'Settings', edit_user_path(current_user) do
-    end %>
-<%= link_to_if logged_in? && current_user.active?, 'Logout >>', logout_path, :method => :delete do
-    end %>
+<%= link_to 'Home', root_path %>
+<%= link_to 'Settings', edit_user_path(current_user) %>
+<%= link_to 'Logout >>', logout_path, :method => :delete %>
 </p>
-<span style="float: left; background-color: pink">
-<%= link_to_if logged_in? && current_user.active?, 'Listings', listings_path do 
-    end %>
-</span>
+
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
+
+<span style="text-align: left"><%= link_to 'Listings', listings_path %></span>
 
 <div style="clear: both;"><%= yield  %></div>
 

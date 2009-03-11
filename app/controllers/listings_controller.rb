@@ -5,33 +5,18 @@ class ListingsController < YachtManagerController
   # GET /listings.xml
   def index
     @listings = current_user.listings
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @listings }
-    end
   end
 
   # GET /listings/1
   # GET /listings/1.xml
   def show
     @listing = current_user.listings.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @listing }
-    end
   end
 
   # GET /listings/new
   # GET /listings/new.xml
   def new
     @listing = current_user.listings.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @listing }
-    end
   end
 
   # GET /listings/1/edit
@@ -44,15 +29,11 @@ class ListingsController < YachtManagerController
   def create
     @listing = current_user.listings.new(params[:listing])
 
-    respond_to do |format|
-      if @listing.save
-        flash[:notice] = 'Listing was successfully created.'
-        format.html { redirect_to(@listing) }
-        format.xml  { render :xml => @listing, :status => :created, :location => @listing }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @listing.errors, :status => :unprocessable_entity }
-      end
+    if @listing.save
+      flash[:notice] = 'Listing was successfully created.'
+      redirect_to(@listing)
+    else
+      render :action => "new"
     end
   end
 
@@ -60,15 +41,11 @@ class ListingsController < YachtManagerController
   # PUT /listings/1.xml
   def update
     @listing = current_user.listings.find(params[:id])
-    respond_to do |format|
-      if @listing.update_attributes(params[:listing])
-        flash[:notice] = 'Listing was successfully updated.'
-        format.html { redirect_to(@listing) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @listing.errors, :status => :unprocessable_entity }
-      end
+    if @listing.update_attributes(params[:listing])
+      flash[:notice] = 'Listing was successfully updated.'
+      redirect_to(@listing)
+    else
+      render :action => "edit"
     end
   end
 
@@ -77,10 +54,6 @@ class ListingsController < YachtManagerController
   def destroy
     @listing = current_user.listings.find(params[:id])
     @listing.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(listings_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(listings_url)
   end
 end
