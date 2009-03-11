@@ -1,5 +1,6 @@
-<div id='main_content'>
-<h1>Listing listings</h1>
+<div id="main_content">
+<h1>my listings</h1>
+</div>
 
 <table>
   <tr>
@@ -25,7 +26,7 @@
     <td><%= link_to 'Photos', listing_photos_path(listing) %></td>
     <td><%=h listing.active %></td>
     <td class="spacer"></td>
-    <td><%=h listing.yacht_specification_length %></td>
+    <td><%=h listing.formated_length %></td>
     <td><%=h listing.yacht_specification_manufacturer %></td>
     <td><%=h listing.yacht_specification_model %></td>
     <td><%=h listing.yacht_specification_year %></td>
@@ -34,8 +35,8 @@
     <td><%=h listing.yacht_location %></td>
     <td class="spacer"></td>
     <td><%=h listing.contact %></td>
-    <td><%=h listing.price %></td>
-    <td><%= link_to 'Show', classified_path(listing) %></td>
+    <td><%=h listing.formated_price %></td>
+    <td><%= link_to 'Show', listing_path(listing) %></td>
     <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
     <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
@@ -44,5 +45,6 @@
 
 <br />
 
+<div id="main_content">
 <%= link_to 'New listing', new_listing_path %>
 </div>

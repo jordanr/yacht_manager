@@ -1,6 +1,3 @@
-<div id="main_content">
-<h1>Yacht Classifieds</h1>
-
 <table>
   <tr>
     <th></th>
@@ -19,10 +16,10 @@
 
 <% for listing in @classifieds %>
   <tr>
-    <td><%= image_tag listing.main_photo %></td>
+    <td><%= image_tag(listing.main_photo) %></td>
     <td><%= link_to "<i>#{listing.yacht_name}</i>", classified_path(listing) %></td>
     <td class="spacer"></td>
-    <td><%=h listing.yacht_specification_length %>'</td>
+    <td><%=h listing.formated_length %></td>
     <td><%=h listing.yacht_specification_manufacturer %></td>
     <td><%=h listing.yacht_specification_model %></td>
     <td><%=h listing.yacht_specification_year %></td>
@@ -30,10 +27,9 @@
     <td><%=h listing.yacht_location %></td>
     <td class="spacer"></td>
     <td><%=h listing.contact %></td>
-    <td>$<%=h listing.price %></td>
+    <td><%=h listing.formated_price %></td>
   </tr>
 <% end %>
 </table>
 
 <%= will_paginate @classifieds %>
-</div>

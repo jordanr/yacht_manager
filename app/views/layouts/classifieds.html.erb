@@ -10,10 +10,8 @@
   <%= javascript_include_tag 'prototype' %>
 </head>
 <body>
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: red"><%= flash[:error] %></p>
 
-<div style="clear: both;"><%= yield  %></div>
+<%= yield  %>
 
 </body>
 </html>
