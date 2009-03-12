@@ -13,6 +13,7 @@ class PhotosController < YachtManagerController
   end
 
   def index
+    flash[:notice] = "Drag and drop to sort photos."   
     @photos = Photo.find_by_sql(["SELECT * FROM photos WHERE listing_id = ? ORDER BY photos.order ASC", @listing.id])
   end
 

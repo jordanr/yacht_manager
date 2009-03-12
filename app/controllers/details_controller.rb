@@ -12,6 +12,7 @@ class DetailsController < YachtManagerController
   end 
 
   def index
+    flash[:notice] = "Drag and drop to sort details."
     @details = Detail.find_by_sql(["SELECT * FROM details WHERE listing_id = ? ORDER BY details.order ASC", @listing.id])
   end
 
