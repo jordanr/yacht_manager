@@ -1,8 +1,8 @@
 <div id="main_content">
 <% form_tag listing_photo_path(@listing, 0), :method=> :put do -%>
-    <ul id="photo_list">
+    <ol id="photo_list">
       <%= render :partial=> "edit", :collection=>@photos %>
-    </ul>
+    </ol>
 <% end  -%>
 </div>
 
