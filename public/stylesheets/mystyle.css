@@ -6,6 +6,7 @@ body {
 	margin: 0 auto;
 	text-align: center;
 	width: 1100px;
+        font-family: Arial, sans-serif;
 }
 
 /************
@@ -23,12 +24,28 @@ body {
 }
 
 #imposedtext {
+    float: left;
     padding-top: 10px;
     margin-left: 10px;
     text-align: left;
     font-weight: bold;
     font-size: 24pt;
     font-family: Arial, sans-serif;
+    color: white;
+}
+
+#imposedlinks {
+    margin-right: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    text-align: right;
+    float: right
+}
+
+#imposedlinks a {
+	display: inline;
+	overflow: hidden;
+	list-style-type: none; 
     color: white;
 }
 
@@ -45,16 +62,9 @@ body {
  ************/
 
 #nav {
-    width: 1100px;
     position: absolute;
     bottom: 0px;
-    background-color: #000040; 
-}
-
-#tabmenu {
-    margin: 0;
-    padding: 0;
-    z-index: 1;
+    margin-left: 50px;
 }
 
 #tabmenu li {
@@ -63,13 +73,11 @@ body {
 	list-style-type: none; 
 }
 
-#tabmenu a {
+#nav a {
 	padding-left: 10px;
 	padding-right: 10px;
         font-size: 14pt;
         color: white;
-        font-family: Georgia, "Times New Roman", Times, serif;
-	text-decoration: none; 
 }
 
 #tabmenu a#active {

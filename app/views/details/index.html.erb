@@ -1,6 +1,4 @@
 <div id="main_content">
-<h1>Listing details</h1>
-
 <% form_tag listing_detail_path(@listing, 0), :method=> :put do -%>
   <ul id="detail_list">
     <%= render :partial=> "edit", :collection=>@details %>

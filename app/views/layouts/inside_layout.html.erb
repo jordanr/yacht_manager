@@ -14,19 +14,20 @@
 </head>
 <body>
 <div id="head" style="background-image: url('/images/menubar.gif');">
-<div id="imposedtext">yacht manager</div>
-</div>
-<p align="right">
+<span id="imposedtext">yacht manager</span>
+
+<span id="imposedlinks">
 <%= link_to 'Home', root_path %>
 <%= link_to 'Settings', edit_user_path(current_user) %>
 <%= link_to 'Logout >>', logout_path, :method => :delete %>
-</p>
+</span>
 
+<span id="nav"><%= link_to 'my yachts', listings_path %></span>
+</div>
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
 
-<span style="text-align: left"><%= link_to 'Listings', listings_path %></span>
 
 <div style="clear: both;"><%= yield  %></div>
 

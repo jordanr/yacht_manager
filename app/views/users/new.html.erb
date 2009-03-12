@@ -1,18 +1,32 @@
 <div id="left_content">
-<p>
-  Sign up now for free!  Just pick a username and password.
-  Get quality leads from an experienced yacht brokerage.
-  We'll point quality buyers to your yacht.  And advertise
-  your yacht on brokerage sites worldwide!
-</p>
-<p>
-  Upgrade to our fee-based account for worldwide listing on 
-  YachtAuthority.com.
-</p>
-<p>
-  And upgrade to our classic commision-based account for
-  dockage, pricing, magazine advertising, and more!
-</p>
+<p class="emphasis">Create a free account to better manage your yacht information</p>
+<table>
+
+<tr>
+<td><%= image_tag 'owner.gif' %></td>
+<td><%= link_to 'Owners', owners_path %><br/>
+    Advertise your yacht worldwide for free on the 
+    websites of participating brokerages.
+</td>
+</tr>
+
+<tr>
+<td><%= image_tag 'broker.gif' %></td>
+<td><%= link_to 'Brokers', brokers_path %><br/>
+  Find and form advertising partnerships with owners.
+  Easily enter and keep track of your listings.  
+</td>
+</tr>
+
+<tr>
+<td><%= image_tag 'developer.gif' %></td>
+<td><%= link_to 'Developers', developers_path %><br/>
+  Push and pull data in a standard format with other
+  multiple listing systems.
+</td>
+</tr>
+</table>
+
 </div>
 
 <div id="right_content">
