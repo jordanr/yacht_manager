@@ -25,8 +25,8 @@
 <span id="nav"><%= link_to 'my yachts', listings_path %></span>
 </div>
 
-<p style="color: green"><%= flash[:notice] %></p>
-<p style="color: red"><%= flash[:error] %></p>
+<p id="notice" style="color: green"><%= flash[:notice] %></p>
+<p id="error" style="color: red"><%= flash[:error] %></p>
 
 
 <div style="clear: both;"><%= yield  %></div>

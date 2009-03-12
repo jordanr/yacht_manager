@@ -5,7 +5,7 @@
   </ol>
   <%= submit_tag "Save" %>
 <% end  -%>
-<%= link_to_remote 'New detail', :update=>"detail_list", :position=>:bottom, :url=> listing_details_path, :method=>:post %>
+<%= link_to_remote 'New detail', :complete=>"$('notice').innerHTML='Refresh the page to drag and sort new details'", :update=>"detail_list", :position=>:bottom, :url=> listing_details_path, :method=>:post %>
 </div>
 
 <%= sortable_element :detail_list, :url => { :action => 'order', :listing_id=>@listing.id } %>

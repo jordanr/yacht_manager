@@ -2,10 +2,12 @@ require 'mime/types'
 class Photo < ActiveRecord::Base
   belongs_to :listing
 
-#  validate do |photo|
-#    max = 5
-#    photo.errors.add_to_base("too many photos: a listing can only have #{max}") if photo.listing_id and photo.listing.photos.size >= max
-#  end
+  validate :limit
+
+  def limit
+    max = 5
+    errors.add_to_base("too many photos: a listing can only have #{max}") if listing_id and listing.photos.size >= max
+  end
 
   before_create :add_urls
   after_create :add_order

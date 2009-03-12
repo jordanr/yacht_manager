@@ -27,7 +27,7 @@ class PhotosController < YachtManagerController
     if @photo.save
       render :partial =>"flash_response"
     else
-      render :text=>"error"
+      render :text=> "error"
     end
   end
 

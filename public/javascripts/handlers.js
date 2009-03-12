@@ -216,11 +216,19 @@ FileProgress.prototype.ToggleCancel = function(show, upload_obj, file_id) {
 	}
 }
 function AddPartial(partial) {
-	partial_and_src = partial.split("<!--~-->", 2);
-	partial = partial_and_src[0];
-	src = partial_and_src[1];
-	document.getElementById("photo_list").innerHTML += partial;
-	AddImage(src);
+        if (partial == "error") {
+	  $('notice').innerHTML="";
+	  $('error').innerHTML="Photo limit exceded: you can only upload 5 photos.";
+        }
+        else {
+  	  partial_and_src = partial.split("<!--~-->", 2);
+  	  partial = partial_and_src[0];
+	  src = partial_and_src[1];
+  	  $("photo_list").innerHTML += partial;
+  	  AddImage(src);
+ 	  $('notice').innerHTML="Refresh the page to drag and sort photos";
+	  $('error').innerHTML="";
+        }
 }
 
 function AddImage(src) {
