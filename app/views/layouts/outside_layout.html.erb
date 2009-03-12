@@ -10,19 +10,13 @@
 </head>
 <body>
 <div id="head" style="background-image: url('/images/menubar.gif');">
-<div id="imposedtext">yacht manager</div>
+<span id="imposedtext"><%= link_to 'yacht manager', root_path %></span>
 </div>
 
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
 
 <div style="clear: both;"><%= yield  %></div>
-
-<div id="foot">
-<%= link_to 'Owners', owners_path %>
-<%= link_to 'Brokers', brokers_path %>
-<%= link_to 'Developers', developers_path %>
-</div>
 
 </body>
 </html>

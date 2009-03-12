@@ -1,8 +1,5 @@
 require 'will_paginate'
 class Classified < Listing
-  cattr_reader :per_page
-  @@per_page = 6
-
   def main_photo
     if photos.count > 0
 #      photos.first.small_url

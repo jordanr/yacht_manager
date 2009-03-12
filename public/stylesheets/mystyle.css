@@ -34,6 +34,10 @@ body {
     color: white;
 }
 
+#imposedtext a {
+        color: white;
+}
+
 #imposedlinks {
     margin-right: 10px;
     font-weight: bold;
@@ -46,7 +50,7 @@ body {
 	display: inline;
 	overflow: hidden;
 	list-style-type: none; 
-    color: white;
+        color: white;
 }
 
 .emphasis {    

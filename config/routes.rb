@@ -47,11 +47,6 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
 
-  # information
-  map.brokers '/brokers', :controller => 'information', :action => 'brokers'
-  map.owners '/owners', :controller => 'information', :action => 'owners'
-  map.developers '/developers', :controller => 'information', :action => 'developers'
-
   map.forgot_password '/forgot_password', :controller => 'users', :action => 'forgot_password'
   map.reset_password '/reset_password', :controller => 'users', :action => 'reset_password'
 
