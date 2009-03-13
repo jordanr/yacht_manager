@@ -1,5 +1,30 @@
-<p class="emphasis">Participating Brokerages</p>
+<div id="left_content">
+<% form_for(@widget) do |f| %>
+  <%= f.error_messages %>
 
-<ul id="main_content">
-<li><%= link_to 'Jordan Yachts', 'http://jordanyachtandship.com/classifieds' %></li>
-</ul>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </p>
+  <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>
+</div>
+
+<div id="right_content">
+<%= h @widget.code %>
+</div>
+
+<div id="main_content">
+
+<%= @widget.preview %>
+</div>
