@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @widget.user_id %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @widget.url %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%=h @widget.height %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%=h @widget.width %>
+</p>
+
+
+<%= link_to 'Edit', edit_widget_path(@widget) %> |
+<%= link_to 'Back', widgets_path %>
