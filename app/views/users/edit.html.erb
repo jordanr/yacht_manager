@@ -21,6 +21,10 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
+    <%= f.label :broker %><br />
+    <%= f.check_box :broker %>
+  </p>
+  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>

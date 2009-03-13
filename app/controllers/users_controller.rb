@@ -27,6 +27,16 @@ class UsersController < YachtManagerController
     end
   end
 
+  def update
+    @user = current_user
+    if @user.update_attributes(params[:user])
+      flash[:notice] = 'Settings were successfully updated.'
+      redirect_to root_path
+    else
+      render :action => 'edit'
+    end
+  end
+
   def activate
     self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
     if logged_in? && !current_user.active?

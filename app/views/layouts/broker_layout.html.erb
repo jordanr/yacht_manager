@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Yacht Manager</title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'swfupload' %>
+  <%= stylesheet_link_tag 'mystyle' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'swfupload' %>
+  <%= javascript_include_tag 'handlers' %>
+</head>
+<body>
+<div id="head" style="background-image: url('/images/menubar.gif');">
+<span id="imposedtext"><%= link_to 'yacht manager', root_path %></span>
+
+<span id="imposedlinks">
+<%= link_to 'Home', root_path %>
+<%= link_to 'Settings', edit_user_path(current_user) %>
+<%= link_to 'Logout >>', logout_path, :method => :delete %>
+</span>
+
+<span id="nav">
+<%= link_to 'listings', listings_path %>
+<%= link_to 'accounts', accounts_path %>
+<%= link_to 'transfers', transfers_path %>
+<%= link_to 'widget', widgets_path %>
+</span>
+
+</div>
+
+<p id="notice" style="color: green"><%= flash[:notice] %></p>
+<p id="error" style="color: red"><%= flash[:error] %></p>
+
+
+<div style="clear: both;"><%= yield  %></div>
+
+</body>
+</html>

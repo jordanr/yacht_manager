@@ -1,13 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :widgets
-
+  # admin
   map.resources :users
   map.resource :session
 
-  map.resources :classifieds
-
+  # broker
+  map.resources :transfers
+  map.resources :accounts
+  map.resources :widgets
   map.resources :listings, :has_many=>[:details, :photos]
 
+  # owner
+  map.resources :yachts, :has_many=>[:details, :photos]
+
+  # other
+  map.resources :classifieds
 
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 

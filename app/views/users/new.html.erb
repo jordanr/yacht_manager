@@ -1,13 +1,37 @@
 <div id="left_content">
+<p class="emphasis">Easy and free yacht information management.</p>
+<table>
+<tr>
+<td><%= image_tag 'wolf.gif' %></td>
+<td>
+  <b>Photos</b><br/>
+  Quickly upload up to ten photos at a time.  We'll resize them into
+  three different sizes.
+</td>
+</tr>
+<td><%= image_tag 'tools.gif' %></td>
+<td>
+  <b>Layouts</b><br/>
+  Auto-load in specifications and layouts from yachtlayouts.com.
+</td>
+</tr>
+<tr>
+<td><%= image_tag 'transfer.gif' %></td>
+<td>
+  <b>Transfers</b><br/>
+  Transfer to compliant Yacht Transmision Standard systems.
+</td>
+</tr>
 
-<% if params[:info] %>
-  <%= render_partial params[:info] %>
-  <%= link_to 'Back', signup_path %>
-<% else %>
-  <%= render_partial 'all' %>
-  <%= link_to 'Back', login_path %>
-<% end %>
+<tr>
+<td><%= image_tag 'seashell.gif' %></td>
+<td>
+  <b>Widget</b><br/>
+  Embed a free widget in your personal web page to display your listings.
+</td>
+</tr>
 
+</table>
 </div>
 
 <div id="right_content">

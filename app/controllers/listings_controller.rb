@@ -11,6 +11,8 @@ class ListingsController < YachtManagerController
   # GET /listings/1.xml
   def show
     @listing = current_user.listings.find(params[:id])
+    @details = Detail.paginate_by_listing_id(@listing.id, :page=>params[:page], :per_page=>4, :order=>'details.order ASC') || []
+    @photos = Photo.find_by_sql(["SELECT * FROM photos WHERE listing_id = ? ORDER BY photos.order ASC", @listing.id]) || []
   end
 
   # GET /listings/new
