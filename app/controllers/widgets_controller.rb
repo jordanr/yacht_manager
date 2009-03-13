@@ -1,4 +1,5 @@
 class WidgetsController < YachtManagerController
+  before_filter :active_login_required
   def index
     @widget = current_user.widget || Widget.default(current_user.id)
   end

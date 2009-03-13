@@ -6,7 +6,7 @@ class Widget < ActiveRecord::Base
   validates_numericality_of :height, :width
   validates_presence_of :url
 
-  def default(user_id)
+  def self.default(user_id)
     create(:width=>900, :height=>600, :url=>"http://myurl.xyz/path_to_widget", :user_id=>user_id)
   end
 
