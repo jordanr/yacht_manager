@@ -21,7 +21,7 @@ class Listing < ActiveRecord::Base
 
   private
     def add_defaults
-      update_attribute(:broker_id, 1)
+      update_attribute(:broker_id, 1) if broker_id.nil?
       update_attribute(:yacht_name, "No name") if yacht_name.nil? or yacht_name.empty?
       update_attribute(:yacht_specification_manufacturer, "Custom") if yacht_specification_manufacturer.nil? or yacht_specification_manufacturer.empty?
     end

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   def contracts(listing_id = nil)
     if listing_id
-      Listing.find_by_sql(["SELECT * FROM listings WHERE listing_id = ? and (user_id=? or broker_id = ?)", listing_id, id , id])
+      Listing.find_by_sql(["SELECT * FROM listings WHERE id = ? and (user_id=? or broker_id = ?)", listing_id, id , id]).first
     else
       Listing.find_by_sql(["SELECT * FROM listings WHERE (user_id=? or broker_id = ?)", id , id])
     end 
