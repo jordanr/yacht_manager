@@ -1,8 +1,16 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
   has_many :listings
-  has_many :widgets
- 
+  has_one :widget
+
+  def contracts(listing_id = nil)
+    if listing_id
+      Listing.find_by_sql(["SELECT * FROM listings WHERE listing_id = ? and (user_id=? or broker_id = ?)", listing_id, id , id])
+    else
+      Listing.find_by_sql(["SELECT * FROM listings WHERE (user_id=? or broker_id = ?)", id , id])
+    end 
+  end
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -19,6 +27,8 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation, :broker
+
+
 
   # Activates the user in the database.
   def activate

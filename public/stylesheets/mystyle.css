@@ -71,12 +71,6 @@ body {
     margin-left: 50px;
 }
 
-#tabmenu li {
-	display: inline;
-	overflow: hidden;
-	list-style-type: none; 
-}
-
 #nav a {
 	padding-left: 10px;
 	padding-right: 10px;
@@ -84,31 +78,19 @@ body {
         color: white;
 }
 
-#tabmenu a#active {
-	color: white;
-	background-color: #000160;
+#rnav {
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
 }
 
-#tabmenu a:hover {
-	color: white;
-	background-color: #000160
+#rnav a {
+	padding-left: 10px;
+	padding-right: 10px;
+        font-size: 14pt;
+        color: white;
 }
 
-#tabmenu a:visited {
-	color: white;
-}
-
-#tabmenu a#active:hover {
-	color: white;
-}
-
-#tabmenu li {
-	float:left;
-}
-
-#tabmenu li.rightmost {
-	float: right;
-}
 
 /************
  * CONTENT

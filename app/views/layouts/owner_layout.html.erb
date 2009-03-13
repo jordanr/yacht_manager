@@ -23,6 +23,8 @@
 </span>
 
 <span id="nav"><%= link_to 'yachts', listings_path %></span>
+
+<span id="rnav"><%= link_to 'broker view', user_path(current_user.id, :user=>{:broker=>1}), :method=>:put%></span>
 </div>
 
 <p id="notice" style="color: green"><%= flash[:notice] %></p>
