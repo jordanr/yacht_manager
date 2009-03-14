@@ -1,1 +1,5 @@
 config/database.yml
+log/*
+public/photos/*
+tmp/*
+vendor/*
