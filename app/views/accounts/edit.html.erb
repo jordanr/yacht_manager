@@ -1,12 +1,6 @@
-<h1>Editing account</h1>
-
+<div id="left_content">
 <% form_for(@account) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :multiple_listing_system %><br />
-    <%= collection_select(:account, :multiple_listing_system_id, MultipleListingSystem.find(:all), :id, :name) %>
-  </p>
 
   <p>
     <%= f.label :login %><br />
@@ -27,3 +21,4 @@
 
 <%= link_to 'Show', @account %> |
 <%= link_to 'Back', accounts_path %>
+</div>

@@ -1,5 +1,4 @@
-<h1>Listing accounts</h1>
-
+<div id = "main_content">
 <table>
   <tr>
     <th>MLS</th>
@@ -8,7 +7,7 @@
 
 <% for account in @accounts %>
   <tr>
-    <td><%=h account.multiple_listing_system.name %></td>
+    <td><%=h account.mls_id %></td>
     <td><%=h account.login %></td>
     <td><%= link_to 'Show', account %></td>
     <td><%= link_to 'Edit', edit_account_path(account) %></td>
@@ -20,3 +19,4 @@
 <br />
 
 <%= link_to 'New account', new_account_path %>
+</div>
