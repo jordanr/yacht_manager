@@ -22,7 +22,7 @@ class AccountsControllerTest < ActionController::TestCase
       create_account
     end
 
-    assert_redirected_to account_path(assigns(:account))
+    assert_redirected_to accounts_path
   end
 
   def test_should_show_account
@@ -37,7 +37,7 @@ class AccountsControllerTest < ActionController::TestCase
 
   def test_should_update_account
     put :update, :id => accounts(:one).id, :account => { }
-    assert_redirected_to account_path(assigns(:account))
+    assert_redirected_to accounts_path
   end
 
   def test_should_destroy_account

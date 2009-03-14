@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :classifieds
 
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.decrypt '/accounts/:id/decrypt', :controller => 'accounts', :action => 'decrypt'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
