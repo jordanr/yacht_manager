@@ -14,10 +14,4 @@ class Widget < ActiveRecord::Base
     content_tag(:iframe, '', :height=>height, :frameborder=>"0",  :width=> width, :scrolling=>"no", 
 	:src=>"#{HOST}/classifieds?per_page=#{height/100}", :marginwidth=>"0", :marginheight=>"0")
   end
-  def preview
-    content_tag(:iframe, '', :height=>"1000px", :frameborder=>"0",  :width=>"100%", :scrolling=>"no", 
-		:src=>url, :marginwidth=>"0", :marginheight=>"0")
-  end
-
-
 end

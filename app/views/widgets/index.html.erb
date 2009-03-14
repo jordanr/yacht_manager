@@ -14,16 +14,19 @@
     <%= f.label :width %><br />
     <%= f.text_field :width %>
   </p>
-  <p>
-    <%= f.submit "Update" %>
+  <p class="button">
+    <%= f.submit "Save" %>
   </p>
 <% end %>
 </div>
 <div id = "right_content">
-<%= h @widget.code %>
+<span class="emphasis">Code </span>(copy and paste this html into your page)
+<hr/>
+<textarea style="border: 0; background-color: white; width: 500px; height: 100px" readonly="true"><%= h @widget.code %></textarea>
 </div>
-
-<div id = "main_content">
-<%= @widget.preview %>
+<div id = "main_content" style="clear:both">
+<span class="emphasis">Preveiw</span>
+<hr/>
+<%= @widget.code %>
 </div>
 

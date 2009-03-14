@@ -3,7 +3,7 @@
   <ol id="detail_list">
     <%= render :partial=> "edit", :collection=>@details %>
   </ol>
-  <%= submit_tag "Save" %>
+  <p class="button"><%= submit_tag "Save" %></p>
 <% end  -%>
 <%= link_to_remote 'New detail', :complete=>"$('notice').innerHTML='Refresh the page to drag and sort new details'", :update=>"detail_list", :position=>:bottom, :url=> listing_details_path, :method=>:post %>
 </div>
