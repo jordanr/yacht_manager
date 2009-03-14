@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UploadsControllerTest < ActionController::TestCase
+class TransfersControllerTest < ActionController::TestCase
   def setup
     super
     login_as :aaron
@@ -18,35 +18,33 @@ class UploadsControllerTest < ActionController::TestCase
   end
 
   def test_should_create_upload
-    assert_difference('Upload.count') do
-      post :create, :upload=>valid_options
+    assert_difference('Transfer.count') do
+      post :create, :transfer=>valid_options
     end
 
-    assert_redirected_to upload_path(assigns(:upload))
+    assert_redirected_to transfers_path
   end
 
   def test_should_show_upload
-    get :show, :id => uploads(:one).id
+    get :show, :id => transfers(:one).id
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => uploads(:one).id
+    get :edit, :id => transfers(:one).id
     assert_response :success
   end
 
   def test_should_update_upload
-    put :update, :id => uploads(:one).id, :upload => { }
-    assert_redirected_to upload_path(assigns(:upload))
+    put :update, :id => transfers(:one).id, :transfer => { }
+    assert_redirected_to transfers_path
   end
 
   def test_should_destroy_upload
-    l_id = uploads(:one).listing.id
-    assert_difference('Upload.count', -1) do
-      delete :destroy, :id => uploads(:one).id
+    assert_difference('Transfer.count', -1) do
+      delete :destroy, :id => transfers(:one).id
     end
-    assert Listing.exists?(l_id)
-    assert_redirected_to uploads_path
+    assert_redirected_to transfers_path
   end
 
   private

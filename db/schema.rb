@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090314002326) do
+ActiveRecord::Schema.define(:version => 20090314013640) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(:version => 20090314002326) do
     t.integer  "width",        :limit => 11
     t.integer  "height",       :limit => 11
     t.integer  "order",        :limit => 11
+  end
+
+  create_table "transfers", :force => true do |t|
+    t.integer  "listing_id", :limit => 11
+    t.integer  "account_id", :limit => 11
+    t.integer  "user_id",    :limit => 11
+    t.integer  "remote_id",  :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

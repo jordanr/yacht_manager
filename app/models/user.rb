@@ -2,6 +2,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   has_many :listings
   has_many :accounts
+  has_many :transfers
   has_one :widget
 
   def contracts(listing_id = nil)
