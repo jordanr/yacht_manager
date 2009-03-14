@@ -175,3 +175,14 @@ a.progressCancel:hover
 {
 	background-position: 0px 0px;
 }
+
+#btnBrowse {
+        padding:1px 3px 1px 4px;
+        font-size:1em; cursor:pointer;
+        background:#3b5998;
+        color:#fff;
+        border:1px solid #0e1f5b;
+        border-left-color:#D9DFEA;
+        border-top-color:#D9DFEA;
+}
+
