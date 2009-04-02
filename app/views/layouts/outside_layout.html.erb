@@ -9,14 +9,13 @@
   <%= stylesheet_link_tag 'mystyle' %>
 </head>
 <body>
-<div id="head" style="background-image: url('/images/menubar.gif');">
-<span id="imposedtext"><%= link_to 'yacht manager', root_path %></span>
+<div id="head">
 </div>
 
+<div id="content">
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
-
-<div style="clear: both;"><%= yield  %></div>
+<%= yield  %></div>
 
 </body>
 </html>

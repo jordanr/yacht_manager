@@ -4,13 +4,13 @@ class ListingsController < YachtManagerController
   # GET /listings
   # GET /listings.xml
   def index
-    @listings = current_user.broker? ? current_user.contracts : current_user.listings
+    @listings = current_user.listings
   end
 
   # GET /listings/1
   # GET /listings/1.xml
   def show
-    @listing = current_user.broker? ? current_user.contracts(params[:id]) : current_user.listings.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     @details = Detail.paginate_by_listing_id(@listing.id, :page=>params[:page], :per_page=>4, :order=>'details.order ASC') || []
     @photos = Photo.find_by_sql(["SELECT * FROM photos WHERE listing_id = ? ORDER BY photos.order ASC", @listing.id]) || []
   end
@@ -23,7 +23,7 @@ class ListingsController < YachtManagerController
 
   # GET /listings/1/edit
   def edit
-    @listing = current_user.broker? ? current_user.contracts(params[:id]) : current_user.listings.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
   end
 
   # POST /listings
@@ -42,7 +42,7 @@ class ListingsController < YachtManagerController
   # PUT /listings/1
   # PUT /listings/1.xml
   def update
-    @listing = current_user.broker? ? current_user.contracts(params[:id]) : current_user.listings.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     if @listing.update_attributes(params[:listing])
       flash[:notice] = 'Listing was successfully updated.'
       redirect_to(@listing)
@@ -54,7 +54,7 @@ class ListingsController < YachtManagerController
   # DELETE /listings/1
   # DELETE /listings/1.xml
   def destroy
-    @listing = current_user.broker? ? current_user.contracts(params[:id]) : current_user.listings.find(params[:id])
+    @listing = current_user.listings.find(params[:id])
     @listing.destroy
     redirect_to(listings_url)
   end

@@ -13,8 +13,7 @@
   <%= javascript_include_tag 'handlers' %>
 </head>
 <body>
-<div id="head" style="background-image: url('/images/menubar.gif');">
-<span id="imposedtext"><%= link_to 'yacht manager', root_path %></span>
+<div id="head">
 
 <span id="imposedlinks">
 <%= link_to 'Home', root_path %>
@@ -29,15 +28,13 @@
 <%= link_to 'widget', widgets_path %>
 </span>
 
-<span id="rnav"><%= link_to 'owner view', user_path(current_user.id, :user=>{:broker=>0}), :method=>:put%></span>
-
 </div>
 
+<div id="content">
 <p id="notice" style="color: green"><%= flash[:notice] %></p>
 <p id="error" style="color: red"><%= flash[:error] %></p>
-
-
-<div style="clear: both;"><%= yield  %></div>
+<%= yield  %>
+</div>
 
 </body>
 </html>

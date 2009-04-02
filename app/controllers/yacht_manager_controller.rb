@@ -5,6 +5,7 @@ class YachtManagerController < ApplicationController
     def inside_or_outside
       return "outside_layout" if not (logged_in? and current_user.active?)
 
-      current_user.broker? ? "broker_layout" : "owner_layout"
+#      current_user.broker? ? "broker_layout" : "owner_layout"
+      "broker_layout"
     end
 end

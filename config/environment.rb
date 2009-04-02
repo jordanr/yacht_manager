@@ -67,7 +67,7 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 
   # First, specify the Host that we will be using later for user_notifier.rb
-  HOST = 'http://jordanyachtandship.ath.cx'
+  HOST = 'http://yachttransfer.com'
  
   config.active_record.observers = :user_observer
 end

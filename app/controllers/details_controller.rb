@@ -42,6 +42,6 @@ class DetailsController < YachtManagerController
 
   private
     def get_listing
-      @listing = Listing.find(params[:listing_id])
+      @listing = current_user.listings.find(params[:listing_id])
     end
 end

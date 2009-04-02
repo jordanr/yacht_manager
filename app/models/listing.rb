@@ -9,7 +9,7 @@ class Listing < ActiveRecord::Base
   validates_numericality_of :price, :yacht_specification_length, :allow_nil=>true
   validates_inclusion_of :yacht_specification_year, :in => 1800..2100, :allow_nil=>true
 
-  after_save :add_defaults
+  before_save :add_defaults
 
   def formated_price
     price.nil? ? "-" : "$#{number_with_delimiter(price)}"
@@ -19,10 +19,15 @@ class Listing < ActiveRecord::Base
     yacht_specification_length.nil? ? "-" : "#{yacht_specification_length}\'"
   end
 
+  def to_yt
+    ignores = %w{ id contact active yacht_new user_id yacht_specification_designer created_at updated_at broker_id}
+    attributes.delete_if { |k,v| ignores.include?(k) }
+  end
+
   private
     def add_defaults
-      update_attribute(:broker_id, 1) if broker_id.nil?
-      update_attribute(:yacht_name, "No name") if yacht_name.nil? or yacht_name.empty?
-      update_attribute(:yacht_specification_manufacturer, "Custom") if yacht_specification_manufacturer.nil? or yacht_specification_manufacturer.empty?
+      self.broker_id = 1 if broker_id.nil?
+      self.yacht_name =  "No name" if yacht_name.nil? or yacht_name.empty?
+      self.yacht_specification_manufacturer = "Custom" if yacht_specification_manufacturer.nil? or yacht_specification_manufacturer.empty?
     end
 end
