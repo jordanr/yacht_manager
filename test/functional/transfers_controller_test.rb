@@ -1,5 +1,11 @@
 require 'test_helper'
 
+class Transfer
+  def do_transfer
+    true
+  end
+end
+
 class TransfersControllerTest < ActionController::TestCase
   def setup
     super

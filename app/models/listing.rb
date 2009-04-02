@@ -23,7 +23,10 @@ class Listing < ActiveRecord::Base
 
   def to_yt
     ignores = %w{ id contact active yacht_new user_id yacht_specification_designer created_at updated_at broker_id}
-    attributes.delete_if { |k,v| ignores.include?(k) }
+    goods = attributes.delete_if { |k,v| ignores.include?(k) }
+    real_goods = {}
+    goods.each_pair { |k, v| real_goods.merge!(k.to_sym=>v) }
+    real_goods.merge!(:photos=>[])
   end
 
   private
