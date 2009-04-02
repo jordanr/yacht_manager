@@ -4,12 +4,12 @@
 
   <p>
     <%= f.label :listing %><br />
-    <%= collection_select(:transfer, :listing_id, current_user.listings, :id, :id) %>
+    <%= collection_select(:transfer, :listing_id, current_user.listings, :id, :to_s) %>
   </p>
 
   <p>
     <%= f.label :account %><br />
-    <%= collection_select(:transfer, :account_id, current_user.accounts, :id, :id) %>
+    <%= collection_select(:transfer, :account_id, current_user.accounts, :id, :to_s) %>
   </p>
   
   <p class="button">

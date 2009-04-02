@@ -11,6 +11,8 @@ class Listing < ActiveRecord::Base
 
   before_save :add_defaults
 
+  def to_s; "#{formated_length} #{yacht_specification_manufacturer}"; end
+
   def formated_price
     price.nil? ? "-" : "$#{number_with_delimiter(price)}"
   end

@@ -14,7 +14,16 @@ class Account < ActiveRecord::Base
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :login,    :within => 3..40
   before_save :encrypt_password
-  
+ 
+  validate :yt_account, :if => :password_required?
+  validates_mls
+
+  def yt_account
+    errors.add_to_base("Couldn't login to #{mls}: Invalid username|password combination") unless account_authenticity(login, password)
+  end
+
+  def to_s; "#{login}@#{mls}"; end
+
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :password, :password_confirmation, :mls_id

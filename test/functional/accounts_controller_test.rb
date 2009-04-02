@@ -1,5 +1,12 @@
 require 'test_helper'
 
+class Account
+
+  def yt_account
+    true
+  end
+end
+
 class AccountsControllerTest < ActionController::TestCase
   def setup
     super

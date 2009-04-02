@@ -1,12 +1,12 @@
 <div id ="left_content">
 <p>
   <b>Listing:</b>
-  <%=h @upload.listing_id %>
+  <%=h @upload.listing.to_s %>
 </p>
 
 <p>
   <b>Account:</b>
-  <%=h @upload.account_id %>
+  <%=h @upload.account.to_s %>
 </p>
 
 <%= link_to 'Edit', edit_transfer_path(@upload) %> |
