@@ -7,7 +7,7 @@
 
 <% for account in @accounts %>
   <tr>
-    <td><%=h account.mls_id %></td>
+    <td><%=h account.mls %></td>
     <td><%=h account.login %></td>
     <td><%= link_to 'Show', account %></td>
     <td><%= link_to 'Edit', edit_account_path(account) %></td>

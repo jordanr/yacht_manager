@@ -1,7 +1,12 @@
 <div id="left_content">
 <% form_for(@account) do |f| %>
   <%= f.error_messages %>
- 
+
+  <p>
+    <%= f.label :mls_id, 'Multiple Listing System' %><br />
+    <%= mls_select %>
+  </p>
+
   <p>
     <%= f.label :login %><br />
     <%= f.text_field :login %>

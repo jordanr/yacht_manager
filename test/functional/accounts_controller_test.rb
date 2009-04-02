@@ -50,7 +50,7 @@ class AccountsControllerTest < ActionController::TestCase
 
   private
     def create_account(options = {})
-      post :create, :account => { :login => 'quire', 
+      post :create, :account => { :login => 'quire', :mls_id=>1,
 		:password => 'quire', :password_confirmation => 'quire' }.merge(options)
     end
 end
