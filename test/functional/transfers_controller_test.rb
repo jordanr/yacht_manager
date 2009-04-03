@@ -4,6 +4,9 @@ class Transfer
   def do_transfer
     true
   end
+  def do_untransfer
+    true
+  end
 end
 
 class TransfersControllerTest < ActionController::TestCase

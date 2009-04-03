@@ -1,15 +1,15 @@
 <div id="left_content">
-<% form_for(@upload) do |f| %>
+<% form_for(@transfer) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :listing %><br />                     
-    <%= collection_select(:transfer, :listing_id, current_user.listings, :id, :to_s) %> 
+    <%= collection_select(:transfer, :listing_id, current_user.listings, :id, :to_s, {}, {:disabled=> true} ) %> 
   </p>
 
   <p>
     <%= f.label :account %><br />   
-    <%= collection_select(:transfer, :account_id, current_user.accounts, :id, :to_s) %>
+    <%= collection_select(:transfer, :account_id, current_user.accounts, :id, :to_s,{}, { :disabled => true}) %>
   </p>
 
   <p class="button">
@@ -17,6 +17,6 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @upload %> |
+<%= link_to 'Show', @transfer %> |
 <%= link_to 'Back', transfers_path %>
 </div>

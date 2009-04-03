@@ -3,12 +3,14 @@
   <tr>
     <th>Listing</th>
     <th>Account</th>
+    <th>Remote Id</th>
   </tr>
 
 <% for upload in @uploads %>
   <tr>
     <td><%=h upload.listing.to_s %></td>
     <td><%=h upload.account.to_s %></td>
+    <td><%=h upload.remote_id %></td>
     <td><%= link_to 'Show', upload %></td>
     <td><%= link_to 'Edit', edit_transfer_path(upload) %></td>
     <td><%= link_to 'Destroy', upload, :confirm => 'Are you sure?', :method => :delete %></td>

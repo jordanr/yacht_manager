@@ -25,7 +25,7 @@ class Listing < ActiveRecord::Base
     ignores = %w{ id contact active yacht_new user_id yacht_specification_designer created_at updated_at broker_id}
     goods = attributes.delete_if { |k,v| ignores.include?(k) }
     real_goods = {}
-    goods.each_pair { |k, v| real_goods.merge!(k.to_sym=>v) }
+    goods.each_pair { |k, v| real_goods.merge!(k.to_sym => v.to_s) }
     real_goods.merge!(:photos=>[])
   end
 

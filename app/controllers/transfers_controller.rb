@@ -12,7 +12,7 @@ class TransfersController < YachtManagerController
   end
 
   def edit
-    @upload = current_user.transfers.find(params[:id])
+    @transfer = current_user.transfers.find(params[:id])
   end
 
   def create
@@ -27,8 +27,8 @@ class TransfersController < YachtManagerController
   end
 
   def update
-    @upload = current_user.transfers.find(params[:id])
-    if @upload.update_attributes(params[:transfer])
+    @transfer = current_user.transfers.find(params[:id])
+    if @transfer.update_attributes(params[:transfer])
       flash[:notice] = 'Transfer was successfully updated.'
       redirect_to(transfers_path) 
     else
@@ -38,7 +38,11 @@ class TransfersController < YachtManagerController
 
   def destroy
     @upload = current_user.transfers.find(params[:id])
-    @upload.destroy
+    if @upload.destroy
+      flash[:notice] = 'Transfer was successfully destroyed'
+    else
+      flash[:error] = 'Transfer could not be destroyed'
+    end
     redirect_to(transfers_path) 
   end
 end
