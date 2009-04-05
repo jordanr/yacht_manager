@@ -27,7 +27,7 @@ class Listing < ActiveRecord::Base
     goods = attributes.delete_if { |k,v| ignores.include?(k) }
     real_goods = {}
     goods.each_pair { |k, v| real_goods.merge!(k.to_sym => v.to_s) }
-    real_goods.merge!(:photos=>[])
+    real_goods.merge!(:photos=>photos.collect { |p| p.to_yt } )
   end
 
   private

@@ -30,6 +30,10 @@ class Photo < ActiveRecord::Base
     self.uploaded_data = data
   end
 
+  def to_yt
+    { :src => File.open(full_filename, "rb"), :label=>filename }
+  end
+
   private
     def add_order
       update_attribute(:order, id)
