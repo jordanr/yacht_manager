@@ -5,6 +5,13 @@ class TransfersController < YachtManagerController
 
   def show
     @upload = current_user.transfers.find(params[:id])
+    if @upload.account.mls == 'YachtWorld'
+      @session = yacht_world_session(@upload.account.login, @upload.account.decrypt_password)
+    elsif @upload.account.mls == 'YachtCouncil'
+      @session = yacht_council_session(@upload.account.login, @upload.account.decrypt_password)
+    else
+      raise Exception("unknown mls")
+    end
   end
 
   def new
