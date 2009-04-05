@@ -6,6 +6,7 @@ one:
   salt: 78987200943745069819b3d564e4c0f7f674c3bd
   user_id: 2
   mls_id: 1
+  id: 1
 
 two:
   login: yc_user

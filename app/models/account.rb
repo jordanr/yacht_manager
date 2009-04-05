@@ -2,7 +2,7 @@ require 'crypto'
 require 'digest/sha1'
 class Account < ActiveRecord::Base
   belongs_to :user
-  has_many :transfers
+  has_many :transfers, :dependent=>:destroy
 
   # Virtual attribute for the unencrypted password
   attr_accessor :password

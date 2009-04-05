@@ -10,7 +10,21 @@ class Transfer
 end
 
 class TransfersControllerTest < ActionController::TestCase
+  module TransferHelper
+    class DummySession
+      def read(*args); "hi"; end
+    end
+
+    def yacht_world_session(*args)
+      DummySession.new
+    end
+    def yacht_council_session(*args)
+      DummySession.new
+    end
+  end
+
   def setup
+    TransfersController.send(:include, TransferHelper)
     super
     login_as :aaron
   end
