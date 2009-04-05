@@ -2,8 +2,6 @@
   <tr>
     <th></th>
     <th></th>
-    <th>Active?</th>
-    <th></th>
     <th>Length</th>
     <th>Manufacturer</th>
     <th>Model</th>
@@ -12,7 +10,6 @@
     <th>Name</th>
     <th>Location</th>
     <th></th>    
-    <th>Contact</th>
     <th>Price</th>
   </tr>
 
@@ -20,8 +17,6 @@
   <tr>
     <td><%= link_to 'Details', listing_details_path(listing) %></td>
     <td><%= link_to 'Photos', listing_photos_path(listing) %></td>
-    <td><%=h listing.active %></td>
-    <td class="spacer"></td>
     <td><%=h listing.formated_length %></td>
     <td><%=h listing.yacht_specification_manufacturer %></td>
     <td><%=h listing.yacht_specification_model %></td>
@@ -30,7 +25,6 @@
     <td><%=h listing.yacht_name %></td>
     <td><%=h listing.yacht_location %></td>
     <td class="spacer"></td>
-    <td><%=h listing.contact %></td>
     <td><%=h listing.formated_price %></td>
     <td><%= link_to 'Show', listing_path(listing) %></td>
     <td><%= link_to 'Edit', edit_listing_path(listing) %></td>

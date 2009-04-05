@@ -1,45 +1,56 @@
 <% form_for(@listing) do |f| %>
   <%= f.error_messages %>
-  <div id="left_content">
-  <p>
-    <%= f.label :active, 'Publish?' %><%= f.check_box :active %>
-  </p>
-  <p>
-    <%= f.label :contact, "Contact Information (name, phone number, email)" %><br />
-    <%= f.text_field :contact %>
-  </p>
-  <p>
+
+  <table>
+  <tr>
+  <td>
     <%= f.label :price, "Price (dollars)" %><br />
     <%= f.text_field :price %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :yacht_name, 'Yacht Name' %><br />
     <%= f.text_field :yacht_name %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :yacht_location, 'Location (city, state, country)' %><br />
     <%= f.text_field :yacht_location %>
-  </p>
-  </div>
+  </td>
+  </tr>
 
-  <div id="right_content">
-  <p>
+  <tr>
+  <td>
     <%= f.label :yacht_specification_length, 'Length (feet)' %><br />
     <%= f.text_field :yacht_specification_length %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :yacht_specification_manufacturer, 'Manufacturer' %><br />
     <%= f.text_field :yacht_specification_manufacturer %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :yacht_specification_model, 'Model' %><br />
     <%= f.text_field :yacht_specification_model %>
-  </p>
-  <p>
+  </td>
+  <td>
     <%= f.label :yacht_specification_year, 'Year' %><br />
     <%= f.text_field :yacht_specification_year %>
-  </p>
-  </div>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+    <%= f.label :yacht_specification_material, 'Hull Material (ex. wood)' %><br />
+    <%= f.text_field :yacht_specification_material %>
+  </td>
+  <td>
+    <%= f.label :yacht_specification_fuel, 'Fuel Type (ex. gas)' %><br />
+    <%= f.text_field :yacht_specification_fuel %>
+  </td>
+  <td>
+    <%= f.label :yacht_specification_number_of_engines, 'Number of Engines (0-4)' %><br />
+    <%= f.text_field :yacht_specification_number_of_engines %>
+  </td>
+  </tr>
+</table>
 
   <div style="text-align: left; clear: both;">
   <p class="button">

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090314013640) do
+ActiveRecord::Schema.define(:version => 20090405160020) do
 
   create_table "accounts", :force => true do |t|
     t.string   "login"
@@ -31,21 +31,24 @@ ActiveRecord::Schema.define(:version => 20090314013640) do
   end
 
   create_table "listings", :force => true do |t|
-    t.integer  "user_id",                          :limit => 11
+    t.integer  "user_id",                               :limit => 11
     t.string   "contact"
-    t.integer  "price",                            :limit => 11
+    t.integer  "price",                                 :limit => 11
     t.string   "yacht_name"
     t.boolean  "yacht_new"
     t.string   "yacht_location"
-    t.integer  "yacht_specification_length",       :limit => 11
+    t.integer  "yacht_specification_length",            :limit => 11
     t.string   "yacht_specification_manufacturer"
     t.string   "yacht_specification_model"
-    t.integer  "yacht_specification_year",         :limit => 11
+    t.integer  "yacht_specification_year",              :limit => 11
     t.string   "yacht_specification_designer"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active"
-    t.integer  "broker_id",                        :limit => 11
+    t.integer  "broker_id",                             :limit => 11
+    t.string   "yacht_specification_material"
+    t.string   "yacht_specification_fuel"
+    t.integer  "yacht_specification_number_of_engines", :limit => 11
   end
 
   create_table "photos", :force => true do |t|

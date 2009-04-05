@@ -8,7 +8,10 @@ class Listing < ActiveRecord::Base
   has_many :transfers, :dependent=>:destroy
 
   validates_numericality_of :price, :yacht_specification_length, :allow_nil=>true
+  validates_inclusion_of :yacht_specification_number_of_engines, :in=> 0..4, :allow_nil=>true
   validates_inclusion_of :yacht_specification_year, :in => 1800..2100, :allow_nil=>true
+  validates_inclusion_of :yacht_specification_material, :in => ["composite", "wood", "fiberglass", "steel", "other", ""], :allow_nil=>true
+  validates_inclusion_of :yacht_specification_fuel, :in => ["diesel", "gas", "other", ""], :allow_nil=>true
 
   before_save :add_defaults
 
