@@ -38,6 +38,6 @@ class Listing < ActiveRecord::Base
       self.broker_id = 1 if broker_id.nil?
       self.yacht_name =  "No name" if yacht_name.nil? or yacht_name.empty?
       self.yacht_specification_manufacturer = "Custom" if yacht_specification_manufacturer.nil? or yacht_specification_manufacturer.empty?
-      self.yacht_specification_number_of_engines = 1 if yacht_specification_number_of_engines.nil? or yacht_specification_number_of_engines.empty?
+      self.yacht_specification_number_of_engines = 1 if yacht_specification_number_of_engines.nil?
     end
 end
