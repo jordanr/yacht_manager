@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
   validate :limit
 
   def limit
-    max = 5
+    max = 20
     errors.add_to_base("too many photos: a listing can only have #{max}") if listing_id and listing.photos.size >= max
   end
 
