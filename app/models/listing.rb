@@ -17,6 +17,9 @@ class Listing < ActiveRecord::Base
 
   def to_s; "#{formated_length} #{yacht_specification_manufacturer}"; end
 
+  def to_s2; "#{to_s} #{yacht_specification_model} #{yacht_specification_year}"; end
+
+
   def formated_price
     price.nil? ? "-" : "$#{number_with_delimiter(price)}"
   end
@@ -25,8 +28,24 @@ class Listing < ActiveRecord::Base
     yacht_specification_length.nil? ? "-" : "#{yacht_specification_length}\'"
   end
 
+  def specs
+    goods = %w{
+price
+yacht_location
+yacht_specification_length
+yacht_specification_manufacturer
+yacht_specification_model
+yacht_specification_year
+yacht_specification_material
+yacht_specification_designer
+yacht_specification_fuel
+yacht_specification_number_of_engines 
+}
+#    attributes.select {|k,v| goods.include?(k.to_s) }
+  end
+
   def to_yt
-    ignores = %w{ id contact active yacht_new user_id yacht_specification_designer created_at updated_at broker_id}
+    ignores = %w{ id contact active yacht_new user_id created_at updated_at broker_id}
     goods = attributes.delete_if { |k,v| ignores.include?(k) }
     real_goods = {}
     goods.each_pair { |k, v| real_goods.merge!(k.to_sym => v.to_s) }
